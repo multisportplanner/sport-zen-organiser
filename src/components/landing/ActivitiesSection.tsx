@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Dumbbell, Wind, HeartPulse, Leaf, Sun, Activity } from "lucide-react";
+import activitiesImg from "@/assets/activities-group.jpg";
 
 const activities = [
   { icon: Dumbbell, name: "Renforcement" },
@@ -46,6 +47,21 @@ const ActivitiesSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-12 max-w-3xl mx-auto"
+        >
+          <img
+            src={activitiesImg}
+            alt="Groupe mixte pratiquant du yoga en plein air"
+            className="rounded-3xl shadow-card-hover object-cover w-full aspect-[16/9]"
+            loading="lazy"
+          />
+        </motion.div>
       </div>
     </section>
   );
