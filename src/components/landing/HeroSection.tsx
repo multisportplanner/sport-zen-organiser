@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import heroGroupImg from "@/assets/hero-group.jpg";
 
 const HeroSection = () => {
   const scrollToForm = () => {
@@ -16,11 +17,12 @@ const HeroSection = () => {
       </div>
 
       <div className="container relative z-10 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto text-center"
+          className="text-center lg:text-left"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -60,6 +62,21 @@ const HeroSection = () => {
             </p>
           </motion.div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="hidden lg:block"
+        >
+          <img
+            src={heroGroupImg}
+            alt="Petit groupe en séance de sport en plein air à Nice"
+            className="rounded-3xl shadow-card-hover object-cover w-full aspect-[4/3]"
+            loading="eager"
+          />
+        </motion.div>
+        </div>
       </div>
     </section>
   );

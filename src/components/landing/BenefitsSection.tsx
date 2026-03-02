@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Brain, TrendingUp, Heart, Zap } from "lucide-react";
+import socialImg from "@/assets/social-group.jpg";
 
 const benefits = [
   { icon: Brain, title: "Moins de charge mentale", description: "Plus besoin de chercher quoi faire ni quand." },
@@ -37,6 +38,14 @@ const BenefitsSection = () => {
               </div>
               <h3 className="font-bold text-lg mb-1">{b.title}</h3>
               <p className="text-muted-foreground text-sm">{b.description}</p>
+              {b.title === "Plus de lien social" && (
+                <img
+                  src={socialImg}
+                  alt="Amis riant ensemble après une séance de sport"
+                  className="mt-4 rounded-xl object-cover w-full aspect-[4/3]"
+                  loading="lazy"
+                />
+              )}
             </motion.div>
           ))}
         </div>
