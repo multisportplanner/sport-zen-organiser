@@ -41,7 +41,7 @@ const WaitlistForm = () => {
 
   if (submitted) {
     return (
-      <section id="waitlist-form" className="py-24 bg-muted/50">
+    <section id="waitlist-form" className="py-32 bg-muted/30">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -62,7 +62,7 @@ const WaitlistForm = () => {
   }
 
   return (
-    <section id="waitlist-form" className="py-24 bg-muted/50">
+    <section id="waitlist-form" className="py-32 bg-muted/30">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -7,7 +7,7 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section className="py-24">
+    <section className="py-32">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
