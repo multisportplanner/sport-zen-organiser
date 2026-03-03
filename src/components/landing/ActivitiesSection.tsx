@@ -1,42 +1,57 @@
 import { motion } from "framer-motion";
-import activitiesImg from "@/assets/activities-group.jpg";
+import { CalendarClock, LayoutGrid, Repeat } from "lucide-react";
+
+const blocks = [
+  {
+    icon: CalendarClock,
+    title: "Tu donnes tes disponibilités.",
+    description: "Une seule fois, en 2 minutes.",
+  },
+  {
+    icon: LayoutGrid,
+    title: "On te propose un créneau fixe.",
+    description: "Adapté à ton emploi du temps.",
+  },
+  {
+    icon: Repeat,
+    title: "Tu viens. Chaque semaine.",
+    description: "Sans y penser. Sans organiser.",
+  },
+];
 
 const ActivitiesSection = () => {
   return (
     <section className="py-32">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Chaque semaine, une activité{" "}
-              <span className="text-gradient">différente</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              Renforcement, mobilité, cardio, yoga, outdoor…
-            </p>
-            <p className="text-muted-foreground">
-              Toujours encadré. Toujours accessible. Toujours en petit groupe.
-            </p>
-          </motion.div>
+      <div className="container max-w-3xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl md:text-5xl font-bold text-center mb-20"
+        >
+          Un système <span className="text-gradient">simple.</span>
+        </motion.h2>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <img
-              src={activitiesImg}
-              alt="Groupe dynamique pratiquant différentes activités sportives"
-              className="rounded-3xl shadow-card object-cover w-full aspect-[4/3]"
-              loading="lazy"
-            />
-          </motion.div>
+        <div className="space-y-16">
+          {blocks.map((block, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="flex items-start gap-6"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-gradient-hero flex-shrink-0 flex items-center justify-center shadow-glow">
+                <block.icon className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-1">{block.title}</h3>
+                <p className="text-muted-foreground">{block.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
