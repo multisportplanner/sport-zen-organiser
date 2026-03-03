@@ -15,36 +15,36 @@
     --popover: 0 0% 100%;
     --popover-foreground: 270 40% 10%;
 
-    --primary: 270 70% 55%;
+    --primary: 258 65% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 330 80% 60%;
+    --secondary: 220 60% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 270 15% 93%;
-    --muted-foreground: 270 10% 45%;
+    --muted: 250 12% 93%;
+    --muted-foreground: 250 10% 42%;
 
-    --accent: 25 95% 60%;
+    --accent: 25 90% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 270 15% 90%;
-    --input: 270 15% 88%;
-    --ring: 270 70% 55%;
+    --border: 250 12% 90%;
+    --input: 250 12% 88%;
+    --ring: 258 65% 45%;
 
     --radius: 0.75rem;
 
     /* Custom MSP tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(270 70% 55%), hsl(330 80% 60%), hsl(25 95% 60%));
-    --gradient-hero-soft: linear-gradient(135deg, hsl(270 70% 55% / 0.08), hsl(330 80% 60% / 0.08), hsl(25 95% 60% / 0.08));
-    --gradient-text: linear-gradient(135deg, hsl(270 70% 55%), hsl(330 80% 60%));
-    --gradient-cta: linear-gradient(135deg, hsl(330 80% 60%), hsl(25 95% 60%));
-    --gradient-cta-hover: linear-gradient(135deg, hsl(330 80% 55%), hsl(25 95% 55%));
-    --shadow-glow: 0 8px 32px hsl(330 80% 60% / 0.3);
-    --shadow-card: 0 4px 24px hsl(270 40% 10% / 0.06);
-    --shadow-card-hover: 0 8px 40px hsl(270 40% 10% / 0.1);
+    --gradient-hero: linear-gradient(135deg, hsl(258 65% 45%), hsl(220 60% 50%), hsl(25 90% 55%));
+    --gradient-hero-soft: linear-gradient(135deg, hsl(258 65% 45% / 0.08), hsl(220 60% 50% / 0.08), hsl(25 90% 55% / 0.08));
+    --gradient-text: linear-gradient(135deg, hsl(258 65% 45%), hsl(220 60% 50%));
+    --gradient-cta: linear-gradient(135deg, hsl(258 65% 45%), hsl(25 90% 55%));
+    --gradient-cta-hover: linear-gradient(135deg, hsl(258 65% 40%), hsl(25 90% 50%));
+    --shadow-glow: 0 8px 32px hsl(258 65% 45% / 0.3);
+    --shadow-card: 0 4px 24px hsl(250 30% 10% / 0.06);
+    --shadow-card-hover: 0 8px 40px hsl(250 30% 10% / 0.1);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
