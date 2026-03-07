@@ -32,12 +32,33 @@ const WaitlistForm = () => {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      setSubmitted(true);
-    }
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!validate()) return;
+
+  const data = {
+    firstName,
+    email,
+    city,
+    slots,
+    level
   };
+
+  const response = await fetch("https://formspree.io/f/xjgavddn", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    setSubmitted(true);
+  } else {
+    alert("Une erreur est survenue. Merci de réessayer.");
+  }
+};
 
   if (submitted) {
     return (
