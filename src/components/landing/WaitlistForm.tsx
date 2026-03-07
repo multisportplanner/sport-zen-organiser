@@ -45,7 +45,12 @@ const WaitlistForm = () => {
     level
   };
 
-  const response = await fetch("https://formspree.io/f/xjgavddn", {
+  const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
+    
+    git add .
+    git commit -m "connect form to make webhook"
+    git push
+    
     method: "POST",
     headers: {
       "Content-Type": "application/json"
