@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionSection from "@/components/landing/SolutionSection";
@@ -11,7 +12,9 @@ import Footer from "@/components/landing/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection />
+      <Header />
+      <main className="pt-16 md:pt-20">
+        <HeroSection />
       <ProblemSection />
       <SolutionSection />
       <BenefitsSection />
@@ -19,7 +22,8 @@ const Index = () => {
       <PilotSection />
       <FinalCTASection />
       <WaitlistForm />
-      <Footer />
+        <Footer />
+      </main>
     </div>
   );
 };

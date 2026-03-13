@@ -9,7 +9,7 @@ const perks = [
 
 const PilotSection = () => {
   return (
-    <section className="py-32 bg-muted/30">
+    <section id="pilote" className="py-32 bg-muted/30">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
