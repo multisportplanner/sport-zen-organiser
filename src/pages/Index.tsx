@@ -22,7 +22,8 @@ const Index = () => {
       <PilotSection />
       <FinalCTASection />
       <WaitlistForm />
-      <Footer />
+        <Footer />
+      </main>
     </div>
   );
 };
