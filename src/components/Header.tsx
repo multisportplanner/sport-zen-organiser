@@ -9,7 +9,7 @@ const Header = () => {
           <img
             src={logo}
             alt="MSP - MultiSport Planner"
-            className="h-7 md:h-9 w-auto object-contain"
+            className="h-8 md:h-11 w-auto object-contain"
           />
         </Link>
 
