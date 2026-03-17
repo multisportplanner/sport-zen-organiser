@@ -15,19 +15,25 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center gap-8">
           <a
-            href="#solution"
+            href="/#solution"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Comment ça marche
           </a>
           <a
-            href="#pilote"
+            href="/#pilote"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Lancement pilote
           </a>
+          <Link
+            to="/coach"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Coach
+          </Link>
           <a
-            href="#waitlist-form"
+            href="/#waitlist-form"
             className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             Rejoindre
