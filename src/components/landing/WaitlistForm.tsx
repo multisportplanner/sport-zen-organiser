@@ -147,7 +147,7 @@ const WaitlistForm = () => {
               {/* Créneaux */}
               <div>
                 <Label className="text-sm font-semibold mb-2 block">Créneaux préférés</Label>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   {(["Matin", "Midi", "Soir", "Semaine", "Week-end"] as Slot[]).map((s) => (
                     <button
                       key={s}
