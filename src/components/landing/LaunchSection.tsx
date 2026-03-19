@@ -26,7 +26,7 @@ const LaunchSection = () => (
             <div className="w-10 h-10 rounded-lg bg-gradient-hero flex items-center justify-center flex-shrink-0">
               <Users className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-semibold text-sm">Places limitées</span>
+            <span className="font-semibold text-sm">Places limitées pour les premiers participants</span>
           </div>
         </div>
       </motion.div>

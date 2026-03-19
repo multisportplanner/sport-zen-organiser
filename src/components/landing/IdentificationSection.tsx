@@ -26,7 +26,7 @@ const IdentificationSection = () => (
           MSP est conçu pour les personnes qui veulent faire du sport sans gérer toute l'organisation.
         </p>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {reasons.map((r, i) => (
             <motion.div
               key={i}

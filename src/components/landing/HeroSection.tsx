@@ -60,11 +60,21 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-10"
+            className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4"
           >
             <MapPin className="w-4 h-4 text-secondary" />
             <span>Entre Nice, Antibes et Sophia Antipolis</span>
           </motion.div>
+
+          {/* Value props */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.35, duration: 0.5 }}
+            className="text-sm text-muted-foreground mb-10"
+          >
+            6 personnes max • 100% flexible • près de chez toi
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}

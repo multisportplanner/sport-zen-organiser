@@ -201,8 +201,11 @@ const WaitlistForm = () => {
               {errors.gdpr && <p className="text-destructive text-xs">{errors.gdpr}</p>}
 
               <Button variant="cta" type="submit" className="w-full h-12 text-base">
-                Je rejoins la liste d'attente
+                Je trouve mon groupe
               </Button>
+              <p className="text-xs text-muted-foreground text-center mt-3">
+                Aucun engagement • On te recontacte rapidement
+              </p>
             </form>
           </div>
         </motion.div>
