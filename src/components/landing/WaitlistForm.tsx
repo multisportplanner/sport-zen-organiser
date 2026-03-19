@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rocket } from "lucide-react";
 
-type Slot = "Matin" | "Midi" | "Soir";
+type Slot = "Matin" | "Midi" | "Soir" | "Semaine" | "Week-end";
 type Level = "Reprise" | "Intermédiaire" | "Sportif";
 
 const WaitlistForm = () => {
