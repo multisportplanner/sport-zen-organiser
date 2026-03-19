@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const reasons = [
-  "Tu veux faire du sport régulièrement mais tu manques de temps pour organiser",
-  "Tu préfères t'entraîner en petit groupe (6 personnes maximum)",
-  "Tu veux une activité sportive près de chez toi",
-  "Tu cherches plus de flexibilité qu'un abonnement classique",
+  <>Tu veux faire du sport régulièrement mais tu manques de temps pour organiser</>,
+  <>Tu préfères t'entraîner en <strong>petit groupe (6 personnes maximum)</strong></>,
+  <>Tu veux une activité sportive <strong>près de chez toi</strong></>,
+  <>Tu cherches plus de <strong>flexibilité</strong> qu'un abonnement classique</>,
 ];
 
 const IdentificationSection = () => (
@@ -26,7 +26,7 @@ const IdentificationSection = () => (
           MSP est conçu pour les personnes qui veulent faire du sport sans gérer toute l'organisation.
         </p>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {reasons.map((r, i) => (
             <motion.div
               key={i}

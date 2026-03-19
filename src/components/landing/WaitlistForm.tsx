@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rocket } from "lucide-react";
 
-type Slot = "Matin" | "Midi" | "Soir";
+type Slot = "Matin" | "Midi" | "Soir" | "Semaine" | "Week-end";
 type Level = "Reprise" | "Intermédiaire" | "Sportif";
 
 const WaitlistForm = () => {
@@ -92,10 +92,13 @@ const WaitlistForm = () => {
           viewport={{ once: true }}
           className="max-w-lg mx-auto"
         >
+          <p className="text-center text-muted-foreground text-sm font-medium mb-6">
+            MSP organise ton sport. Tu viens t'entraîner.
+          </p>
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">
-            <h3 className="text-2xl font-bold text-center mb-2">Rejoins la liste d'attente</h3>
+            <h3 className="text-2xl font-bold text-center mb-2">Rejoins les premiers groupes sportifs MSP</h3>
             <p className="text-sm text-muted-foreground text-center mb-8">
-              2 minutes pour s'inscrire. Zéro engagement.
+              Réponds en 30 secondes. Zéro engagement.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -144,8 +147,8 @@ const WaitlistForm = () => {
               {/* Créneaux */}
               <div>
                 <Label className="text-sm font-semibold mb-2 block">Créneaux préférés</Label>
-                <div className="flex gap-3">
-                  {(["Matin", "Midi", "Soir"] as Slot[]).map((s) => (
+                <div className="flex flex-wrap gap-3">
+                  {(["Matin", "Midi", "Soir", "Semaine", "Week-end"] as Slot[]).map((s) => (
                     <button
                       key={s}
                       type="button"
@@ -198,8 +201,11 @@ const WaitlistForm = () => {
               {errors.gdpr && <p className="text-destructive text-xs">{errors.gdpr}</p>}
 
               <Button variant="cta" type="submit" className="w-full h-12 text-base">
-                Je rejoins la liste d'attente
+                Je trouve mon groupe
               </Button>
+              <p className="text-xs text-muted-foreground text-center mt-3">
+                Aucun engagement • On te recontacte rapidement
+              </p>
             </form>
           </div>
         </motion.div>
