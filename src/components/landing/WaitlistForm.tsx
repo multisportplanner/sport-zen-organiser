@@ -92,10 +92,13 @@ const WaitlistForm = () => {
           viewport={{ once: true }}
           className="max-w-lg mx-auto"
         >
+          <p className="text-center text-muted-foreground text-sm font-medium mb-6">
+            MSP organise ton sport. Tu viens t'entraîner.
+          </p>
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">
-            <h3 className="text-2xl font-bold text-center mb-2">Rejoins la liste d'attente</h3>
+            <h3 className="text-2xl font-bold text-center mb-2">Rejoins les premiers groupes sportifs MSP</h3>
             <p className="text-sm text-muted-foreground text-center mb-8">
-              2 minutes pour s'inscrire. Zéro engagement.
+              Réponds en 30 secondes. Zéro engagement.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
