@@ -3,7 +3,7 @@ import { CalendarCheck, Users, Dumbbell } from "lucide-react";
 
 const steps = [
   { icon: CalendarCheck, number: "1", title: "Tu indiques tes disponibilités" },
-  { icon: Users, number: "2", title: "MSP organise ton groupe sportif" },
+  { icon: Users, number: "2", title: "MSP organise ton groupe" },
   { icon: Dumbbell, number: "3", title: "Tu viens t'entraîner" },
 ];
 
