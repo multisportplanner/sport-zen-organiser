@@ -82,10 +82,14 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
+            className="flex flex-col items-center gap-3"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Trouver mon sport
+              Je trouve mon groupe
             </Button>
+            <p className="text-xs text-muted-foreground/70">
+              Lancement en cours – premiers groupes en formation
+            </p>
           </motion.div>
         </motion.div>
       </div>
