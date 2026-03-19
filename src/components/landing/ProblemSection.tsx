@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import { CalendarDays, Users, UserCheck, Flame } from "lucide-react";
 
 const pain = [
-  "Trouver un créneau",
-  "Organiser un groupe",
-  "Réserver un coach",
-  "Rester motivé",
+  { icon: CalendarDays, text: "Trouver un créneau" },
+  { icon: Users, text: "Organiser un groupe" },
+  { icon: UserCheck, text: "Réserver un coach" },
+  { icon: Flame, text: "Rester motivé" },
 ];
 
 const ProblemSection = () => (
@@ -22,18 +23,21 @@ const ProblemSection = () => (
           <span className="text-gradient">régulièrement ?</span>
         </h2>
 
-        <div className="space-y-4 mb-10">
+        <div className="grid grid-cols-2 gap-4 mb-10 max-w-md mx-auto">
           {pain.map((p, i) => (
-            <motion.p
+            <motion.div
               key={i}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="text-lg text-muted-foreground"
+              className="flex items-center gap-3 bg-card rounded-xl px-4 py-3 shadow-card"
             >
-              {p}
-            </motion.p>
+              <div className="w-9 h-9 rounded-lg bg-gradient-hero-soft flex items-center justify-center flex-shrink-0">
+                <p.icon className="w-4.5 h-4.5 text-primary" />
+              </div>
+              <span className="text-sm font-medium text-muted-foreground">{p.text}</span>
+            </motion.div>
           ))}
         </div>
 

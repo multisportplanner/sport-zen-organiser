@@ -92,7 +92,7 @@ const WaitlistForm = () => {
           viewport={{ once: true }}
           className="max-w-lg mx-auto"
         >
-          <p className="text-center text-muted-foreground text-sm font-medium mb-6">
+          <p className="text-center text-foreground text-base font-semibold mb-6">
             MSP organise ton sport. Tu viens t'entraîner.
           </p>
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">

@@ -39,6 +39,10 @@ const SportsSection = () => (
           </motion.div>
         ))}
       </div>
+
+      <p className="text-sm text-muted-foreground text-center mt-8">
+        + d'autres activités selon les groupes et les coachs
+      </p>
     </div>
   </section>
 );

@@ -32,8 +32,7 @@ const HowItWorksSection = () => (
             <div className="w-16 h-16 rounded-2xl bg-gradient-hero mx-auto mb-5 flex items-center justify-center shadow-glow">
               <s.icon className="w-7 h-7 text-primary-foreground" />
             </div>
-            <div className="text-2xl font-bold text-primary mb-2">{s.number}</div>
-            <div className="text-sm font-semibold text-secondary mb-2">Étape {s.number}</div>
+            <div className="text-3xl font-bold text-primary mb-3">{s.number}</div>
             <h3 className="text-lg font-bold">{s.title}</h3>
           </motion.div>
         ))}
