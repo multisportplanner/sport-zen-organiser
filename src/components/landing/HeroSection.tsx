@@ -29,13 +29,15 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-            DU SPORT{" "}
-            <span className="text-gradient">SANS L'ORGANISER</span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+            Fais du sport chaque semaine,{" "}
+            <span className="text-gradient">sans t'organiser</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto mb-8">
-            Chaque semaine, MSP organise pour toi une séance de sport en petit groupe près de chez toi.
+            MSP crée ton groupe, planifie les séances et trouve le coach.
+            <br />
+            <strong className="text-foreground">Tu viens t'entraîner.</strong>
           </p>
 
           {/* Sports icons */}
@@ -80,10 +82,14 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
+            className="flex flex-col items-center gap-3"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Trouver mon sport
+              Je trouve mon groupe
             </Button>
+            <p className="text-xs text-muted-foreground/70">
+              Lancement en cours – premiers groupes en formation
+            </p>
           </motion.div>
         </motion.div>
       </div>
