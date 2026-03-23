@@ -16,13 +16,16 @@ const FinalCTASection = () => {
           className="max-w-2xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-8">
-            Trouve ton groupe sportif{" "}
-            <span className="text-gradient">près de chez toi.</span>
+            Prêt(e) à t'y remettre…{" "}
+            <span className="text-gradient">simplement ?</span>
           </h2>
 
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-            Trouver mon sport
+            Trouver mon activité
           </Button>
+          <p className="text-xs text-muted-foreground/70 mt-3">
+            Activité sportive • petit groupe • près de chez toi
+          </p>
         </motion.div>
       </div>
     </section>

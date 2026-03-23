@@ -49,7 +49,7 @@ const Header = () => {
             Espace coach
           </Link>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
-            Trouver mon sport
+            Trouver mon activité
           </Button>
         </nav>
 
@@ -81,7 +81,7 @@ const Header = () => {
             Espace coach
           </Link>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
-            Trouver mon sport
+            Trouver mon activité
           </Button>
         </div>
       )}

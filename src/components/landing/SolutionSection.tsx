@@ -5,7 +5,7 @@ const points = [
   { icon: GraduationCap, text: "Coach qualifié" },
   { icon: Users, text: "Groupe de 6 personnes maximum" },
   { icon: MapPin, text: "Proche de chez toi" },
-  { icon: CalendarCheck, text: "Une séance de sport chaque semaine" },
+  { icon: CalendarCheck, text: "Une activité sportive chaque semaine" },
 ];
 
 const SolutionSection = () => (
@@ -23,7 +23,7 @@ const SolutionSection = () => (
         </h2>
 
         <p className="text-lg text-muted-foreground mb-12">
-          Nous organisons pour toi des séances de sport en petit groupe.
+          Nous organisons pour toi une activité sportive en petit groupe.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-5 max-w-lg mx-auto mb-12">
@@ -44,8 +44,14 @@ const SolutionSection = () => (
           ))}
         </div>
 
-        <p className="text-lg text-muted-foreground">
-          Tu viens simplement <strong className="text-foreground">t'entraîner.</strong>
+        <p className="text-lg text-muted-foreground mb-2">
+          Tu viens. Tu bouges. Tu partages un moment.
+        </p>
+        <p className="text-sm text-muted-foreground mb-2">
+          Même si tu débutes ou reprends.
+        </p>
+        <p className="text-sm font-medium text-primary">
+          Ici, pas de performance. Juste un moment actif, convivial et sans pression.
         </p>
       </motion.div>
     </div>

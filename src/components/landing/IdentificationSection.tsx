@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const reasons = [
-  <>Tu veux faire du sport régulièrement mais tu manques de temps pour organiser</>,
-  <>Tu préfères t'entraîner en <strong>petit groupe (6 personnes maximum)</strong></>,
+  <>Tu veux bouger régulièrement sans organiser</>,
+  <>Tu manques de temps</>,
+  <>Tu préfères les <strong>petits groupes</strong></>,
   <>Tu veux une activité sportive <strong>près de chez toi</strong></>,
-  <>Tu cherches plus de <strong>flexibilité</strong> qu'un abonnement classique</>,
+  <>Tu cherches une activité sportive <strong>simple et agréable</strong></>,
 ];
 
 const IdentificationSection = () => (
@@ -18,13 +19,9 @@ const IdentificationSection = () => (
         transition={{ duration: 0.6 }}
         className="max-w-2xl mx-auto"
       >
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
           MSP est fait pour toi <span className="text-gradient">si…</span>
         </h2>
-
-        <p className="text-lg text-muted-foreground text-center mb-12">
-          MSP est conçu pour les personnes qui veulent faire du sport sans gérer toute l'organisation.
-        </p>
 
         <div className="space-y-5">
           {reasons.map((r, i) => (

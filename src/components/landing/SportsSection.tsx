@@ -7,7 +7,7 @@ const sports = [
   { icon: Footprints, label: "Running" },
   { icon: StretchHorizontal, label: "Mobilité" },
   { icon: CircleDot, label: "Pilates" },
-  { icon: Flame, label: "Bootcamp outdoor" },
+  { icon: Flame, label: "Renforcement" },
 ];
 
 const SportsSection = () => (
@@ -19,7 +19,7 @@ const SportsSection = () => (
         viewport={{ once: true }}
         className="text-3xl md:text-5xl font-bold text-center mb-16"
       >
-        Les sports <span className="text-gradient">proposés</span>
+        Des activités sportives <span className="text-gradient">variées</span>
       </motion.h2>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
@@ -41,7 +41,7 @@ const SportsSection = () => (
       </div>
 
       <p className="text-sm text-muted-foreground text-center mt-8">
-        + d'autres activités selon les groupes et les coachs
+        Liste non exhaustive — le plus important, c'est de trouver ce qui te plaît.
       </p>
     </div>
   </section>

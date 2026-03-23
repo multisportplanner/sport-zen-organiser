@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { CalendarCheck, Users, Dumbbell } from "lucide-react";
 
 const steps = [
-  { icon: CalendarCheck, number: "1", title: "Tu indiques tes disponibilités" },
-  { icon: Users, number: "2", title: "MSP organise ton groupe" },
-  { icon: Dumbbell, number: "3", title: "Tu viens t'entraîner" },
+  { icon: CalendarCheck, number: "1", title: "Tu choisis ton activité" },
+  { icon: Users, number: "2", title: "MSP organise la séance" },
+  { icon: Dumbbell, number: "3", title: "Tu viens et tu profites" },
 ];
 
 const HowItWorksSection = () => (
@@ -19,7 +19,7 @@ const HowItWorksSection = () => (
         Comment ça <span className="text-gradient">marche ?</span>
       </motion.h2>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
         {steps.map((s, i) => (
           <motion.div
             key={i}
@@ -37,6 +37,15 @@ const HowItWorksSection = () => (
           </motion.div>
         ))}
       </div>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-sm font-medium text-primary text-center"
+      >
+        Rien d'autre à gérer.
+      </motion.p>
     </div>
   </section>
 );
