@@ -85,11 +85,9 @@ const CoachForm = () => {
           className="max-w-lg mx-auto"
         >
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">
-            <h3 className="text-2xl font-bold text-center mb-2">Rejoindre les coachs MSP</h3>
+            <h3 className="text-2xl font-bold text-center mb-2">Rejoindre MSP</h3>
             <p className="text-sm text-muted-foreground text-center mb-8">
-              Commencez par nous dire si le projet vous intéresse.
-              <br />
-              Nous vous recontacterons ensuite pour compléter votre profil.
+              Remplis le formulaire pour être recontacté rapidement.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -142,6 +140,12 @@ const CoachForm = () => {
               </p>
             </form>
           </div>
+
+          <p className="text-sm text-muted-foreground text-center mt-8">
+            MSP simplifie le sport côté pratiquants.
+            <br />
+            On simplifie aussi le quotidien des coachs.
+          </p>
         </motion.div>
       </div>
     </section>
