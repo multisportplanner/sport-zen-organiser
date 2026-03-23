@@ -30,14 +30,16 @@ const HeroSection = () => {
           className="max-w-3xl mx-auto text-center"
         >
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Fais du sport chaque semaine,{" "}
-            <span className="text-gradient">sans t'organiser</span>
+            Faire du sport devrait être{" "}
+            <span className="text-gradient">simple</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto mb-8">
-            MSP crée ton groupe, planifie les séances et trouve le coach.
-            <br />
-            <strong className="text-foreground">Tu viens t'entraîner.</strong>
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto mb-4">
+            Chaque semaine, MSP organise pour toi une activité sportive en petit groupe, près de chez toi.
+          </p>
+
+          <p className="text-lg md:text-xl font-semibold text-foreground mb-8">
+            Tu viens, tu bouges, tu partages.
           </p>
 
           {/* Sports icons */}
@@ -55,6 +57,18 @@ const HeroSection = () => {
                 <span className="text-sm font-medium">{s.label}</span>
               </div>
             ))}
+          </motion.div>
+
+          {/* Bullet points */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-4"
+          >
+            <span>✦ Pas de pression</span>
+            <span>✦ Pas d'organisation</span>
+            <span>✦ Juste une bonne énergie</span>
           </motion.div>
 
           {/* Location */}
@@ -85,10 +99,10 @@ const HeroSection = () => {
             className="flex flex-col items-center gap-3"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Je trouve mon groupe
+              Trouver mon activité
             </Button>
             <p className="text-xs text-muted-foreground/70">
-              Lancement en cours – premiers groupes en formation
+              Activité sportive • petit groupe • près de chez toi
             </p>
           </motion.div>
         </motion.div>
