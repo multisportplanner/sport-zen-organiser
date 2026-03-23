@@ -7,7 +7,7 @@ const Footer = () => (
       <p className="text-sm text-muted-foreground">
         Tu es coach sportif ?{" "}
         <Link to="/coach" className="text-primary font-medium hover:text-primary/80 transition-colors">
-          Devenir coach partenaire
+          Espace coach
         </Link>
       </p>
       <p className="text-xs text-muted-foreground">

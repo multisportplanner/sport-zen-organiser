@@ -1,12 +1,5 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
-
-const checks = [
-  "Inscription gratuite",
-  "Vous choisissez vos disponibilités",
-  "Vous êtes rémunéré uniquement lorsque vous intervenez",
-];
 
 const CoachHero = () => {
   const scrollToForm = () => {
@@ -44,28 +37,17 @@ const CoachHero = () => {
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Développez votre activité de coach{" "}
-            <span className="text-gradient">avec MSP</span>
+            Vous êtes{" "}
+            <span className="text-gradient">coach sportif ?</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-4">
-            MSP lance actuellement ses premiers groupes de sportifs entre Nice, Antibes et Sophia Antipolis.
-            <br />
-            Vous choisissez vos créneaux, nous nous occupons du reste.
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+            Rejoignez MSP et animez des séances en petit groupe, près de chez vous, sans gérer l'organisation.
           </p>
 
-          <p className="text-sm text-muted-foreground/80 mb-8">
-            MSP sélectionne actuellement ses premiers coachs partenaires pour le lancement.
+          <p className="text-sm text-muted-foreground/70 mb-8">
+            6 participants max • séances organisées par MSP • focus sur le coaching
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-            {checks.map((c) => (
-              <div key={c} className="flex items-center gap-2 text-sm text-foreground">
-                <CheckCircle2 className="w-4 h-4 text-accent" />
-                <span>{c}</span>
-              </div>
-            ))}
-          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -74,7 +56,7 @@ const CoachHero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Rejoindre les coachs MSP
+              Devenir coach partenaire
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-8" onClick={scrollToHow}>
               Voir comment ça fonctionne

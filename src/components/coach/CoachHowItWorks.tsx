@@ -1,25 +1,11 @@
 import { motion } from "framer-motion";
-import { UserCircle, Users, Dumbbell } from "lucide-react";
+import { Send, ShieldCheck, Users, Dumbbell } from "lucide-react";
 
 const steps = [
-  {
-    icon: UserCircle,
-    number: "1",
-    title: "Vous complétez votre profil",
-    description: "Vous indiquez vos sports, vos disponibilités et vos zones d'intervention.",
-  },
-  {
-    icon: Users,
-    number: "2",
-    title: "MSP construit les groupes",
-    description: "Nous regroupons des sportifs compatibles selon leurs disponibilités, leur localisation et les activités recherchées.",
-  },
-  {
-    icon: Dumbbell,
-    number: "3",
-    title: "Vous animez la séance",
-    description: "Vous intervenez sur un créneau confirmé avec un groupe déjà organisé.",
-  },
+  { icon: Send, number: "1", title: "Tu candidatures" },
+  { icon: ShieldCheck, number: "2", title: "On valide ton profil" },
+  { icon: Users, number: "3", title: "MSP remplit tes séances" },
+  { icon: Dumbbell, number: "4", title: "Tu animes" },
 ];
 
 const CoachHowItWorks = () => (
@@ -38,7 +24,7 @@ const CoachHowItWorks = () => (
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
         {steps.map((step, i) => (
           <motion.div
             key={step.number}
@@ -51,9 +37,8 @@ const CoachHowItWorks = () => (
             <div className="w-16 h-16 rounded-2xl bg-gradient-hero mx-auto mb-5 flex items-center justify-center shadow-glow">
               <step.icon className="w-7 h-7 text-primary-foreground" />
             </div>
-            <div className="text-sm font-semibold text-secondary mb-2">Étape {step.number}</div>
-            <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-            <p className="text-muted-foreground text-sm">{step.description}</p>
+            <div className="text-3xl font-bold text-primary mb-3">{step.number}</div>
+            <h3 className="text-lg font-bold">{step.title}</h3>
           </motion.div>
         ))}
       </div>

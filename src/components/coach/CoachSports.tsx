@@ -20,14 +20,10 @@ const CoachSports = () => (
         transition={{ duration: 0.6 }}
         className="max-w-2xl mx-auto text-center"
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
-          Sports recherchés{" "}
-          <span className="text-gradient">pour le lancement</span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-10">
+          Sports{" "}
+          <span className="text-gradient">recherchés</span>
         </h2>
-
-        <p className="text-muted-foreground mb-10">
-          Pour le lancement de MSP, nous recherchons des coachs capables d'animer des séances en petit groupe en extérieur.
-        </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {mainSports.map((sport) => (
@@ -41,7 +37,7 @@ const CoachSports = () => (
         </div>
 
         <p className="text-sm text-muted-foreground">
-          Autres activités possibles : toute activité outdoor adaptée à des petits groupes débutants ou intermédiaires.
+          Liste non exhaustive — nous sommes ouverts à d'autres disciplines.
         </p>
       </motion.div>
     </div>

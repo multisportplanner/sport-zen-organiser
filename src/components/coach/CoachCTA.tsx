@@ -22,7 +22,7 @@ const CoachCTA = () => {
           </h2>
 
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-            Rejoindre les coachs MSP
+            Devenir coach partenaire
           </Button>
         </motion.div>
       </div>
