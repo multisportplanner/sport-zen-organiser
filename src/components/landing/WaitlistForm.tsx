@@ -92,8 +92,10 @@ const WaitlistForm = () => {
           viewport={{ once: true }}
           className="max-w-lg mx-auto"
         >
-          <p className="text-center text-foreground text-base font-semibold mb-6">
-            MSP organise ton sport. Tu viens t'entraîner.
+          <p className="text-center text-foreground text-lg font-bold mb-6">
+            MSP organise ton activité sportive.
+            <br />
+            Tu viens simplement en profiter.
           </p>
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">
             <h3 className="text-2xl font-bold text-center mb-2">Rejoins les premiers groupes sportifs MSP</h3>
