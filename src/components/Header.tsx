@@ -46,7 +46,7 @@ const Header = () => {
             to="/coach"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Devenir coach
+            Espace coach
           </Link>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
             Trouver mon sport
