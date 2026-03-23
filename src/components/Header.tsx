@@ -78,7 +78,7 @@ const Header = () => {
             onClick={() => setMobileOpen(false)}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Devenir coach
+            Espace coach
           </Link>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
             Trouver mon sport
