@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const reasons = [
-  <>Tu veux bouger régulièrement sans organiser</>,
-  <>Tu manques de temps</>,
-  <>Tu préfères les <strong>petits groupes</strong></>,
-  <>Tu veux une activité sportive <strong>près de chez toi</strong></>,
-  <>Tu cherches une activité sportive <strong>simple et agréable</strong></>,
+  <>Tu veux faire une activité sportive <strong>sans passer des heures à chercher</strong></>,
+  <>Tu cherches une approche <strong>plaisir, bien-être et sans pression</strong></>,
+  <>Tu préfères bouger en <strong>petit groupe</strong></>,
+  <>Tu veux quelque chose de <strong>simple et proche de chez toi</strong></>,
+  <>Tu as envie de t'y remettre <strong>sans contrainte</strong></>,
 ];
 
 const IdentificationSection = () => (

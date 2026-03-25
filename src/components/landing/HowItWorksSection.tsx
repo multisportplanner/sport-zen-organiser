@@ -1,53 +1,66 @@
 import { motion } from "framer-motion";
-import { CalendarCheck, Users, Dumbbell } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ClipboardList, Settings, Smile } from "lucide-react";
 
 const steps = [
-  { icon: CalendarCheck, number: "1", title: "Tu choisis ton activité" },
-  { icon: Users, number: "2", title: "MSP organise la séance" },
-  { icon: Dumbbell, number: "3", title: "Tu viens et tu profites" },
+  { icon: ClipboardList, number: "1", title: "Tu renseignes tes envies", desc: "Activités, créneaux, rythme" },
+  { icon: Settings, number: "2", title: "MSP sélectionne et organise", desc: "On te propose des formats adaptés" },
+  { icon: Smile, number: "3", title: "Tu profites", desc: "Tu viens, tu bouges, sans te poser de questions" },
 ];
 
-const HowItWorksSection = () => (
-  <section className="py-32">
-    <div className="container">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-3xl md:text-5xl font-bold text-center mb-16"
-      >
-        Comment ça <span className="text-gradient">marche ?</span>
-      </motion.h2>
+const HowItWorksSection = () => {
+  const scrollToForm = () => {
+    document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
+  };
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
-        {steps.map((s, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
-            className="text-center"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-hero mx-auto mb-5 flex items-center justify-center shadow-glow">
-              <s.icon className="w-7 h-7 text-primary-foreground" />
-            </div>
-            <div className="text-3xl font-bold text-primary mb-3">{s.number}</div>
-            <h3 className="text-lg font-bold">{s.title}</h3>
-          </motion.div>
-        ))}
+  return (
+    <section id="comment-ca-marche" className="py-32">
+      <div className="container">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-5xl font-bold text-center mb-16"
+        >
+          Comment ça <span className="text-gradient">marche ?</span>
+        </motion.h2>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
+          {steps.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.5 }}
+              className="text-center"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-gradient-hero mx-auto mb-5 flex items-center justify-center shadow-glow">
+                <s.icon className="w-7 h-7 text-primary-foreground" />
+              </div>
+              <div className="text-3xl font-bold text-primary mb-3">{s.number}</div>
+              <h3 className="text-lg font-bold mb-1">{s.title}</h3>
+              <p className="text-sm text-muted-foreground">{s.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
+            Trouver mon activité
+          </Button>
+          <p className="text-xs text-muted-foreground/70 mt-3">
+            Activité sportive • petit groupe • près de chez toi
+          </p>
+        </motion.div>
       </div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-sm font-medium text-primary text-center"
-      >
-        Rien d'autre à gérer.
-      </motion.p>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default HowItWorksSection;

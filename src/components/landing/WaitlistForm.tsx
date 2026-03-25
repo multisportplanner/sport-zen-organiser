@@ -6,21 +6,29 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rocket } from "lucide-react";
 
-type Slot = "Matin" | "Midi" | "Soir" | "Semaine" | "Week-end";
-type Level = "Reprise" | "Intermédiaire" | "Sportif";
+type Usage = "Activité régulière" | "Activité ponctuelle" | "Les deux";
+type Dispo = "Semaine" | "Week-end" | "Les deux";
+type Moment = "Matin" | "Midi" | "Soir";
+type ActivityType = "Bien-être" | "Outdoor" | "Cardio" | "Renforcement" | "Ouvert(e)";
 
 const WaitlistForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
-  const [slots, setSlots] = useState<Slot[]>([]);
-  const [level, setLevel] = useState<Level | "">("");
+  const [usage, setUsage] = useState<Usage | "">("");
+  const [dispo, setDispo] = useState<Dispo | "">("");
+  const [moments, setMoments] = useState<Moment[]>([]);
+  const [activityTypes, setActivityTypes] = useState<ActivityType[]>([]);
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const toggleSlot = (s: Slot) => {
-    setSlots((prev) => (prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]));
+  const toggleMoment = (m: Moment) => {
+    setMoments((prev) => (prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m]));
+  };
+
+  const toggleActivityType = (t: ActivityType) => {
+    setActivityTypes((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
   };
 
   const validate = () => {
@@ -33,37 +41,27 @@ const WaitlistForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
+    if (!validate()) return;
 
-  if (!validate()) return;
+    const data = { firstName, email, city, usage, dispo, moments, activityTypes };
 
-  const data = {
-    firstName,
-    email,
-    city,
-    slots,
-    level
+    const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      alert("Une erreur est survenue. Merci de réessayer.");
+    }
   };
-
-  const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
-    
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
-
-  if (response.ok) {
-    setSubmitted(true);
-  } else {
-    alert("Une erreur est survenue. Merci de réessayer.");
-  }
-};
 
   if (submitted) {
     return (
-    <section id="waitlist-form" className="py-32 bg-muted/30">
+      <section id="waitlist-form" className="py-32 bg-muted/30">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -75,13 +73,20 @@ const WaitlistForm = () => {
             </div>
             <h3 className="text-2xl font-bold mb-3">Merci !</h3>
             <p className="text-muted-foreground">
-              Tu fais partie des premiers à tester MSP 🚀
+              On te recontacte rapidement avec des activités adaptées 🚀
             </p>
           </motion.div>
         </div>
       </section>
     );
   }
+
+  const chipClass = (active: boolean) =>
+    `flex-1 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 ${
+      active
+        ? "bg-gradient-hero text-primary-foreground border-transparent shadow-glow"
+        : "bg-background border-border text-muted-foreground hover:border-primary/30"
+    }`;
 
   return (
     <section id="waitlist-form" className="py-32 bg-muted/30">
@@ -98,91 +103,77 @@ const WaitlistForm = () => {
             Tu viens simplement en profiter.
           </p>
           <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">
-            <h3 className="text-2xl font-bold text-center mb-2">Rejoins les premiers groupes sportifs MSP</h3>
+            <h3 className="text-2xl font-bold text-center mb-2">Dis-nous ce que tu recherches</h3>
             <p className="text-sm text-muted-foreground text-center mb-8">
-              Réponds en 30 secondes. Zéro engagement.
+              Régulier ou ponctuel, indique-nous tes préférences.
+              <br />
+              On te recontacte avec des activités adaptées.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Prénom */}
               <div>
                 <Label htmlFor="firstName" className="text-sm font-semibold">Prénom *</Label>
-                <Input
-                  id="firstName"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="Ton prénom"
-                  className="mt-1.5"
-                  maxLength={100}
-                />
+                <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Ton prénom" className="mt-1.5" maxLength={100} />
                 {errors.firstName && <p className="text-destructive text-xs mt-1">{errors.firstName}</p>}
               </div>
 
               {/* Email */}
               <div>
                 <Label htmlFor="email" className="text-sm font-semibold">Email *</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ton@email.com"
-                  className="mt-1.5"
-                  maxLength={255}
-                />
+                <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="ton@email.com" className="mt-1.5" maxLength={255} />
                 {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
               </div>
 
               {/* Ville */}
               <div>
                 <Label htmlFor="city" className="text-sm font-semibold">Ville</Label>
-                <Input
-                  id="city"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  placeholder="Nice, Sophia, Antibes..."
-                  className="mt-1.5"
-                  maxLength={100}
-                />
+                <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Nice, Antibes, Sophia..." className="mt-1.5" maxLength={100} />
               </div>
 
-              {/* Créneaux */}
+              {/* Usage */}
               <div>
-                <Label className="text-sm font-semibold mb-2 block">Créneaux préférés</Label>
+                <Label className="text-sm font-semibold mb-2 block">Je recherche plutôt</Label>
                 <div className="flex flex-wrap gap-3">
-                  {(["Matin", "Midi", "Soir", "Semaine", "Week-end"] as Slot[]).map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => toggleSlot(s)}
-                      className={`flex-1 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 ${
-                        slots.includes(s)
-                          ? "bg-gradient-hero text-primary-foreground border-transparent shadow-glow"
-                          : "bg-background border-border text-muted-foreground hover:border-primary/30"
-                      }`}
-                    >
-                      {s}
+                  {(["Activité régulière", "Activité ponctuelle", "Les deux"] as Usage[]).map((u) => (
+                    <button key={u} type="button" onClick={() => setUsage(u)} className={chipClass(usage === u)}>
+                      {u}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Niveau */}
+              {/* Disponibilités */}
               <div>
-                <Label className="text-sm font-semibold mb-2 block">Niveau</Label>
-                <div className="flex gap-3">
-                  {(["Reprise", "Intermédiaire", "Sportif"] as Level[]).map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      onClick={() => setLevel(l)}
-                      className={`flex-1 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 ${
-                        level === l
-                          ? "bg-gradient-hero text-primary-foreground border-transparent shadow-glow"
-                          : "bg-background border-border text-muted-foreground hover:border-primary/30"
-                      }`}
-                    >
-                      {l}
+                <Label className="text-sm font-semibold mb-2 block">Disponibilités</Label>
+                <div className="flex flex-wrap gap-3">
+                  {(["Semaine", "Week-end", "Les deux"] as Dispo[]).map((d) => (
+                    <button key={d} type="button" onClick={() => setDispo(d)} className={chipClass(dispo === d)}>
+                      {d}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Moment */}
+              <div>
+                <Label className="text-sm font-semibold mb-2 block">Moment</Label>
+                <div className="flex flex-wrap gap-3">
+                  {(["Matin", "Midi", "Soir"] as Moment[]).map((m) => (
+                    <button key={m} type="button" onClick={() => toggleMoment(m)} className={chipClass(moments.includes(m))}>
+                      {m}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Type d'activité */}
+              <div>
+                <Label className="text-sm font-semibold mb-2 block">Type d'activité</Label>
+                <div className="flex flex-wrap gap-3">
+                  {(["Bien-être", "Outdoor", "Cardio", "Renforcement", "Ouvert(e)"] as ActivityType[]).map((t) => (
+                    <button key={t} type="button" onClick={() => toggleActivityType(t)} className={chipClass(activityTypes.includes(t))}>
+                      {t}
                     </button>
                   ))}
                 </div>
@@ -190,23 +181,18 @@ const WaitlistForm = () => {
 
               {/* RGPD */}
               <div className="flex items-start gap-3">
-                <Checkbox
-                  id="gdpr"
-                  checked={gdpr}
-                  onCheckedChange={(v) => setGdpr(v === true)}
-                  className="mt-0.5"
-                />
+                <Checkbox id="gdpr" checked={gdpr} onCheckedChange={(v) => setGdpr(v === true)} className="mt-0.5" />
                 <Label htmlFor="gdpr" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
                   J'accepte que mes données soient utilisées pour m'informer du lancement de MSP. Désinscription possible à tout moment. *
                 </Label>
               </div>
               {errors.gdpr && <p className="text-destructive text-xs">{errors.gdpr}</p>}
 
-            <Button variant="cta" type="submit" className="w-full h-12 text-base">
-              Trouver mon activité
-            </Button>
+              <Button variant="cta" type="submit" className="w-full h-12 text-base">
+                Je trouve mon activité
+              </Button>
               <p className="text-xs text-muted-foreground text-center mt-3">
-                Aucun engagement • On te recontacte rapidement
+                Aucun engagement • Réponse personnalisée • Lancement progressif sur la Côte d'Azur
               </p>
             </form>
           </div>
