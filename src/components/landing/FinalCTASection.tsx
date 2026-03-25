@@ -15,10 +15,14 @@ const FinalCTASection = () => {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-8">
-            Prêt(e) à t'y remettre…{" "}
-            <span className="text-gradient">simplement ?</span>
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+            Et si faire une activité sportive devenait enfin{" "}
+            <span className="text-gradient">simple ?</span>
           </h2>
+
+          <p className="text-muted-foreground mb-8">
+            Moins d'organisation, plus de plaisir.
+          </p>
 
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
             Trouver mon activité

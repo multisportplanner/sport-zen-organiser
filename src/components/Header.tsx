@@ -17,6 +17,15 @@ const Header = () => {
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToSection = (id: string) => {
+    setMobileOpen(false);
+    if (location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+      return;
+    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container flex items-center justify-between h-16 md:h-20">
@@ -36,17 +45,23 @@ const Header = () => {
           >
             Accueil
           </Link>
-          <a
-            href="/#solution"
+          <button
+            onClick={() => scrollToSection("activites")}
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Idées d'activités
+          </button>
+          <button
+            onClick={() => scrollToSection("comment-ca-marche")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Comment ça marche
-          </a>
+          </button>
           <Link
             to="/coach"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Espace coach
+            Devenir partenaire
           </Link>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
             Trouver mon activité
@@ -66,19 +81,31 @@ const Header = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border/50 px-6 pb-6 pt-2 space-y-4">
-          <a
-            href="/#solution"
+          <Link
+            to="/"
             onClick={() => setMobileOpen(false)}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
+            Accueil
+          </Link>
+          <button
+            onClick={() => scrollToSection("activites")}
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
+          >
+            Idées d'activités
+          </button>
+          <button
+            onClick={() => scrollToSection("comment-ca-marche")}
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
+          >
             Comment ça marche
-          </a>
+          </button>
           <Link
             to="/coach"
             onClick={() => setMobileOpen(false)}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Espace coach
+            Devenir partenaire
           </Link>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
             Trouver mon activité

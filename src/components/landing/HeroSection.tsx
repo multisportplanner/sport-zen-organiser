@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Dumbbell, Flower2, Footprints, StretchHorizontal, MapPin } from "lucide-react";
-
-const sports = [
-  { icon: Dumbbell, label: "Functional training" },
-  { icon: Flower2, label: "Yoga" },
-  { icon: Footprints, label: "Running" },
-  { icon: StretchHorizontal, label: "Mobilité" },
-];
 
 const HeroSection = () => {
   const scrollToForm = () => {
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToHow = () => {
+    document.getElementById("comment-ca-marche")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -29,82 +25,53 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            Faire du sport devrait être{" "}
-            <span className="text-gradient">simple</span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-4 uppercase">
+            Du sport <span className="text-gradient">sans l'organiser</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto mb-4">
-            Chaque semaine, MSP organise pour toi une activité sportive en petit groupe, près de chez toi.
+          <p className="text-lg md:text-xl font-semibold text-foreground mb-3">
+            Juste pour le plaisir de bouger, sans pression
           </p>
 
-          <p className="text-lg md:text-xl font-semibold text-foreground mb-8">
-            Tu viens, tu bouges, tu partages.
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto mb-4">
+            Chaque semaine ou quand tu en as envie, MSP organise pour toi une activité sportive sur la Côte d'Azur.
           </p>
 
-          {/* Sports icons */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6"
-          >
-            {sports.map((s, i) => (
-              <div key={i} className="flex items-center gap-2 text-muted-foreground">
-                <div className="w-8 h-8 rounded-lg bg-gradient-hero-soft flex items-center justify-center">
-                  <s.icon className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-sm font-medium">{s.label}</span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Bullet points */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.25, duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-4"
-          >
-            <span>✦ Pas de pression</span>
-            <span>✦ Pas d'organisation</span>
-            <span>✦ Juste une bonne énergie</span>
-          </motion.div>
-
-          {/* Location */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4"
-          >
-            <MapPin className="w-4 h-4 text-secondary" />
-            <span>Entre Nice, Antibes et Sophia Antipolis</span>
-          </motion.div>
-
-          {/* Value props */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.35, duration: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6"
+          >
+            Petit groupe, activités outdoor ou bien-être, en semaine ou le week-end : tu choisis ce qui te fait plaisir, on s'occupe du reste.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
             className="text-sm text-muted-foreground mb-10"
           >
-            6 personnes max • 100% flexible • près de chez toi
+            6 personnes max • sans charge mentale • sur la Côte d'Azur
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex flex-col items-center gap-3"
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
               Trouver mon activité
             </Button>
-            <p className="text-xs text-muted-foreground/70">
-              Activité sportive • petit groupe • près de chez toi
-            </p>
+            <Button variant="outline" size="lg" className="h-14 px-8 text-base" onClick={scrollToHow}>
+              Comment ça marche
+            </Button>
           </motion.div>
+
+          <p className="text-xs text-muted-foreground/70">
+            Activité sportive • petit groupe • près de chez toi
+          </p>
         </motion.div>
       </div>
     </section>
