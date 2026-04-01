@@ -4,7 +4,7 @@ import { Award, Settings, Smile } from "lucide-react";
 const columns = [
   { icon: Award, title: "MSP sélectionne des partenaires de qualité", text: "Des acteurs locaux fiables pour des activités agréables à vivre" },
   { icon: Settings, title: "MSP organise pour toi", text: "Créneaux, partenaires, organisation : tout est simplifié" },
-  { icon: Smile, title: "MSP te simplifie la vie", text: "Moins de charge mentale, plus de plaisir" },
+  { icon: Smile, title: "MSP simplifie", text: "Moins de charge mentale, plus de plaisir" },
 ];
 
 const DifferentiationSection = () => (
@@ -20,7 +20,7 @@ const DifferentiationSection = () => (
           Pourquoi MSP est <span className="text-gradient">différent ?</span>
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
-          Aujourd'hui, les offres existent. Le plus difficile, c'est de choisir, organiser… puis vraiment passer à l'action.
+          Aujourd'hui, les offres existent. Le plus difficile, c'est de choisir, organiser et passer à l'action.
         </p>
       </motion.div>
 

@@ -58,10 +58,10 @@ const Header = () => {
             Comment ça marche
           </button>
           <Link
-            to="/coach"
+            to="/partenaire"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Devenir partenaire
+            Partenaires
           </Link>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
             Trouver mon activité
@@ -101,11 +101,11 @@ const Header = () => {
             Comment ça marche
           </button>
           <Link
-            to="/coach"
+            to="/partenaire"
             onClick={() => setMobileOpen(false)}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Devenir partenaire
+            Partenaires
           </Link>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
             Trouver mon activité
