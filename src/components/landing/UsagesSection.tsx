@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CalendarCheck, Compass, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const UsagesSection = () => {
   const scrollToForm = () => {
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToActivites = () => {
-    document.getElementById("activites")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -29,7 +26,7 @@ const UsagesSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12">
-          {/* Card 1 – Régulier */}
+          {/* Card 1 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -42,8 +39,7 @@ const UsagesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Tu veux t'y mettre régulièrement</h3>
             <p className="text-sm text-muted-foreground mb-5">
-              Tu aimerais bouger plus souvent, mais entre le quotidien et l'organisation, ce n'est pas toujours simple.
-              MSP t'aide à pratiquer une activité sportive de manière régulière, simplement.
+              MSP t'aide à pratiquer une activité sportive de manière simple et régulière.
             </p>
             <ul className="space-y-2 mb-6 flex-1">
               {[
@@ -63,7 +59,7 @@ const UsagesSection = () => {
             </Button>
           </motion.div>
 
-          {/* Card 2 – Ponctuel */}
+          {/* Card 2 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -76,13 +72,11 @@ const UsagesSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-3">Tu veux faire une activité sans te prendre la tête</h3>
             <p className="text-sm text-muted-foreground mb-5">
-              Tu cherches une idée pour bouger, découvrir ou simplement te faire plaisir, en semaine, le week-end ou pendant les vacances ?
-              MSP sélectionne pour toi des activités sportives simples à réserver sur la Côte d'Azur.
+              MSP sélectionne pour toi des activités sportives simples à réserver.
             </p>
             <ul className="space-y-2 mb-6 flex-1">
               {[
-                "Activités outdoor ou bien-être",
-                "Pour locaux et visiteurs",
+                "Activités outdoor et expériences encadrées",
                 "Créneaux flexibles",
                 "Réservation simplifiée",
               ].map((item, i) => (
@@ -92,9 +86,11 @@ const UsagesSection = () => {
                 </li>
               ))}
             </ul>
-            <Button variant="cta" size="sm" className="w-full" onClick={scrollToActivites}>
-              Voir les idées d'activités
-            </Button>
+            <Link to="/activites">
+              <Button variant="cta" size="sm" className="w-full">
+                Voir les idées d'activités
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

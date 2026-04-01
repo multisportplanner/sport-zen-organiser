@@ -4,8 +4,8 @@ import { CalendarDays, Sparkles, ClipboardList, UserX } from "lucide-react";
 const pain = [
   { icon: CalendarDays, text: "Trouver le bon moment" },
   { icon: Sparkles, text: "Choisir une activité qui donne envie" },
-  { icon: ClipboardList, text: "Réserver / s'organiser" },
-  { icon: UserX, text: "Y aller seul(e) ou motiver d'autres personnes" },
+  { icon: ClipboardList, text: "Réserver et s'organiser" },
+  { icon: UserX, text: "Y aller seul ou motiver d'autres personnes" },
 ];
 
 const ProblemSection = () => (
@@ -50,7 +50,7 @@ const ProblemSection = () => (
         <div className="w-12 h-px bg-border mx-auto mb-6" />
 
         <p className="text-lg text-muted-foreground mb-4">
-          Résultat : <strong className="text-foreground">on repousse, on annule… ou on ne sait jamais vraiment quoi faire.</strong>
+          Résultat : <strong className="text-foreground">on repousse, on annule ou on ne sait jamais vraiment quoi faire.</strong>
         </p>
 
         <p className="text-sm font-medium text-primary">

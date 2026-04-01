@@ -43,7 +43,9 @@ const HeroSection = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6"
           >
-            Petit groupe, activités outdoor ou bien-être, en semaine ou le week-end : tu choisis ce qui te fait plaisir, on s'occupe du reste.
+            Petit groupe, activités outdoor ou bien-être, en semaine ou le week-end.
+            <br />
+            Tu choisis ce qui te fait plaisir, on s'occupe du reste.
           </motion.p>
 
           <motion.p

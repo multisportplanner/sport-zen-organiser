@@ -9,19 +9,14 @@ const EmotionSection = () => (
         viewport={{ once: true }}
         className="max-w-2xl mx-auto text-center"
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
-          Bouger sans pression, dans un cadre{" "}
-          <span className="text-gradient">simple et agréable</span>
-        </h2>
-
         <p className="text-lg text-muted-foreground mb-4">
           Ici, l'objectif n'est pas la performance.
           <br />
-          C'est de retrouver le plaisir de bouger, de passer un bon moment et parfois même de redécouvrir une activité comme un jeu.
+          C'est de retrouver le plaisir de bouger, de passer un bon moment et parfois même une sensation de jeu.
         </p>
 
         <p className="text-base text-muted-foreground">
-          Parce que faire une activité sportive, c'est souvent plus simple — et plus agréable — quand tout n'est pas à organiser seul(e).
+          Parce que faire une activité sportive, c'est plus simple quand tout est déjà organisé
         </p>
       </motion.div>
     </div>

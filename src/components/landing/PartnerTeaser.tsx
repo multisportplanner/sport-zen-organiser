@@ -19,7 +19,7 @@ const PartnerTeaser = () => (
         <p className="text-muted-foreground mb-6">
           Coach, moniteur, salle ou association : MSP t'aide à trouver des clients et remplir tes créneaux.
         </p>
-        <Link to="/coach">
+        <Link to="/partenaire">
           <Button variant="cta" size="lg">
             Devenir partenaire
           </Button>

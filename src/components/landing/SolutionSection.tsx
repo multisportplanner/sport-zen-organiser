@@ -3,7 +3,7 @@ import { Sparkles, MapPin, Users, BrainCircuit } from "lucide-react";
 
 const benefits = [
   { icon: Sparkles, title: "Des activités accessibles", text: "Pour bouger, se faire du bien et passer un bon moment" },
-  { icon: MapPin, title: "Sur la Côte d'Azur", text: "Autour de Nice, Antibes et dans les Alpes-Maritimes, jusqu'à l'arrière-pays, au cœur de la nature" },
+  { icon: MapPin, title: "Sur la Côte d'Azur", text: "Autour de Nice, Antibes, Cannes et dans les Alpes-Maritimes" },
   { icon: Users, title: "En petit groupe", text: "Jusqu'à 6 personnes pour un format convivial" },
   { icon: BrainCircuit, title: "Sans charge mentale", text: "Tu n'as rien à organiser" },
 ];
@@ -27,7 +27,7 @@ const SolutionSection = () => (
           MSP t'aide à faire une activité sportive de façon simple, conviviale et sans pression.
         </p>
         <p className="text-base text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Que tu veuilles t'y mettre régulièrement ou simplement trouver une idée d'activité sportive pour le week-end ou les vacances, MSP sélectionne et organise pour toi.
+          Que tu veuilles t'y mettre régulièrement ou simplement trouver une idée pour le week-end ou les vacances, MSP sélectionne et organise pour toi.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">

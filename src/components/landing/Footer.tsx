@@ -6,7 +6,7 @@ const Footer = () => (
       <p className="font-display font-bold text-lg text-gradient">MSP</p>
       <p className="text-sm text-muted-foreground">
         Tu proposes des activités sportives ?{" "}
-        <Link to="/coach" className="text-primary font-medium hover:text-primary/80 transition-colors">
+        <Link to="/partenaire" className="text-primary font-medium hover:text-primary/80 transition-colors">
           Devenir partenaire
         </Link>
       </p>
