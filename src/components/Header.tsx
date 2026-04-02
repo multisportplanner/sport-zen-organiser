@@ -17,6 +17,15 @@ const Header = () => {
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToTop = () => {
+    setMobileOpen(false);
+    if (location.pathname !== "/") {
+      window.location.href = "/#hero";
+      return;
+    }
+    document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const scrollToSection = (id: string) => {
     setMobileOpen(false);
     if (location.pathname !== "/") {
