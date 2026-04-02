@@ -7,34 +7,39 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
-  Users, Eye, TrendingUp, Settings, Check, Rocket,
-  MessageSquare, Handshake, CalendarCheck, UserPlus,
-  Dumbbell, Mountain, TreePine,
+  Eye, TrendingUp, Check, Rocket,
+  CalendarCheck, UserPlus, Shield,
+  Mountain, Dumbbell, Building2,
+  ArrowRight, ClipboardList, Users, Heart,
 } from "lucide-react";
 
-const valeurs = [
-  { icon: UserPlus, title: "De nouveaux participants", text: "MSP vous apporte des pratiquants qualifiés" },
-  { icon: Eye, title: "Une visibilité locale ciblée", text: "Touchez une audience sportive sur la Côte d'Azur" },
-  { icon: TrendingUp, title: "Une activité supplémentaire", text: "Sans effort marketing de votre côté" },
-  { icon: Settings, title: "Une organisation simplifiée", text: "MSP gère les inscriptions et la logistique" },
+const avantages = [
+  { icon: Eye, text: "Gagnez en visibilité localement" },
+  { icon: CalendarCheck, text: "Remplissez vos créneaux sans effort" },
+  { icon: Shield, text: "Gardez votre liberté d'organisation" },
+  { icon: Check, text: "Aucun engagement" },
+  { icon: UserPlus, text: "MSP facilite la mise en relation et les inscriptions" },
 ];
 
 const etapes = [
-  { icon: MessageSquare, number: "1", title: "On échange", desc: "Pour comprendre votre activité" },
-  { icon: Handshake, number: "2", title: "On définit les modalités", desc: "Ensemble, selon votre fonctionnement" },
-  { icon: CalendarCheck, number: "3", title: "MSP propose votre activité", desc: "À notre communauté de pratiquants" },
-  { icon: Users, number: "4", title: "On constitue les groupes", desc: "Et on gère les inscriptions" },
+  { number: "1", icon: ClipboardList, title: "Vous proposez vos créneaux et votre activité" },
+  { number: "2", icon: Users, title: "MSP vous met en relation avec des participants proches" },
+  { number: "3", icon: CalendarCheck, title: "MSP facilite les inscriptions" },
+  { number: "4", icon: Heart, title: "Vous intervenez, on s'occupe du reste" },
 ];
 
-type PartnerType = "Coach" | "Structure sportive" | "Activité outdoor" | "Autre";
+type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sportive";
 
 const Partenaire = () => {
   const [submitted, setSubmitted] = useState(false);
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [structure, setStructure] = useState("");
+  const [phone, setPhone] = useState("");
   const [partnerType, setPartnerType] = useState<PartnerType | "">("");
   const [city, setCity] = useState("");
+  const [activities, setActivities] = useState("");
+  const [availability, setAvailability] = useState("");
   const [message, setMessage] = useState("");
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -42,7 +47,9 @@ const Partenaire = () => {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!firstName.trim()) e.firstName = "Prénom requis";
+    if (!lastName.trim()) e.lastName = "Nom requis";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email invalide";
+    if (!partnerType) e.partnerType = "Veuillez sélectionner un type";
     if (!gdpr) e.gdpr = "Acceptation requise";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -52,7 +59,7 @@ const Partenaire = () => {
     ev.preventDefault();
     if (!validate()) return;
 
-    const data = { firstName, email, structure, partnerType, city, message, source: "partenaire" };
+    const data = { firstName, lastName, email, phone, partnerType, city, activities, availability, message, source: "partenaire" };
 
     const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
       method: "POST",
@@ -96,62 +103,22 @@ const Partenaire = () => {
               className="max-w-2xl mx-auto text-center"
             >
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-                Proposez vos activités à de <span className="text-gradient">nouveaux participants</span>
+                DEVENEZ <span className="text-gradient">PARTENAIRE MSP</span>
               </h1>
-              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-                MSP vous aide à remplir vos séances et à simplifier leur organisation sur la Côte d'Azur.
+              <p className="text-lg md:text-xl text-foreground/90 mb-3 font-medium">
+                Proposez vos activités sportives simplement, sans gérer l'organisation
+              </p>
+              <p className="text-base text-muted-foreground mb-8 max-w-xl mx-auto">
+                MSP vous permet de toucher de nouveaux pratiquants près de chez vous, sans complexifier votre quotidien.
               </p>
               <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-                Discuter avec nous
+                Devenir partenaire
               </Button>
-              <p className="text-xs text-muted-foreground/70 mt-3">
-                Nous vous expliquons comment MSP peut vous apporter des participants
-              </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Rassurance */}
-        <section className="py-20 bg-muted/30">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center"
-            >
-              <p className="text-lg text-muted-foreground">
-                Vous continuez à proposer vos activités comme aujourd'hui.
-                <br />
-                MSP vous apporte simplement des participants en plus.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Vision */}
-        <section className="py-32">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center"
-            >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                Rendre le sport plus <span className="text-gradient">simple et plus varié</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Beaucoup de personnes veulent faire du sport, mais se retrouvent limitées par le manque de temps, d'organisation ou d'idées.
-                <br /><br />
-                MSP simplifie tout. Nous organisons des séances en petit groupe, proches de chez eux, sans charge mentale.
-                Et nous permettons aussi de découvrir de nouvelles activités.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Pour qui */}
+        {/* Section 1 : Vous proposez une activité sportive */}
         <section className="py-32 bg-muted/30">
           <div className="container">
             <motion.div
@@ -161,29 +128,31 @@ const Partenaire = () => {
               className="text-center mb-4"
             >
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                Vous proposez une <span className="text-gradient">activité sportive ?</span>
+                Vous proposez une <span className="text-gradient">activité sportive</span>
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto mb-12">
-                MSP vous permet de toucher de nouveaux pratiquants, sans effort supplémentaire.
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+                MSP s'adapte à votre manière de travailler.
+                <br />
+                Que vous encadriez des sorties ponctuelles ou des séances régulières, nous vous apportons des participants sans effort supplémentaire.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[
                 {
                   icon: Mountain,
-                  title: "Activités ponctuelles",
-                  text: "Canyoning, kayak, escalade, VTT, paddle, randonnée. MSP vous apporte des groupes sur des sorties ponctuelles",
+                  title: "Vous êtes guide ou encadrant outdoor",
+                  text: "Randonnée, activités outdoor, sorties nature, etc. Proposez vos sorties ponctuelles le week-end ou pendant les vacances, MSP vous aide à compléter vos groupes.",
                 },
                 {
                   icon: Dumbbell,
-                  title: "Activités régulières et structures",
-                  text: "Yoga, pilates, renforcement, cross training ou structures sportives. MSP vous apporte des pratiquants sur vos créneaux",
+                  title: "Vous êtes coach sportif",
+                  text: "Remise en forme, bien-être, renforcement, mobilité, reprise en douceur… MSP vous permet de proposer vos séances à des pratiquants proches de chez vous.",
                 },
                 {
-                  icon: TreePine,
-                  title: "Vous êtes coach sportif ?",
-                  text: "MSP travaille aussi avec des coachs pour encadrer les séances régulières en petit groupe. Vous choisissez vos disponibilités, MSP remplit les groupes",
+                  icon: Building2,
+                  title: "Vous gérez une structure sportive",
+                  text: "Salle de sport, studio, association ou club. Valorisez vos créneaux disponibles et accueillez de nouveaux participants.",
                 },
               ].map((item, i) => (
                 <motion.div
@@ -202,16 +171,10 @@ const Partenaire = () => {
                 </motion.div>
               ))}
             </div>
-
-            <div className="text-center">
-              <Button variant="cta" size="lg" onClick={scrollToForm}>
-                Discuter avec nous
-              </Button>
-            </div>
           </div>
         </section>
 
-        {/* Valeur */}
+        {/* Section 2 : Pourquoi rejoindre MSP */}
         <section className="py-32">
           <div className="container">
             <motion.h2
@@ -220,31 +183,30 @@ const Partenaire = () => {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold text-center mb-12"
             >
-              Pourquoi collaborer avec <span className="text-gradient">MSP ?</span>
+              Pourquoi rejoindre <span className="text-gradient">MSP</span>
             </motion.h2>
 
-            <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
-              {valeurs.map((v, i) => (
+            <div className="max-w-2xl mx-auto space-y-4">
+              {avantages.map((v, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="bg-card rounded-2xl px-5 py-5 shadow-card text-left"
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="flex items-center gap-4 bg-card rounded-2xl px-5 py-4 shadow-card"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-hero-soft flex items-center justify-center mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-hero-soft flex items-center justify-center shrink-0">
                     <v.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="font-bold text-foreground mb-1">{v.title}</h3>
-                  <p className="text-sm text-muted-foreground">{v.text}</p>
+                  <p className="text-foreground font-medium">{v.text}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Fonctionnement */}
+        {/* Section 3 : Concrètement */}
         <section className="py-32 bg-muted/30">
           <div className="container">
             <motion.h2
@@ -253,7 +215,7 @@ const Partenaire = () => {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold text-center mb-16"
             >
-              <span className="text-gradient">Concrètement</span>
+              Concrètement, comment <span className="text-gradient">ça marche ?</span>
             </motion.h2>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -270,85 +232,15 @@ const Partenaire = () => {
                     <s.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div className="text-2xl font-bold text-primary mb-2">{s.number}</div>
-                  <h3 className="text-sm font-bold mb-1">{s.title}</h3>
-                  <p className="text-xs text-muted-foreground">{s.desc}</p>
+                  <p className="text-sm font-medium text-foreground">{s.title}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Collaboration */}
-        <section className="py-32">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center"
-            >
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                Une collaboration <span className="text-gradient">simple et transparente</span>
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                Nous définissons ensemble les modalités selon votre activité.
-              </p>
-              <p className="text-muted-foreground mb-4">
-                Vous payez uniquement sur les participants venant de MSP.
-              </p>
-              <p className="text-muted-foreground">
-                MSP propose des conditions avantageuses pour ses premiers partenaires.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Momentum */}
-        <section className="py-20 bg-muted/30">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center"
-            >
-              <p className="text-lg font-semibold text-foreground mb-2">
-                MSP lance actuellement ses premières activités sur la Côte d'Azur.
-              </p>
-              <p className="text-muted-foreground">
-                C'est le moment idéal pour faire partie des premiers partenaires.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* CTA Final */}
-        <section className="py-32">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center"
-            >
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                Envie d'en <span className="text-gradient">savoir plus ?</span>
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                Nous vous présentons le fonctionnement et comment MSP peut vous apporter des participants.
-              </p>
-              <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-                Discuter avec nous
-              </Button>
-              <p className="text-xs text-muted-foreground/70 mt-3">
-                Réponse rapide • Aucun engagement
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Formulaire */}
-        <section id="partenaire-form" className="py-32 bg-muted/30">
+        <section id="partenaire-form" className="py-32">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -368,16 +260,23 @@ const Partenaire = () => {
                 </div>
               ) : (
                 <div className="bg-card rounded-3xl p-8 md:p-10 shadow-card">
-                  <h3 className="text-2xl font-bold text-center mb-2">Discuter avec nous</h3>
+                  <h3 className="text-2xl font-bold text-center mb-2">Rejoindre MSP</h3>
                   <p className="text-sm text-muted-foreground text-center mb-8">
                     Remplissez le formulaire, on vous recontacte rapidement.
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                      <Label htmlFor="p-firstName" className="text-sm font-semibold">Prénom *</Label>
-                      <Input id="p-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Votre prénom" className="mt-1.5" maxLength={100} />
-                      {errors.firstName && <p className="text-destructive text-xs mt-1">{errors.firstName}</p>}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="p-firstName" className="text-sm font-semibold">Prénom *</Label>
+                        <Input id="p-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Votre prénom" className="mt-1.5" maxLength={100} />
+                        {errors.firstName && <p className="text-destructive text-xs mt-1">{errors.firstName}</p>}
+                      </div>
+                      <div>
+                        <Label htmlFor="p-lastName" className="text-sm font-semibold">Nom *</Label>
+                        <Input id="p-lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Votre nom" className="mt-1.5" maxLength={100} />
+                        {errors.lastName && <p className="text-destructive text-xs mt-1">{errors.lastName}</p>}
+                      </div>
                     </div>
 
                     <div>
@@ -387,28 +286,39 @@ const Partenaire = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="p-structure" className="text-sm font-semibold">Structure ou activité</Label>
-                      <Input id="p-structure" value={structure} onChange={(e) => setStructure(e.target.value)} placeholder="Nom de votre structure" className="mt-1.5" maxLength={200} />
+                      <Label htmlFor="p-phone" className="text-sm font-semibold">Téléphone</Label>
+                      <Input id="p-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="06 00 00 00 00" className="mt-1.5" maxLength={20} />
                     </div>
 
                     <div>
-                      <Label className="text-sm font-semibold mb-2 block">Type de partenaire</Label>
-                      <div className="grid grid-cols-2 gap-3">
-                        {(["Coach", "Structure sportive", "Activité outdoor", "Autre"] as PartnerType[]).map((t) => (
+                      <Label className="text-sm font-semibold mb-2 block">Type de partenaire *</Label>
+                      <div className="grid grid-cols-1 gap-3">
+                        {(["Guide / encadrant outdoor", "Coach sportif", "Structure sportive"] as PartnerType[]).map((t) => (
                           <button key={t} type="button" onClick={() => setPartnerType(t)} className={chipClass(partnerType === t)}>
                             {t}
                           </button>
                         ))}
                       </div>
+                      {errors.partnerType && <p className="text-destructive text-xs mt-1">{errors.partnerType}</p>}
                     </div>
 
                     <div>
-                      <Label htmlFor="p-city" className="text-sm font-semibold">Ville</Label>
+                      <Label htmlFor="p-city" className="text-sm font-semibold">Ville / zone d'intervention</Label>
                       <Input id="p-city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Nice, Antibes, Cannes..." className="mt-1.5" maxLength={100} />
                     </div>
 
                     <div>
-                      <Label htmlFor="p-message" className="text-sm font-semibold">Message</Label>
+                      <Label htmlFor="p-activities" className="text-sm font-semibold">Type d'activités proposées</Label>
+                      <Input id="p-activities" value={activities} onChange={(e) => setActivities(e.target.value)} placeholder="Yoga, randonnée, kayak..." className="mt-1.5" maxLength={200} />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="p-availability" className="text-sm font-semibold">Disponibilités</Label>
+                      <Input id="p-availability" value={availability} onChange={(e) => setAvailability(e.target.value)} placeholder="Semaine, week-end, vacances..." className="mt-1.5" maxLength={200} />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="p-message" className="text-sm font-semibold">Message libre</Label>
                       <textarea
                         id="p-message"
                         value={message}
@@ -422,17 +332,14 @@ const Partenaire = () => {
                     <div className="flex items-start gap-3">
                       <Checkbox id="p-gdpr" checked={gdpr} onCheckedChange={(v) => setGdpr(v === true)} className="mt-0.5" />
                       <Label htmlFor="p-gdpr" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                        J'accepte que mes données soient utilisées pour être recontacté par MSP *
+                        J'accepte que mes données soient utilisées pour être recontacté dans le cadre de ma demande. *
                       </Label>
                     </div>
                     {errors.gdpr && <p className="text-destructive text-xs">{errors.gdpr}</p>}
 
                     <Button variant="cta" type="submit" className="w-full h-12 text-base">
-                      Discuter avec nous
+                      Devenir partenaire
                     </Button>
-                    <p className="text-xs text-muted-foreground text-center mt-3">
-                      Réponse rapide • Aucun engagement
-                    </p>
                   </form>
                 </div>
               )}
