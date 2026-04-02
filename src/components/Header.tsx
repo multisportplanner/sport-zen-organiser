@@ -44,7 +44,7 @@ const Header = () => {
             alt="MSP - MultiSport Planner"
             className="h-8 md:h-11 w-auto object-contain"
           />
-        </Link>
+        </button>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
