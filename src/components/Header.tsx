@@ -90,13 +90,12 @@ const Header = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border/50 px-6 pb-6 pt-2 space-y-4">
-          <Link
-            to="/"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          <button
+            onClick={scrollToTop}
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
           >
             Accueil
-          </Link>
+          </button>
           <button
             onClick={() => scrollToSection("activites")}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
