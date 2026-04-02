@@ -17,6 +17,15 @@ const Header = () => {
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToTop = () => {
+    setMobileOpen(false);
+    if (location.pathname !== "/") {
+      window.location.href = "/#hero";
+      return;
+    }
+    document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const scrollToSection = (id: string) => {
     setMobileOpen(false);
     if (location.pathname !== "/") {
@@ -29,22 +38,22 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center">
+        <button onClick={scrollToTop} className="flex items-center">
           <img
             src={logo}
             alt="MSP - MultiSport Planner"
             className="h-8 md:h-11 w-auto object-contain"
           />
-        </Link>
+        </button>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link
-            to="/"
+          <button
+            onClick={scrollToTop}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Accueil
-          </Link>
+          </button>
           <button
             onClick={() => scrollToSection("activites")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -81,13 +90,12 @@ const Header = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border/50 px-6 pb-6 pt-2 space-y-4">
-          <Link
-            to="/"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          <button
+            onClick={scrollToTop}
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
           >
             Accueil
-          </Link>
+          </button>
           <button
             onClick={() => scrollToSection("activites")}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
