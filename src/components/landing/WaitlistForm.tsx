@@ -5,36 +5,37 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rocket } from "lucide-react";
+import PostalCodeInput from "@/components/ui/postal-code-input";
 
 type Usage = "Activité régulière" | "Activité ponctuelle" | "Les deux";
 type Dispo = "Semaine" | "Week-end" | "Les deux";
 type Moment = "Matin" | "Midi" | "Soir";
 type ActivityType = "Bien-être" | "Outdoor" | "Cardio" | "Renforcement" | "Ouvert(e)";
+type Motivation = "Me remettre au sport" | "Bouger régulièrement" | "Rencontrer du monde" | "Me défouler";
 
 const WaitlistForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [usage, setUsage] = useState<Usage | "">("");
-  const [dispo, setDispo] = useState<Dispo | "">("");
+  const [dispo, setDispo] = useState<Dispo[]>([]);
   const [moments, setMoments] = useState<Moment[]>([]);
   const [activityTypes, setActivityTypes] = useState<ActivityType[]>([]);
+  const [motivations, setMotivations] = useState<Motivation[]>([]);
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const toggleMoment = (m: Moment) => {
-    setMoments((prev) => (prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m]));
-  };
-
-  const toggleActivityType = (t: ActivityType) => {
-    setActivityTypes((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
+  const toggleItem = <T,>(list: T[], setList: React.Dispatch<React.SetStateAction<T[]>>, item: T) => {
+    setList((prev) => (prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]));
   };
 
   const validate = () => {
     const e: Record<string, string> = {};
     if (!firstName.trim()) e.firstName = "Prénom requis";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email invalide";
+    if (!postalCode.trim() || postalCode.length !== 5) e.postalCode = "Code postal requis (5 chiffres)";
     if (!gdpr) e.gdpr = "Acceptation requise";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -44,7 +45,7 @@ const WaitlistForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    const data = { firstName, email, city, usage, dispo, moments, activityTypes };
+    const data = { firstName, email, postalCode, city, usage, dispo, moments, activityTypes, motivations };
 
     const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
       method: "POST",
@@ -125,11 +126,15 @@ const WaitlistForm = () => {
                 {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
               </div>
 
-              {/* Ville */}
-              <div>
-                <Label htmlFor="city" className="text-sm font-semibold">Ville</Label>
-                <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Nice, Antibes, Sophia..." className="mt-1.5" maxLength={100} />
-              </div>
+              {/* Code postal + Ville */}
+              <PostalCodeInput
+                postalCode={postalCode}
+                city={city}
+                onPostalCodeChange={setPostalCode}
+                onCityChange={setCity}
+                required
+                error={errors.postalCode}
+              />
 
               {/* Usage */}
               <div>
@@ -143,12 +148,24 @@ const WaitlistForm = () => {
                 </div>
               </div>
 
+              {/* Motivation */}
+              <div>
+                <Label className="text-sm font-semibold mb-2 block">Ce qui te motive</Label>
+                <div className="flex flex-wrap gap-3">
+                  {(["Me remettre au sport", "Bouger régulièrement", "Rencontrer du monde", "Me défouler"] as Motivation[]).map((m) => (
+                    <button key={m} type="button" onClick={() => toggleItem(motivations, setMotivations, m)} className={chipClass(motivations.includes(m))}>
+                      {m}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Disponibilités */}
               <div>
                 <Label className="text-sm font-semibold mb-2 block">Disponibilités</Label>
                 <div className="flex flex-wrap gap-3">
                   {(["Semaine", "Week-end", "Les deux"] as Dispo[]).map((d) => (
-                    <button key={d} type="button" onClick={() => setDispo(d)} className={chipClass(dispo === d)}>
+                    <button key={d} type="button" onClick={() => toggleItem(dispo, setDispo, d)} className={chipClass(dispo.includes(d))}>
                       {d}
                     </button>
                   ))}
@@ -160,7 +177,7 @@ const WaitlistForm = () => {
                 <Label className="text-sm font-semibold mb-2 block">Moment</Label>
                 <div className="flex flex-wrap gap-3">
                   {(["Matin", "Midi", "Soir"] as Moment[]).map((m) => (
-                    <button key={m} type="button" onClick={() => toggleMoment(m)} className={chipClass(moments.includes(m))}>
+                    <button key={m} type="button" onClick={() => toggleItem(moments, setMoments, m)} className={chipClass(moments.includes(m))}>
                       {m}
                     </button>
                   ))}
@@ -172,7 +189,7 @@ const WaitlistForm = () => {
                 <Label className="text-sm font-semibold mb-2 block">Type d'activité</Label>
                 <div className="flex flex-wrap gap-3">
                   {(["Bien-être", "Outdoor", "Cardio", "Renforcement", "Ouvert(e)"] as ActivityType[]).map((t) => (
-                    <button key={t} type="button" onClick={() => toggleActivityType(t)} className={chipClass(activityTypes.includes(t))}>
+                    <button key={t} type="button" onClick={() => toggleItem(activityTypes, setActivityTypes, t)} className={chipClass(activityTypes.includes(t))}>
                       {t}
                     </button>
                   ))}

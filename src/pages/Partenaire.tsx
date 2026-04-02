@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import PostalCodeInput from "@/components/ui/postal-code-input";
 import {
   Eye, TrendingUp, Check, Rocket,
   CalendarCheck, UserPlus, Shield,
@@ -28,15 +29,16 @@ const etapes = [
   { number: "4", icon: Heart, title: "Vous intervenez, on s'occupe du reste" },
 ];
 
-type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sportive";
+type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sportive" | "Autre";
 
 const Partenaire = () => {
   const [submitted, setSubmitted] = useState(false);
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [partnerType, setPartnerType] = useState<PartnerType | "">("");
+  const [otherType, setOtherType] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [activities, setActivities] = useState("");
   const [availability, setAvailability] = useState("");
@@ -47,9 +49,11 @@ const Partenaire = () => {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!firstName.trim()) e.firstName = "Prénom requis";
-    if (!lastName.trim()) e.lastName = "Nom requis";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email invalide";
+    if (!phone.trim()) e.phone = "Téléphone requis";
     if (!partnerType) e.partnerType = "Veuillez sélectionner un type";
+    if (partnerType === "Autre" && !otherType.trim()) e.otherType = "Précise ton activité";
+    if (!postalCode.trim() || postalCode.length !== 5) e.postalCode = "Code postal requis (5 chiffres)";
     if (!gdpr) e.gdpr = "Acceptation requise";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -59,7 +63,18 @@ const Partenaire = () => {
     ev.preventDefault();
     if (!validate()) return;
 
-    const data = { firstName, lastName, email, phone, partnerType, city, activities, availability, message, source: "partenaire" };
+    const data = {
+      firstName,
+      email,
+      phone,
+      partnerType: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
+      postalCode,
+      city,
+      activities,
+      availability,
+      message,
+      source: "partenaire",
+    };
 
     const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
       method: "POST",
@@ -266,17 +281,10 @@ const Partenaire = () => {
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="p-firstName" className="text-sm font-semibold">Prénom *</Label>
-                        <Input id="p-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Votre prénom" className="mt-1.5" maxLength={100} />
-                        {errors.firstName && <p className="text-destructive text-xs mt-1">{errors.firstName}</p>}
-                      </div>
-                      <div>
-                        <Label htmlFor="p-lastName" className="text-sm font-semibold">Nom *</Label>
-                        <Input id="p-lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Votre nom" className="mt-1.5" maxLength={100} />
-                        {errors.lastName && <p className="text-destructive text-xs mt-1">{errors.lastName}</p>}
-                      </div>
+                    <div>
+                      <Label htmlFor="p-firstName" className="text-sm font-semibold">Prénom *</Label>
+                      <Input id="p-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Votre prénom" className="mt-1.5" maxLength={100} />
+                      {errors.firstName && <p className="text-destructive text-xs mt-1">{errors.firstName}</p>}
                     </div>
 
                     <div>
@@ -286,14 +294,15 @@ const Partenaire = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="p-phone" className="text-sm font-semibold">Téléphone</Label>
+                      <Label htmlFor="p-phone" className="text-sm font-semibold">Téléphone *</Label>
                       <Input id="p-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="06 00 00 00 00" className="mt-1.5" maxLength={20} />
+                      {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
                     </div>
 
                     <div>
                       <Label className="text-sm font-semibold mb-2 block">Type de partenaire *</Label>
                       <div className="grid grid-cols-1 gap-3">
-                        {(["Guide / encadrant outdoor", "Coach sportif", "Structure sportive"] as PartnerType[]).map((t) => (
+                        {(["Guide / encadrant outdoor", "Coach sportif", "Structure sportive", "Autre"] as PartnerType[]).map((t) => (
                           <button key={t} type="button" onClick={() => setPartnerType(t)} className={chipClass(partnerType === t)}>
                             {t}
                           </button>
@@ -302,14 +311,31 @@ const Partenaire = () => {
                       {errors.partnerType && <p className="text-destructive text-xs mt-1">{errors.partnerType}</p>}
                     </div>
 
-                    <div>
-                      <Label htmlFor="p-city" className="text-sm font-semibold">Ville / zone d'intervention</Label>
-                      <Input id="p-city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Nice, Antibes, Cannes..." className="mt-1.5" maxLength={100} />
-                    </div>
+                    {partnerType === "Autre" && (
+                      <div>
+                        <Label htmlFor="p-otherType" className="text-sm font-semibold">Précise ton activité *</Label>
+                        <Input id="p-otherType" value={otherType} onChange={(e) => setOtherType(e.target.value)} placeholder="Votre type d'activité" className="mt-1.5" maxLength={200} />
+                        {errors.otherType && <p className="text-destructive text-xs mt-1">{errors.otherType}</p>}
+                      </div>
+                    )}
+
+                    {/* Code postal + Ville */}
+                    <PostalCodeInput
+                      postalCode={postalCode}
+                      city={city}
+                      onPostalCodeChange={setPostalCode}
+                      onCityChange={setCity}
+                      postalCodeId="p-postalCode"
+                      cityId="p-city"
+                      postalCodeLabel="Code postal"
+                      cityLabel="Ville / zone d'intervention"
+                      required
+                      error={errors.postalCode}
+                    />
 
                     <div>
                       <Label htmlFor="p-activities" className="text-sm font-semibold">Type d'activités proposées</Label>
-                      <Input id="p-activities" value={activities} onChange={(e) => setActivities(e.target.value)} placeholder="Yoga, randonnée, kayak..." className="mt-1.5" maxLength={200} />
+                      <Input id="p-activities" value={activities} onChange={(e) => setActivities(e.target.value)} placeholder="Ex : yoga, renforcement, escalade, kayak…" className="mt-1.5" maxLength={200} />
                     </div>
 
                     <div>
