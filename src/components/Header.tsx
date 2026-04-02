@@ -48,12 +48,12 @@ const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link
-            to="/"
+          <button
+            onClick={scrollToTop}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Accueil
-          </Link>
+          </button>
           <button
             onClick={() => scrollToSection("activites")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
