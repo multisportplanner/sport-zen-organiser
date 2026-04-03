@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ClipboardList, Settings, Smile } from "lucide-react";
 
 const steps = [
-  { icon: ClipboardList, number: "1", title: "Tu renseignes tes envies", desc: "Activités, créneaux, rythme" },
-  { icon: Settings, number: "2", title: "MSP sélectionne et organise", desc: "On te propose des formats adaptés" },
-  { icon: Smile, number: "3", title: "Tu profites", desc: "Tu viens, tu bouges, sans te poser de questions" },
+  { icon: ClipboardList, number: "1", title: "Tu nous dis ce que tu aimes", desc: "Activités, créneaux, rythme" },
+  { icon: Settings, number: "2", title: "MSP organise pour toi", desc: "On te propose un groupe adapté" },
+  { icon: Smile, number: "3", title: "Tu rejoins et tu profites", desc: "Tu viens, tu bouges, sans te poser de questions" },
 ];
 
 const HowItWorksSection = () => {
@@ -52,7 +52,7 @@ const HowItWorksSection = () => {
           className="text-center"
         >
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-            Trouver mon activité
+            Rejoindre un groupe
           </Button>
           <p className="text-xs text-muted-foreground/70 mt-3">
             Activité sportive • petit groupe • près de chez toi

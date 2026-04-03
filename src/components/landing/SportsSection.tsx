@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
-import { Flower2, Footprints, StretchHorizontal, Dumbbell, Flame, Waves, Mountain, TreePine } from "lucide-react";
+import { Activity, Dumbbell, Heart, Sparkles, Flame, Stretch, Mountain, Waves, TreePine, Compass, Footprints } from "lucide-react";
 
 const regulieres = [
-  { icon: Flower2, label: "Yoga" },
-  { icon: Flower2, label: "Pilates" },
-  { icon: StretchHorizontal, label: "Mobilité" },
-  { icon: Dumbbell, label: "Renforcement doux" },
-  { icon: Flame, label: "Fitness en petit groupe" },
+  { icon: Activity, label: "Mobilité" },
+  { icon: Dumbbell, label: "Renforcement" },
+  { icon: Flame, label: "Fitness" },
+  { icon: Heart, label: "Bien-être" },
+  { icon: Sparkles, label: "Remise en forme" },
+  { icon: Stretch, label: "Mouvement doux" },
 ];
 
 const ponctuelles = [
+  { icon: Footprints, label: "Randonnée" },
+  { icon: Compass, label: "Yoga outdoor" },
+  { icon: Waves, label: "Paddle" },
   { icon: Mountain, label: "Canyoning" },
-  { icon: Footprints, label: "VTT électrique" },
-  { icon: Waves, label: "Kayak guidé" },
-  { icon: Waves, label: "Plongée sous-marine" },
-  { icon: TreePine, label: "Rafting" },
+  { icon: TreePine, label: "Escalade" },
+  { icon: Compass, label: "Activités outdoor" },
 ];
 
 const SportsSection = () => (
@@ -24,14 +26,17 @@ const SportsSection = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-12"
+        className="text-center mb-4"
       >
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Des activités adaptées <span className="text-gradient">à tes envies</span>
+          Des activités selon <span className="text-gradient">tes envies</span>
         </h2>
+        <p className="text-muted-foreground max-w-xl mx-auto">
+          Certaines activités s'intègrent facilement dans la semaine. D'autres se vivent plutôt le week-end ou pendant les vacances.
+        </p>
       </motion.div>
 
-      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 mt-12">
         {/* Régulières */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +44,10 @@ const SportsSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          <h3 className="text-lg font-bold mb-4 text-center">Activités régulières</h3>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="w-2 h-2 rounded-full bg-primary" />
+            <h3 className="text-lg font-bold text-center">Activités régulières</h3>
+          </div>
           <div className="grid grid-cols-2 gap-4">
             {regulieres.map((s, i) => (
               <div
@@ -62,7 +70,10 @@ const SportsSection = () => (
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <h3 className="text-lg font-bold mb-4 text-center">Activités ponctuelles</h3>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="w-2 h-2 rounded-full bg-secondary" />
+            <h3 className="text-lg font-bold text-center">Activités ponctuelles</h3>
+          </div>
           <div className="grid grid-cols-2 gap-4">
             {ponctuelles.map((s, i) => (
               <div

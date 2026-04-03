@@ -25,7 +25,7 @@ const FinalCTASection = () => {
           </p>
 
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-            Trouver mon activité
+            Rejoindre un groupe
           </Button>
           <p className="text-xs text-muted-foreground/70 mt-3">
             Activité sportive • petit groupe • près de chez toi

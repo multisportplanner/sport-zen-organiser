@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CalendarCheck, Compass, Check } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CalendarCheck, Sun, Check } from "lucide-react";
 
 const UsagesSection = () => {
   const scrollToForm = () => {
@@ -18,15 +17,15 @@ const UsagesSection = () => {
           className="text-center mb-6"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Deux façons d'utiliser <span className="text-gradient">MSP</span>
+            2 façons d'utiliser <span className="text-gradient">MSP</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Toujours avec la même idée : faire une activité sportive sans avoir à tout organiser.
+            Que tu veuilles bouger chaque semaine ou simplement profiter d'une activité de temps en temps, MSP t'aide à rejoindre un groupe sans te prendre la tête.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12">
-          {/* Card 1 */}
+          {/* Card 1 - Régulier */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,16 +36,15 @@ const UsagesSection = () => {
             <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 shadow-glow">
               <CalendarCheck className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Tu veux t'y mettre régulièrement</h3>
+            <h3 className="text-xl font-bold mb-3">Tu veux bouger régulièrement</h3>
             <p className="text-sm text-muted-foreground mb-5">
-              MSP t'aide à pratiquer une activité sportive de manière simple et régulière.
+              MSP t'aide à rejoindre un petit groupe adapté à ton rythme pour pratiquer une activité chaque semaine, sans avoir à gérer l'organisation.
             </p>
             <ul className="space-y-2 mb-6 flex-1">
               {[
-                "Une activité chaque semaine ou à ton rythme",
-                "Petit groupe convivial",
-                "Sans objectif de performance",
-                "Juste le plaisir de bouger",
+                "Un rendez-vous simple à intégrer dans ton quotidien",
+                "Un groupe à taille humaine",
+                "Une pratique régulière sans pression",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -55,11 +53,11 @@ const UsagesSection = () => {
               ))}
             </ul>
             <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
-              Rejoindre les premiers groupes
+              Rejoindre un groupe
             </Button>
           </motion.div>
 
-          {/* Card 2 */}
+          {/* Card 2 - Ponctuel */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -68,17 +66,17 @@ const UsagesSection = () => {
             className="bg-card rounded-3xl p-8 shadow-card flex flex-col"
           >
             <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 shadow-glow">
-              <Compass className="w-6 h-6 text-primary-foreground" />
+              <Sun className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Tu veux faire une activité sans te prendre la tête</h3>
+            <h3 className="text-xl font-bold mb-3">Tu veux faire une activité le week-end ou pendant les vacances</h3>
             <p className="text-sm text-muted-foreground mb-5">
-              MSP sélectionne pour toi des activités sportives simples à réserver.
+              MSP te permet de rejoindre facilement un groupe pour une activité ponctuelle, juste pour te faire plaisir, découvrir, sortir et partager un bon moment.
             </p>
             <ul className="space-y-2 mb-6 flex-1">
               {[
-                "Activités outdoor et expériences encadrées",
-                "Créneaux flexibles",
-                "Réservation simplifiée",
+                "Idéal pour le week-end ou les vacances",
+                "Activités ponctuelles faciles à rejoindre",
+                "Simple, fluide, déjà organisé",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -86,11 +84,9 @@ const UsagesSection = () => {
                 </li>
               ))}
             </ul>
-            <Link to="/activites">
-              <Button variant="cta" size="sm" className="w-full">
-                Voir les idées d'activités
-              </Button>
-            </Link>
+            <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
+              Rejoindre un groupe
+            </Button>
           </motion.div>
         </div>
       </div>
