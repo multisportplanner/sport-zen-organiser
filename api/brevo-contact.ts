@@ -95,6 +95,20 @@ const setFirstExistingAttribute = (
   }
 };
 
+const setAllExistingAttributes = (
+  target: Record<string, string | string[]>,
+  availableAttributes: Set<string>,
+  candidates: string[],
+  value: string | string[],
+) => {
+  for (const candidate of candidates) {
+    const upperCandidate = candidate.toUpperCase();
+    if (availableAttributes.has(upperCandidate)) {
+      target[upperCandidate] = value;
+    }
+  }
+};
+
 const fetchBrevoAttributeNames = async (apiKey: string): Promise<Set<string>> => {
   if (cachedAttributes && Date.now() - cachedAttributes.fetchedAt < ATTRIBUTE_CACHE_TTL_MS) {
     return cachedAttributes.names;
@@ -179,10 +193,10 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
     );
   }
 
-  setFirstExistingAttribute(
+  setAllExistingAttributes(
     attributes,
     availableAttributes,
-    ["RGPD", "GDPR", "CONSENT", "CONSENTEMENT"],
+    ["RGPD", "GDPR", "CONSENT", "CONSENTEMENT", "RGPD_CONSENT"],
     rgpdConsent,
   );
 
