@@ -62,6 +62,7 @@ const WaitlistForm = () => {
       partenaire: partnerPreferences,
       source: "waitlist",
       gdpr,
+      rgpd: gdpr,
     };
 
     const response = await fetch("/api/brevo-contact", {
