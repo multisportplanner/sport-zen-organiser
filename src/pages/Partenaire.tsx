@@ -41,7 +41,8 @@ const Partenaire = () => {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [activities, setActivities] = useState("");
-  const [availability, setAvailability] = useState("");
+  const [dispo, setDispo] = useState<string[]>([]);
+  const [moments, setMoments] = useState<string[]>([]);
   const [message, setMessage] = useState("");
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
