@@ -12,6 +12,7 @@ type Dispo = "Semaine" | "Week-end" | "Les deux";
 type Moment = "Matin" | "Midi" | "Soir";
 type ActivityType = "Bien-être" | "Outdoor" | "Cardio" | "Renforcement" | "Ouvert(e)";
 type Motivation = "Me remettre au sport" | "Bouger régulièrement" | "Rencontrer du monde" | "Me défouler";
+type PartnerPreference = "Seul(e)" | "Avec un(e) partenaire" | "Peu importe";
 
 const WaitlistForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -24,6 +25,7 @@ const WaitlistForm = () => {
   const [moments, setMoments] = useState<Moment[]>([]);
   const [activityTypes, setActivityTypes] = useState<ActivityType[]>([]);
   const [motivations, setMotivations] = useState<Motivation[]>([]);
+  const [partnerPreferences, setPartnerPreferences] = useState<PartnerPreference[]>([]);
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -45,7 +47,21 @@ const WaitlistForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    const data = { firstName, email, postalCode, city, usage, dispo, moments, activityTypes, motivations };
+    const data = {
+      firstName,
+      email,
+      postalCode,
+      city,
+      usage,
+      dispo,
+      moments,
+      activityTypes,
+      motivations,
+      // Alias explicites pour Make/Brevo (attributs personnalisés)
+      recherche: usage ? [usage] : [],
+      partenaire: partnerPreferences,
+      source: "waitlist",
+    };
 
     const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
       method: "POST",
@@ -56,6 +72,8 @@ const WaitlistForm = () => {
     if (response.ok) {
       setSubmitted(true);
     } else {
+      const errorBody = await response.text();
+      console.error("Erreur webhook Make", response.status, errorBody);
       alert("Une erreur est survenue. Merci de réessayer.");
     }
   };
@@ -155,6 +173,18 @@ const WaitlistForm = () => {
                   {(["Me remettre au sport", "Bouger régulièrement", "Rencontrer du monde", "Me défouler"] as Motivation[]).map((m) => (
                     <button key={m} type="button" onClick={() => toggleItem(motivations, setMotivations, m)} className={chipClass(motivations.includes(m))}>
                       {m}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Partenaire */}
+              <div>
+                <Label className="text-sm font-semibold mb-2 block">Tu viens plutôt…</Label>
+                <div className="flex flex-wrap gap-3">
+                  {(["Seul(e)", "Avec un(e) partenaire", "Peu importe"] as PartnerPreference[]).map((p) => (
+                    <button key={p} type="button" onClick={() => toggleItem(partnerPreferences, setPartnerPreferences, p)} className={chipClass(partnerPreferences.includes(p))}>
+                      {p}
                     </button>
                   ))}
                 </div>
