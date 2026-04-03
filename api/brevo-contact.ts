@@ -198,16 +198,15 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
     );
   }
 
-  const consentAttributesAssigned = setAllExistingAttributes(
+  setAllExistingAttributes(
     attributes,
     availableAttributes,
     ["RGPD", "GDPR", "CONSENT", "CONSENTEMENT", "RGPD_CONSENT"],
     rgpdConsent,
   );
-
-  if (consentAttributesAssigned === 0) {
-    attributes.RGPD = rgpdConsent;
-  }
+  // Ne pas injecter d'attribut RGPD "par défaut" si aucun attribut de consentement
+  // n'existe côté Brevo : cela provoque une erreur 400 "attribute does not exist".
+  // On préfère accepter le contact sans cet attribut plutôt que de faire échouer tout l'envoi.
 
   if (phone) {
     setFirstExistingAttribute(attributes, availableAttributes, ["SMS", "PHONE", "TELEPHONE"], phone);
