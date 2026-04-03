@@ -225,41 +225,73 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
     // quand l'utilisateur saisit un format local (ex: 06 xx xx xx xx).
     setFirstExistingAttribute(attributes, availableAttributes, ["PHONE", "TELEPHONE", "SMS"], phone);
   }
-  if (moment.length) setFirstExistingAttribute(attributes, availableAttributes, ["MOMENT", "SLOTS"], moment);
-  if (disponibilite.length) setFirstExistingAttribute(attributes, availableAttributes, ["DISPONIBILITE"], disponibilite);
+  if (moment.length) {
+    setAllExistingAttributes(
+      attributes,
+      availableAttributes,
+      ["MOMENT", "MOMENTS", "SLOTS"],
+      moment,
+    );
+  }
+
+  if (disponibilite.length) {
+    setAllExistingAttributes(
+      attributes,
+      availableAttributes,
+      ["DISPONIBILITE", "DISPONIBILITES", "DISPO"],
+      disponibilite,
+    );
+  }
   if (recherche.length) setFirstExistingAttribute(attributes, availableAttributes, ["RECHERCHE"], recherche);
   if (partenaire.length) setFirstExistingAttribute(attributes, availableAttributes, ["PARTENAIRE"], partenaire);
   if (motivation.length) setFirstExistingAttribute(attributes, availableAttributes, ["MOTIVATION"], motivation);
   if (activityType.length) setFirstExistingAttribute(attributes, availableAttributes, ["ACTIVITYTYPE"], activityType);
 
   if (partnerType) {
-    // Ne pas mapper partnerType vers PARTENAIRE :
-    // cet attribut est utilisé par la waitlist grand public avec des valeurs
-    // strictes ("Seul(e)", "Avec un(e) partenaire", "Peu importe").
-    // Y envoyer des valeurs de type partenaire ("Coach sportif", etc.)
-    // provoque un "Prohibited value" et peut faire sauter les autres attributs.
-    setFirstExistingAttribute(
+    setAllExistingAttributes(
       attributes,
       availableAttributes,
-      ["TYPE_PARTENAIRE", "TYPEPARTENAIRE", "PARTNER_TYPE", "PARTENAIRE_TYPE"],
+      [
+        "TYPE_PARTENAIRE",
+        "TYPEPARTENAIRE",
+        "PARTNER_TYPE",
+        "PARTENAIRE_TYPE",
+        "PARTENAIRE",
+      ],
       partnerType,
     );
   }
 
   if (activities) {
-    setFirstExistingAttribute(
+    setAllExistingAttributes(
       attributes,
       availableAttributes,
-      ["ACTIVITES", "ACTIVITE", "ACTIVITY", "TYPE_ACTIVITE", "ACTIVITE_PROPOSEE"],
+      [
+        "ACTIVITES",
+        "ACTIVITE",
+        "ACTIVITY",
+        "TYPE_ACTIVITE",
+        "ACTIVITE_PROPOSEE",
+        "ACTIVITE_PROPOSE",
+        "ACTIVITEPROPOSEE",
+        "ACTIVITES_PROPOSEES",
+      ],
       activities,
     );
   }
 
   if (message) {
-    setFirstExistingAttribute(
+    setAllExistingAttributes(
       attributes,
       availableAttributes,
-      ["MESSAGE", "MESSAGE_LIBRE", "COMMENTAIRE", "COMMENTAIRES", "NOTES"],
+      [
+        "MESSAGE",
+        "MESSAGE_LIBRE",
+        "MESSAGELIBRE",
+        "COMMENTAIRE",
+        "COMMENTAIRES",
+        "NOTES",
+      ],
       message,
     );
   }
