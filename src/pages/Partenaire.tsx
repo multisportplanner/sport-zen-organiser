@@ -75,8 +75,12 @@ const Partenaire = () => {
       dispo,
       moments,
       // Alias explicites pour Make/Brevo (attributs personnalisés)
+      // + variantes string pour les scénarios Make qui lisent du texte simple.
       disponibilite: dispo,
+      disponibilites: dispo,
+      dispoText: dispo.join(", "),
       moment: moments,
+      momentsText: moments.join(", "),
       message,
       source: "partenaire",
       gdpr,
