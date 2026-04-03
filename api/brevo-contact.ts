@@ -43,6 +43,14 @@ const toSingleValue = (value: unknown): string => {
   return String(value ?? "").trim();
 };
 
+const isAffirmative = (value: unknown): boolean => {
+  if (typeof value === "boolean") return value;
+  if (typeof value === "number") return value === 1;
+
+  const normalized = normalize(value);
+  return ["true", "1", "yes", "oui", "on"].includes(normalized);
+};
+
 const pickAllowed = (values: string[], allowed: readonly string[]): string[] => {
   const allowedMap = new Map(allowed.map((item) => [normalize(item), item]));
 
@@ -138,7 +146,7 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   const phone = toSingleValue(payload.phone);
   const city = toSingleValue(payload.city);
   const postalCode = toSingleValue(payload.postalCode);
-  const rgpdConsent = payload.gdpr === true || normalize(payload.gdpr) === "true" ? "Oui" : "Non";
+  const rgpdConsent = isAffirmative(payload.gdpr ?? payload.rgpd) ? "Oui" : "Non";
 
   const usage = toSingleValue(payload.usage);
   const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
