@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Activity, Dumbbell, Heart, Sparkles, Flame, Stretch, Mountain, Waves, TreePine, Compass, Footprints } from "lucide-react";
+import { Activity, Dumbbell, Heart, Sparkles, Flame, StretchHorizontal, Mountain, Waves, TreePine, Compass, Footprints } from "lucide-react";
 
 const regulieres = [
   { icon: Activity, label: "Mobilité" },
