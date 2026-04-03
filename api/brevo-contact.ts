@@ -169,24 +169,28 @@ const fetchBrevoAttributeNames = async (apiKey: string): Promise<Set<string>> =>
 };
 
 const buildAttributes = (payload: Record<string, unknown>, availableAttributes: Set<string>) => {
-  const firstName = toSingleValue(payload.firstName || payload.name);
-  const phone = toSingleValue(payload.phone);
-  const city = toSingleValue(payload.city);
-  const postalCode = toSingleValue(payload.postalCode);
+  const lastName = toSingleValue(payload.lastName || payload.nom || payload.NOM);
+  const firstName = toSingleValue(payload.firstName || payload.prenom || payload.PRENOM || payload.name);
+  const phone = toSingleValue(payload.phone || payload.sms || payload.SMS);
+  const city = toSingleValue(payload.city || payload.ville || payload.VILLE);
+  const postalCode = toSingleValue(payload.postalCode || payload.codePostal || payload.CODEPOSTAL);
   const rgpdConsent = isAffirmative(payload.gdpr ?? payload.rgpd) ? "Oui" : "Non";
 
   const usage = toSingleValue(payload.usage);
   const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
-  const partnerType = toSingleValue(payload.partnerType);
-  const activities = toSingleValue(payload.activities);
-  const message = toSingleValue(payload.message);
+  const partnerType = toSingleValue(payload.partnerType || payload.partenaire || payload.PARTENAIRE);
+  const activities = toSingleValue(payload.activities || payload.activiteProposee || payload.ACTIVITEPROPOSEE);
+  const message = toSingleValue(payload.message || payload.messageLibre || payload.MESSAGELIBRE);
 
   const attributes: Record<string, string | string[]> = {};
 
   setFirstExistingAttribute(attributes, availableAttributes, ["SOURCE", "ORIGINE"], toSingleValue(payload.source) || "site");
 
-  const moment = pickAllowed(toStringArray(payload.moments || payload.moment), ALLOWED.moment);
-  const disponibilite = pickAllowed(toStringArray(payload.dispo || payload.disponibilite), ALLOWED.disponibilite);
+  const moment = pickAllowed(toStringArray(payload.moments || payload.moment || payload.MOMENT), ALLOWED.moment);
+  const disponibilite = pickAllowed(
+    toStringArray(payload.dispo || payload.disponibilite || payload.DISPONIBILITE),
+    ALLOWED.disponibilite,
+  );
   const recherche = pickAllowed(rechercheInput, ALLOWED.recherche);
   const partenaire = pickAllowed(toStringArray(payload.partenaire), ALLOWED.partenaire);
   const motivation = pickAllowed(toStringArray(payload.motivations), ALLOWED.motivation);
@@ -194,6 +198,9 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
 
   if (firstName) {
     setFirstExistingAttribute(attributes, availableAttributes, ["FIRSTNAME", "PRENOM", "FIRST_NAME"], firstName);
+  }
+  if (lastName) {
+    setFirstExistingAttribute(attributes, availableAttributes, ["LASTNAME", "NOM", "LAST_NAME"], lastName);
   }
 
   if (city) {
@@ -319,7 +326,7 @@ export default async function handler(req: any, res: any) {
   }
 
   const body = parseBody(req.body);
-  const email = toSingleValue(body.email);
+  const email = toSingleValue(body.email || body.EMAIL);
 
   if (!email) {
     res.status(400).json({ error: "Missing email" });

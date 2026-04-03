@@ -33,6 +33,7 @@ type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sp
 
 const Partenaire = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -49,6 +50,7 @@ const Partenaire = () => {
 
   const validate = () => {
     const e: Record<string, string> = {};
+    if (!lastName.trim()) e.lastName = "Nom requis";
     if (!firstName.trim()) e.firstName = "Prénom requis";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email invalide";
     if (!phone.trim()) e.phone = "Téléphone requis";
@@ -65,6 +67,7 @@ const Partenaire = () => {
     if (!validate()) return;
 
     const data = {
+      lastName,
       firstName,
       email,
       phone,
@@ -85,6 +88,18 @@ const Partenaire = () => {
       source: "partenaire",
       gdpr,
       rgpd: gdpr,
+      // Alias explicites demandés / utiles pour Brevo et Make.
+      NOM: lastName,
+      PRENOM: firstName,
+      EMAIL: email,
+      SMS: phone,
+      VILLE: city,
+      CODEPOSTAL: postalCode,
+      MESSAGELIBRE: message,
+      ACTIVITEPROPOSEE: activities,
+      DISPONIBILITE: dispo.join(", "),
+      MOMENT: moments.join(", "),
+      PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
     };
 
     const response = await fetch("/api/brevo-contact", {
@@ -292,6 +307,12 @@ const Partenaire = () => {
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <Label htmlFor="p-lastName" className="text-sm font-semibold">Nom *</Label>
+                      <Input id="p-lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Votre nom" className="mt-1.5" maxLength={100} />
+                      {errors.lastName && <p className="text-destructive text-xs mt-1">{errors.lastName}</p>}
+                    </div>
+
                     <div>
                       <Label htmlFor="p-firstName" className="text-sm font-semibold">Prénom *</Label>
                       <Input id="p-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Votre prénom" className="mt-1.5" maxLength={100} />
