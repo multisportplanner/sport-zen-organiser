@@ -80,6 +80,14 @@ const parseBody = (body: unknown): Record<string, unknown> => {
   return {};
 };
 
+const toBrevoValue = (value: string | string[]): string => {
+  if (Array.isArray(value)) {
+    return value.join(", ");
+  }
+
+  return value;
+};
+
 const setFirstExistingAttribute = (
   target: Record<string, string | string[]>,
   availableAttributes: Set<string>,
@@ -89,7 +97,7 @@ const setFirstExistingAttribute = (
   for (const candidate of candidates) {
     const upperCandidate = candidate.toUpperCase();
     if (availableAttributes.has(upperCandidate)) {
-      target[upperCandidate] = value;
+      target[upperCandidate] = toBrevoValue(value);
       return;
     }
   }
@@ -106,7 +114,7 @@ const setAllExistingAttributes = (
   for (const candidate of candidates) {
     const upperCandidate = candidate.toUpperCase();
     if (availableAttributes.has(upperCandidate)) {
-      target[upperCandidate] = value;
+      target[upperCandidate] = toBrevoValue(value);
       assignedCount += 1;
     }
   }
@@ -169,6 +177,9 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
 
   const usage = toSingleValue(payload.usage);
   const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
+  const partnerType = toSingleValue(payload.partnerType);
+  const activities = toSingleValue(payload.activities);
+  const message = toSingleValue(payload.message);
 
   const attributes: Record<string, string | string[]> = {};
 
@@ -209,7 +220,10 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   // On préfère accepter le contact sans cet attribut plutôt que de faire échouer tout l'envoi.
 
   if (phone) {
-    setFirstExistingAttribute(attributes, availableAttributes, ["SMS", "PHONE", "TELEPHONE"], phone);
+    // "SMS" impose un format E.164 strict côté Brevo.
+    // On privilégie PHONE/TELEPHONE pour éviter un rejet global des attributs
+    // quand l'utilisateur saisit un format local (ex: 06 xx xx xx xx).
+    setFirstExistingAttribute(attributes, availableAttributes, ["PHONE", "TELEPHONE", "SMS"], phone);
   }
   if (moment.length) setFirstExistingAttribute(attributes, availableAttributes, ["MOMENT", "SLOTS"], moment);
   if (disponibilite.length) setFirstExistingAttribute(attributes, availableAttributes, ["DISPONIBILITE"], disponibilite);
@@ -217,6 +231,33 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   if (partenaire.length) setFirstExistingAttribute(attributes, availableAttributes, ["PARTENAIRE"], partenaire);
   if (motivation.length) setFirstExistingAttribute(attributes, availableAttributes, ["MOTIVATION"], motivation);
   if (activityType.length) setFirstExistingAttribute(attributes, availableAttributes, ["ACTIVITYTYPE"], activityType);
+
+  if (partnerType) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["TYPE_PARTENAIRE", "TYPEPARTENAIRE", "PARTNER_TYPE", "PARTENAIRE_TYPE", "PARTENAIRE"],
+      partnerType,
+    );
+  }
+
+  if (activities) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["ACTIVITES", "ACTIVITE", "ACTIVITY", "TYPE_ACTIVITE", "ACTIVITE_PROPOSEE"],
+      activities,
+    );
+  }
+
+  if (message) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["MESSAGE", "MESSAGE_LIBRE", "COMMENTAIRE", "COMMENTAIRES", "NOTES"],
+      message,
+    );
+  }
 
   return attributes;
 };
@@ -259,11 +300,13 @@ export default async function handler(req: any, res: any) {
     return;
   }
 
+  const allAttributes = buildAttributes(body, availableAttributes);
+
   const brevoPayload = {
     email,
     listIds: [listId],
     updateEnabled: true,
-    attributes: buildAttributes(body, availableAttributes),
+    attributes: allAttributes,
   };
 
   try {
@@ -279,9 +322,74 @@ export default async function handler(req: any, res: any) {
     let response = await sendToBrevo(brevoPayload);
     let responseBody = await response.json().catch(() => null);
 
-    // Fallback de robustesse : si Brevo rejette certains attributs (types/valeurs/champs),
-    // on retente sans attributs pour ne pas bloquer la soumission du formulaire.
+    // Fallback progressif : si Brevo rejette un attribut, on retire un attribut
+    // à la fois (en commençant par les moins critiques) pour conserver le maximum
+    // d'informations plutôt que de basculer directement sur email seul.
+    if (!response.ok && Object.keys(allAttributes).length > 0) {
+      const attributesForRetry: Record<string, string | string[]> = { ...allAttributes };
+      const dropOrder = [
+        "ACTIVITYTYPE",
+        "MOTIVATION",
+        "RECHERCHE",
+        "PARTENAIRE",
+        "DISPONIBILITE",
+        "MOMENT",
+        "MESSAGE",
+        "COMMENTAIRE",
+        "COMMENTAIRES",
+        "MESSAGE_LIBRE",
+        "NOTES",
+        "ACTIVITES",
+        "ACTIVITE",
+        "ACTIVITY",
+        "TYPE_ACTIVITE",
+        "ACTIVITE_PROPOSEE",
+        "TYPE_PARTENAIRE",
+        "TYPEPARTENAIRE",
+        "PARTNER_TYPE",
+        "PARTENAIRE_TYPE",
+        "SMS",
+      ];
+
+      const dropCandidates = [
+        ...dropOrder.filter((key) => key in attributesForRetry),
+        ...Object.keys(attributesForRetry).filter((key) => !dropOrder.includes(key)),
+      ];
+
+      for (const keyToDrop of dropCandidates) {
+        delete attributesForRetry[keyToDrop];
+
+        if (Object.keys(attributesForRetry).length === 0) {
+          break;
+        }
+
+        const retryPayload = {
+          email,
+          listIds: [listId],
+          updateEnabled: true,
+          attributes: attributesForRetry,
+        };
+
+        const retryResponse = await sendToBrevo(retryPayload);
+        const retryBody = await retryResponse.json().catch(() => null);
+
+        if (retryResponse.ok) {
+          res.status(200).json({
+            ok: true,
+            id: retryBody?.id ?? null,
+            warning: `Saved contact after dropping attribute ${keyToDrop}`,
+            initialError: responseBody,
+          });
+          return;
+        }
+
+        response = retryResponse;
+        responseBody = retryBody;
+      }
+    }
+
     if (!response.ok) {
+
       const minimalPayload = {
         email,
         listIds: [listId],
