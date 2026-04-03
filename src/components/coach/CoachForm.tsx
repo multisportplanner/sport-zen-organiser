@@ -40,7 +40,7 @@ const CoachForm = () => {
       source: "coach",
     };
 
-    const response = await fetch("https://hook.eu1.make.com/qib3vbg9e53r41ebcgds3nqzivl0qbd3", {
+    const response = await fetch("/api/brevo-contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
