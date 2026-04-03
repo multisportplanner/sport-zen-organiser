@@ -80,6 +80,33 @@ const parseBody = (body: unknown): Record<string, unknown> => {
   return {};
 };
 
+const getPayloadValue = (payload: Record<string, unknown>, ...keys: string[]): unknown => {
+  const nestedAttributes =
+    payload.attributes && typeof payload.attributes === "object"
+      ? (payload.attributes as Record<string, unknown>)
+      : undefined;
+
+  for (const key of keys) {
+    if (payload[key] !== undefined && payload[key] !== null && String(payload[key]).trim() !== "") {
+      return payload[key];
+    }
+  }
+
+  if (!nestedAttributes) return undefined;
+
+  for (const key of keys) {
+    if (
+      nestedAttributes[key] !== undefined &&
+      nestedAttributes[key] !== null &&
+      String(nestedAttributes[key]).trim() !== ""
+    ) {
+      return nestedAttributes[key];
+    }
+  }
+
+  return undefined;
+};
+
 const toBrevoValue = (value: string | string[]): string => {
   if (Array.isArray(value)) {
     return value.join(", ");
@@ -169,26 +196,26 @@ const fetchBrevoAttributeNames = async (apiKey: string): Promise<Set<string>> =>
 };
 
 const buildAttributes = (payload: Record<string, unknown>, availableAttributes: Set<string>) => {
-  const lastName = toSingleValue(payload.lastName || payload.nom || payload.NOM);
-  const firstName = toSingleValue(payload.firstName || payload.prenom || payload.PRENOM || payload.name);
-  const phone = toSingleValue(payload.phone || payload.sms || payload.SMS);
-  const city = toSingleValue(payload.city || payload.ville || payload.VILLE);
-  const postalCode = toSingleValue(payload.postalCode || payload.codePostal || payload.CODEPOSTAL);
+  const lastName = toSingleValue(getPayloadValue(payload, "lastName", "nom", "NOM", "lname", "LNAME"));
+  const firstName = toSingleValue(getPayloadValue(payload, "firstName", "prenom", "PRENOM", "name", "fname", "FNAME"));
+  const phone = toSingleValue(getPayloadValue(payload, "phone", "sms", "SMS"));
+  const city = toSingleValue(getPayloadValue(payload, "city", "ville", "VILLE"));
+  const postalCode = toSingleValue(getPayloadValue(payload, "postalCode", "codePostal", "CODEPOSTAL"));
   const rgpdConsent = isAffirmative(payload.gdpr ?? payload.rgpd) ? "Oui" : "Non";
 
   const usage = toSingleValue(payload.usage);
   const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
-  const partnerType = toSingleValue(payload.partnerType || payload.partenaire || payload.PARTENAIRE);
-  const activities = toSingleValue(payload.activities || payload.activiteProposee || payload.ACTIVITEPROPOSEE);
-  const message = toSingleValue(payload.message || payload.messageLibre || payload.MESSAGELIBRE);
+  const partnerType = toSingleValue(getPayloadValue(payload, "partnerType", "partenaire", "PARTENAIRE"));
+  const activities = toSingleValue(getPayloadValue(payload, "activities", "activiteProposee", "ACTIVITEPROPOSEE"));
+  const message = toSingleValue(getPayloadValue(payload, "message", "messageLibre", "MESSAGELIBRE"));
 
   const attributes: Record<string, string | string[]> = {};
 
   setFirstExistingAttribute(attributes, availableAttributes, ["SOURCE", "ORIGINE"], toSingleValue(payload.source) || "site");
 
-  const moment = pickAllowed(toStringArray(payload.moments || payload.moment || payload.MOMENT), ALLOWED.moment);
+  const moment = pickAllowed(toStringArray(getPayloadValue(payload, "moments", "moment", "MOMENT")), ALLOWED.moment);
   const disponibilite = pickAllowed(
-    toStringArray(payload.dispo || payload.disponibilite || payload.DISPONIBILITE),
+    toStringArray(getPayloadValue(payload, "dispo", "disponibilite", "DISPONIBILITE")),
     ALLOWED.disponibilite,
   );
   const recherche = pickAllowed(rechercheInput, ALLOWED.recherche);
@@ -211,9 +238,6 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
       ["LNAME", "LASTNAME", "NOM", "LAST_NAME"],
       lastName,
     );
-  }
-  if (lastName) {
-    setFirstExistingAttribute(attributes, availableAttributes, ["LASTNAME", "NOM", "LAST_NAME"], lastName);
   }
 
   if (city) {
@@ -341,7 +365,7 @@ export default async function handler(req: any, res: any) {
   }
 
   const body = parseBody(req.body);
-  const email = toSingleValue(body.email || body.EMAIL);
+  const email = toSingleValue(getPayloadValue(body, "email", "EMAIL"));
 
   if (!email) {
     res.status(400).json({ error: "Missing email" });

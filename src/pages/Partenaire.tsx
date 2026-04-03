@@ -100,6 +100,21 @@ const Partenaire = () => {
       DISPONIBILITE: dispo.join(", "),
       MOMENT: moments.join(", "),
       PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
+      attributes: {
+        SMS: phone,
+        FNAME: firstName,
+        LNAME: lastName,
+        EMAIL: email,
+        NOM: lastName,
+        PRENOM: firstName,
+        VILLE: city,
+        CODEPOSTAL: postalCode,
+        MESSAGELIBRE: message,
+        ACTIVITEPROPOSEE: activities,
+        DISPONIBILITE: dispo.join(", "),
+        MOMENT: moments.join(", "),
+        PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
+      },
     };
 
     const response = await fetch("/api/brevo-contact", {
