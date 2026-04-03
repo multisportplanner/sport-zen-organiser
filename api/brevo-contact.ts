@@ -267,21 +267,44 @@ export default async function handler(req: any, res: any) {
   };
 
   try {
-    const response = await fetch(BREVO_API_URL, {
+    const sendToBrevo = async (payload: Record<string, unknown>) => fetch(BREVO_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "api-key": apiKey,
       },
-      body: JSON.stringify(brevoPayload),
+      body: JSON.stringify(payload),
     });
 
-    const responseBody = await response.json().catch(() => null);
+    let response = await sendToBrevo(brevoPayload);
+    let responseBody = await response.json().catch(() => null);
 
+    // Fallback de robustesse : si Brevo rejette certains attributs (types/valeurs/champs),
+    // on retente sans attributs pour ne pas bloquer la soumission du formulaire.
     if (!response.ok) {
-      res.status(response.status).json({
+      const minimalPayload = {
+        email,
+        listIds: [listId],
+        updateEnabled: true,
+      };
+
+      const retryResponse = await sendToBrevo(minimalPayload);
+      const retryBody = await retryResponse.json().catch(() => null);
+
+      if (retryResponse.ok) {
+        res.status(200).json({
+          ok: true,
+          id: retryBody?.id ?? null,
+          warning: "Saved contact without custom attributes",
+          initialError: responseBody,
+        });
+        return;
+      }
+
+      res.status(retryResponse.status).json({
         error: "Brevo API error",
         details: responseBody,
+        retryError: retryBody,
       });
       return;
     }
