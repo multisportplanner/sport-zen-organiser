@@ -71,3 +71,18 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Vercel Brevo contact function
+
+The forms now submit to a Vercel Serverless Function at `POST /api/brevo-contact` instead of Make.
+
+### Required environment variables (Vercel project settings)
+
+- `BREVO_API_KEY`: your Brevo v3 API key.
+- `BREVO_LIST_ID`: numeric contact list ID (example: `12`).
+
+### Deployment notes
+
+- Deploy the project on Vercel.
+- Ensure both env vars are set for the target environment (Preview/Production).
+- The API route is same-origin, so no frontend URL changes are needed.
