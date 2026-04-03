@@ -64,7 +64,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Trouver mon activité
+              Rejoindre un groupe
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-8 text-base" onClick={scrollToHow}>
               Comment ça marche

@@ -98,7 +98,7 @@ const WaitlistForm = () => {
           viewport={{ once: true }}
           className="max-w-lg mx-auto"
         >
-          <p className="text-center text-foreground text-lg font-bold mb-6">
+          <p className="text-center text-foreground text-xl md:text-2xl font-bold mb-6 leading-relaxed">
             MSP organise ton activité sportive.
             <br />
             Tu viens simplement en profiter.
@@ -206,10 +206,10 @@ const WaitlistForm = () => {
               {errors.gdpr && <p className="text-destructive text-xs">{errors.gdpr}</p>}
 
               <Button variant="cta" type="submit" className="w-full h-12 text-base">
-                Je trouve mon activité
+                Rejoindre un groupe
               </Button>
               <p className="text-xs text-muted-foreground text-center mt-3">
-                Aucun engagement • Réponse personnalisée • Lancement progressif sur la Côte d'Azur
+                Aucun engagement • On te recontacte rapidement
               </p>
             </form>
           </div>

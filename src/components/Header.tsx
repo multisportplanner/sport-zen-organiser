@@ -73,7 +73,7 @@ const Header = () => {
             Partenaires
           </Link>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
-            Trouver mon activité
+            Rejoindre un groupe
           </Button>
         </nav>
 
@@ -116,7 +116,7 @@ const Header = () => {
             Partenaires
           </Link>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
-            Trouver mon activité
+            Rejoindre un groupe
           </Button>
         </div>
       )}
