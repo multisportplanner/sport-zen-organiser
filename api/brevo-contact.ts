@@ -80,6 +80,33 @@ const parseBody = (body: unknown): Record<string, unknown> => {
   return {};
 };
 
+const getPayloadValue = (payload: Record<string, unknown>, ...keys: string[]): unknown => {
+  const nestedAttributes =
+    payload.attributes && typeof payload.attributes === "object"
+      ? (payload.attributes as Record<string, unknown>)
+      : undefined;
+
+  for (const key of keys) {
+    if (payload[key] !== undefined && payload[key] !== null && String(payload[key]).trim() !== "") {
+      return payload[key];
+    }
+  }
+
+  if (!nestedAttributes) return undefined;
+
+  for (const key of keys) {
+    if (
+      nestedAttributes[key] !== undefined &&
+      nestedAttributes[key] !== null &&
+      String(nestedAttributes[key]).trim() !== ""
+    ) {
+      return nestedAttributes[key];
+    }
+  }
+
+  return undefined;
+};
+
 const toBrevoValue = (value: string | string[]): string => {
   if (Array.isArray(value)) {
     return value.join(", ");
@@ -169,31 +196,48 @@ const fetchBrevoAttributeNames = async (apiKey: string): Promise<Set<string>> =>
 };
 
 const buildAttributes = (payload: Record<string, unknown>, availableAttributes: Set<string>) => {
-  const firstName = toSingleValue(payload.firstName || payload.name);
-  const phone = toSingleValue(payload.phone);
-  const city = toSingleValue(payload.city);
-  const postalCode = toSingleValue(payload.postalCode);
+  const lastName = toSingleValue(getPayloadValue(payload, "lastName", "nom", "NOM", "lname", "LNAME"));
+  const firstName = toSingleValue(getPayloadValue(payload, "firstName", "prenom", "PRENOM", "name", "fname", "FNAME"));
+  const phone = toSingleValue(getPayloadValue(payload, "phone", "sms", "SMS"));
+  const city = toSingleValue(getPayloadValue(payload, "city", "ville", "VILLE"));
+  const postalCode = toSingleValue(getPayloadValue(payload, "postalCode", "codePostal", "CODEPOSTAL"));
   const rgpdConsent = isAffirmative(payload.gdpr ?? payload.rgpd) ? "Oui" : "Non";
 
   const usage = toSingleValue(payload.usage);
   const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
-  const partnerType = toSingleValue(payload.partnerType);
-  const activities = toSingleValue(payload.activities);
-  const message = toSingleValue(payload.message);
+  const partnerType = toSingleValue(getPayloadValue(payload, "partnerType", "partenaire", "PARTENAIRE"));
+  const activities = toSingleValue(getPayloadValue(payload, "activities", "activiteProposee", "ACTIVITEPROPOSEE"));
+  const message = toSingleValue(getPayloadValue(payload, "message", "messageLibre", "MESSAGELIBRE"));
 
   const attributes: Record<string, string | string[]> = {};
 
   setFirstExistingAttribute(attributes, availableAttributes, ["SOURCE", "ORIGINE"], toSingleValue(payload.source) || "site");
 
-  const moment = pickAllowed(toStringArray(payload.moments || payload.moment), ALLOWED.moment);
-  const disponibilite = pickAllowed(toStringArray(payload.dispo || payload.disponibilite), ALLOWED.disponibilite);
+  const moment = pickAllowed(toStringArray(getPayloadValue(payload, "moments", "moment", "MOMENT")), ALLOWED.moment);
+  const disponibilite = pickAllowed(
+    toStringArray(getPayloadValue(payload, "dispo", "disponibilite", "DISPONIBILITE")),
+    ALLOWED.disponibilite,
+  );
   const recherche = pickAllowed(rechercheInput, ALLOWED.recherche);
   const partenaire = pickAllowed(toStringArray(payload.partenaire), ALLOWED.partenaire);
   const motivation = pickAllowed(toStringArray(payload.motivations), ALLOWED.motivation);
   const activityType = pickAllowed(toStringArray(payload.activityTypes), ALLOWED.activityType);
 
   if (firstName) {
-    setFirstExistingAttribute(attributes, availableAttributes, ["FIRSTNAME", "PRENOM", "FIRST_NAME"], firstName);
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["FNAME", "FIRSTNAME", "PRENOM", "FIRST_NAME"],
+      firstName,
+    );
+  }
+  if (lastName) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["LNAME", "LASTNAME", "NOM", "LAST_NAME"],
+      lastName,
+    );
   }
 
   if (city) {
@@ -220,10 +264,12 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   // On préfère accepter le contact sans cet attribut plutôt que de faire échouer tout l'envoi.
 
   if (phone) {
-    // "SMS" impose un format E.164 strict côté Brevo.
-    // On privilégie PHONE/TELEPHONE pour éviter un rejet global des attributs
-    // quand l'utilisateur saisit un format local (ex: 06 xx xx xx xx).
-    setFirstExistingAttribute(attributes, availableAttributes, ["PHONE", "TELEPHONE", "SMS"], phone);
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["SMS", "PHONE", "TELEPHONE", "MOBILE"],
+      phone,
+    );
   }
   if (moment.length) {
     setAllExistingAttributes(
@@ -319,7 +365,7 @@ export default async function handler(req: any, res: any) {
   }
 
   const body = parseBody(req.body);
-  const email = toSingleValue(body.email);
+  const email = toSingleValue(getPayloadValue(body, "email", "EMAIL"));
 
   if (!email) {
     res.status(400).json({ error: "Missing email" });
