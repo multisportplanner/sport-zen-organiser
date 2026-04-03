@@ -369,8 +369,6 @@ export default async function handler(req: any, res: any) {
         "MOTIVATION",
         "RECHERCHE",
         "PARTENAIRE",
-        "DISPONIBILITE",
-        "MOMENT",
         "MESSAGE",
         "COMMENTAIRE",
         "COMMENTAIRES",
@@ -386,6 +384,14 @@ export default async function handler(req: any, res: any) {
         "PARTNER_TYPE",
         "PARTENAIRE_TYPE",
         "SMS",
+        // À conserver le plus longtemps possible :
+        // ces attributs sont prioritaires pour les formulaires.
+        "DISPONIBILITE",
+        "DISPONIBILITES",
+        "DISPO",
+        "MOMENT",
+        "MOMENTS",
+        "SLOTS",
       ];
 
       const dropCandidates = [
