@@ -74,9 +74,13 @@ const Partenaire = () => {
       activities,
       dispo,
       moments,
+      // Alias explicites pour Make/Brevo (attributs personnalisés)
+      disponibilite: dispo,
+      moment: moments,
       message,
       source: "partenaire",
       gdpr,
+      rgpd: gdpr,
     };
 
     const response = await fetch("/api/brevo-contact", {
