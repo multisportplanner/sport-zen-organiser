@@ -209,7 +209,10 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   // On préfère accepter le contact sans cet attribut plutôt que de faire échouer tout l'envoi.
 
   if (phone) {
-    setFirstExistingAttribute(attributes, availableAttributes, ["SMS", "PHONE", "TELEPHONE"], phone);
+    // "SMS" impose un format E.164 strict côté Brevo.
+    // On privilégie PHONE/TELEPHONE pour éviter un rejet global des attributs
+    // quand l'utilisateur saisit un format local (ex: 06 xx xx xx xx).
+    setFirstExistingAttribute(attributes, availableAttributes, ["PHONE", "TELEPHONE", "SMS"], phone);
   }
   if (moment.length) setFirstExistingAttribute(attributes, availableAttributes, ["MOMENT", "SLOTS"], moment);
   if (disponibilite.length) setFirstExistingAttribute(attributes, availableAttributes, ["DISPONIBILITE"], disponibilite);
@@ -259,11 +262,13 @@ export default async function handler(req: any, res: any) {
     return;
   }
 
+  const allAttributes = buildAttributes(body, availableAttributes);
+
   const brevoPayload = {
     email,
     listIds: [listId],
     updateEnabled: true,
-    attributes: buildAttributes(body, availableAttributes),
+    attributes: allAttributes,
   };
 
   try {
@@ -279,9 +284,36 @@ export default async function handler(req: any, res: any) {
     let response = await sendToBrevo(brevoPayload);
     let responseBody = await response.json().catch(() => null);
 
-    // Fallback de robustesse : si Brevo rejette certains attributs (types/valeurs/champs),
-    // on retente sans attributs pour ne pas bloquer la soumission du formulaire.
+    // Fallback de robustesse en 2 étapes :
+    // 1) retenter sans attributs "multi" (souvent source de mismatch de type)
+    // 2) si échec, retenter sans aucun attribut pour ne jamais bloquer l'inscription
     if (!response.ok) {
+      const scalarAttributes = Object.fromEntries(
+        Object.entries(allAttributes).filter(([, value]) => !Array.isArray(value)),
+      );
+
+      if (Object.keys(scalarAttributes).length > 0) {
+        const scalarPayload = {
+          email,
+          listIds: [listId],
+          updateEnabled: true,
+          attributes: scalarAttributes,
+        };
+
+        const scalarResponse = await sendToBrevo(scalarPayload);
+        const scalarBody = await scalarResponse.json().catch(() => null);
+
+        if (scalarResponse.ok) {
+          res.status(200).json({
+            ok: true,
+            id: scalarBody?.id ?? null,
+            warning: "Saved contact with scalar attributes only",
+            initialError: responseBody,
+          });
+          return;
+        }
+      }
+
       const minimalPayload = {
         email,
         listIds: [listId],
