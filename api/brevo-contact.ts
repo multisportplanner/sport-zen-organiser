@@ -233,10 +233,15 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   if (activityType.length) setFirstExistingAttribute(attributes, availableAttributes, ["ACTIVITYTYPE"], activityType);
 
   if (partnerType) {
+    // Ne pas mapper partnerType vers PARTENAIRE :
+    // cet attribut est utilisé par la waitlist grand public avec des valeurs
+    // strictes ("Seul(e)", "Avec un(e) partenaire", "Peu importe").
+    // Y envoyer des valeurs de type partenaire ("Coach sportif", etc.)
+    // provoque un "Prohibited value" et peut faire sauter les autres attributs.
     setFirstExistingAttribute(
       attributes,
       availableAttributes,
-      ["TYPE_PARTENAIRE", "TYPEPARTENAIRE", "PARTNER_TYPE", "PARTENAIRE_TYPE", "PARTENAIRE"],
+      ["TYPE_PARTENAIRE", "TYPEPARTENAIRE", "PARTNER_TYPE", "PARTENAIRE_TYPE"],
       partnerType,
     );
   }
