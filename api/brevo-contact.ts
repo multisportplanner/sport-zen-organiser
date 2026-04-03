@@ -80,6 +80,14 @@ const parseBody = (body: unknown): Record<string, unknown> => {
   return {};
 };
 
+const toBrevoValue = (value: string | string[]): string => {
+  if (Array.isArray(value)) {
+    return value.join(", ");
+  }
+
+  return value;
+};
+
 const setFirstExistingAttribute = (
   target: Record<string, string | string[]>,
   availableAttributes: Set<string>,
@@ -89,7 +97,7 @@ const setFirstExistingAttribute = (
   for (const candidate of candidates) {
     const upperCandidate = candidate.toUpperCase();
     if (availableAttributes.has(upperCandidate)) {
-      target[upperCandidate] = value;
+      target[upperCandidate] = toBrevoValue(value);
       return;
     }
   }
@@ -106,7 +114,7 @@ const setAllExistingAttributes = (
   for (const candidate of candidates) {
     const upperCandidate = candidate.toUpperCase();
     if (availableAttributes.has(upperCandidate)) {
-      target[upperCandidate] = value;
+      target[upperCandidate] = toBrevoValue(value);
       assignedCount += 1;
     }
   }
@@ -169,6 +177,9 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
 
   const usage = toSingleValue(payload.usage);
   const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
+  const partnerType = toSingleValue(payload.partnerType);
+  const activities = toSingleValue(payload.activities);
+  const message = toSingleValue(payload.message);
 
   const attributes: Record<string, string | string[]> = {};
 
@@ -220,6 +231,33 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   if (partenaire.length) setFirstExistingAttribute(attributes, availableAttributes, ["PARTENAIRE"], partenaire);
   if (motivation.length) setFirstExistingAttribute(attributes, availableAttributes, ["MOTIVATION"], motivation);
   if (activityType.length) setFirstExistingAttribute(attributes, availableAttributes, ["ACTIVITYTYPE"], activityType);
+
+  if (partnerType) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["TYPE_PARTENAIRE", "TYPEPARTENAIRE", "PARTNER_TYPE", "PARTENAIRE_TYPE", "PARTENAIRE"],
+      partnerType,
+    );
+  }
+
+  if (activities) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["ACTIVITES", "ACTIVITE", "ACTIVITY", "TYPE_ACTIVITE", "ACTIVITE_PROPOSEE"],
+      activities,
+    );
+  }
+
+  if (message) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["MESSAGE", "MESSAGE_LIBRE", "COMMENTAIRE", "COMMENTAIRES", "NOTES"],
+      message,
+    );
+  }
 
   return attributes;
 };
@@ -284,35 +322,73 @@ export default async function handler(req: any, res: any) {
     let response = await sendToBrevo(brevoPayload);
     let responseBody = await response.json().catch(() => null);
 
-    // Fallback de robustesse en 2 étapes :
-    // 1) retenter sans attributs "multi" (souvent source de mismatch de type)
-    // 2) si échec, retenter sans aucun attribut pour ne jamais bloquer l'inscription
-    if (!response.ok) {
-      const scalarAttributes = Object.fromEntries(
-        Object.entries(allAttributes).filter(([, value]) => !Array.isArray(value)),
-      );
+    // Fallback progressif : si Brevo rejette un attribut, on retire un attribut
+    // à la fois (en commençant par les moins critiques) pour conserver le maximum
+    // d'informations plutôt que de basculer directement sur email seul.
+    if (!response.ok && Object.keys(allAttributes).length > 0) {
+      const attributesForRetry: Record<string, string | string[]> = { ...allAttributes };
+      const dropOrder = [
+        "ACTIVITYTYPE",
+        "MOTIVATION",
+        "RECHERCHE",
+        "PARTENAIRE",
+        "DISPONIBILITE",
+        "MOMENT",
+        "MESSAGE",
+        "COMMENTAIRE",
+        "COMMENTAIRES",
+        "MESSAGE_LIBRE",
+        "NOTES",
+        "ACTIVITES",
+        "ACTIVITE",
+        "ACTIVITY",
+        "TYPE_ACTIVITE",
+        "ACTIVITE_PROPOSEE",
+        "TYPE_PARTENAIRE",
+        "TYPEPARTENAIRE",
+        "PARTNER_TYPE",
+        "PARTENAIRE_TYPE",
+        "SMS",
+      ];
 
-      if (Object.keys(scalarAttributes).length > 0) {
-        const scalarPayload = {
+      const dropCandidates = [
+        ...dropOrder.filter((key) => key in attributesForRetry),
+        ...Object.keys(attributesForRetry).filter((key) => !dropOrder.includes(key)),
+      ];
+
+      for (const keyToDrop of dropCandidates) {
+        delete attributesForRetry[keyToDrop];
+
+        if (Object.keys(attributesForRetry).length === 0) {
+          break;
+        }
+
+        const retryPayload = {
           email,
           listIds: [listId],
           updateEnabled: true,
-          attributes: scalarAttributes,
+          attributes: attributesForRetry,
         };
 
-        const scalarResponse = await sendToBrevo(scalarPayload);
-        const scalarBody = await scalarResponse.json().catch(() => null);
+        const retryResponse = await sendToBrevo(retryPayload);
+        const retryBody = await retryResponse.json().catch(() => null);
 
-        if (scalarResponse.ok) {
+        if (retryResponse.ok) {
           res.status(200).json({
             ok: true,
-            id: scalarBody?.id ?? null,
-            warning: "Saved contact with scalar attributes only",
+            id: retryBody?.id ?? null,
+            warning: `Saved contact after dropping attribute ${keyToDrop}`,
             initialError: responseBody,
           });
           return;
         }
+
+        response = retryResponse;
+        responseBody = retryBody;
       }
+    }
+
+    if (!response.ok) {
 
       const minimalPayload = {
         email,
