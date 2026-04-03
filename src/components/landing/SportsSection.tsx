@@ -7,7 +7,7 @@ const regulieres = [
   { icon: Flame, label: "Fitness" },
   { icon: Heart, label: "Bien-être" },
   { icon: Sparkles, label: "Remise en forme" },
-  { icon: Stretch, label: "Mouvement doux" },
+  { icon: StretchHorizontal, label: "Mouvement doux" },
 ];
 
 const ponctuelles = [
