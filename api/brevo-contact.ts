@@ -100,13 +100,18 @@ const setAllExistingAttributes = (
   availableAttributes: Set<string>,
   candidates: string[],
   value: string | string[],
-) => {
+): number => {
+  let assignedCount = 0;
+
   for (const candidate of candidates) {
     const upperCandidate = candidate.toUpperCase();
     if (availableAttributes.has(upperCandidate)) {
       target[upperCandidate] = value;
+      assignedCount += 1;
     }
   }
+
+  return assignedCount;
 };
 
 const fetchBrevoAttributeNames = async (apiKey: string): Promise<Set<string>> => {
@@ -193,12 +198,16 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
     );
   }
 
-  setAllExistingAttributes(
+  const consentAttributesAssigned = setAllExistingAttributes(
     attributes,
     availableAttributes,
     ["RGPD", "GDPR", "CONSENT", "CONSENTEMENT", "RGPD_CONSENT"],
     rgpdConsent,
   );
+
+  if (consentAttributesAssigned === 0) {
+    attributes.RGPD = rgpdConsent;
+  }
 
   if (phone) {
     setFirstExistingAttribute(attributes, availableAttributes, ["SMS", "PHONE", "TELEPHONE"], phone);
