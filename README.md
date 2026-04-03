@@ -86,3 +86,4 @@ The forms now submit to a Vercel Serverless Function at `POST /api/brevo-contact
 - Deploy the project on Vercel.
 - Ensure both env vars are set for the target environment (Preview/Production).
 - The API route is same-origin, so no frontend URL changes are needed.
+- The function only forwards whitelisted enum values for Brevo multi-choice attributes (`MOMENT`, `DISPONIBILITE`, `RECHERCHE`, `PARTENAIRE`, `MOTIVATION`, `ACTIVITYTYPE`) to avoid `Prohibited value` errors.

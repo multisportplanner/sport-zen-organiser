@@ -76,6 +76,7 @@ const Partenaire = () => {
       moments,
       message,
       source: "partenaire",
+      gdpr,
     };
 
     const response = await fetch("/api/brevo-contact", {

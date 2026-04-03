@@ -38,6 +38,7 @@ const CoachForm = () => {
       sports,
       zones,
       source: "coach",
+      gdpr,
     };
 
     const response = await fetch("/api/brevo-contact", {

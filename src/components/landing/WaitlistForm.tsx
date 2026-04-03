@@ -61,6 +61,7 @@ const WaitlistForm = () => {
       recherche: usage ? [usage] : [],
       partenaire: partnerPreferences,
       source: "waitlist",
+      gdpr,
     };
 
     const response = await fetch("/api/brevo-contact", {
@@ -73,7 +74,7 @@ const WaitlistForm = () => {
       setSubmitted(true);
     } else {
       const errorBody = await response.text();
-      console.error("Erreur webhook Make", response.status, errorBody);
+      console.error("Erreur API Brevo", response.status, errorBody);
       alert("Une erreur est survenue. Merci de réessayer.");
     }
   };
