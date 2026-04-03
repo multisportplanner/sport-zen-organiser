@@ -197,7 +197,20 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   const activityType = pickAllowed(toStringArray(payload.activityTypes), ALLOWED.activityType);
 
   if (firstName) {
-    setFirstExistingAttribute(attributes, availableAttributes, ["FIRSTNAME", "PRENOM", "FIRST_NAME"], firstName);
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["FNAME", "FIRSTNAME", "PRENOM", "FIRST_NAME"],
+      firstName,
+    );
+  }
+  if (lastName) {
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["LNAME", "LASTNAME", "NOM", "LAST_NAME"],
+      lastName,
+    );
   }
   if (lastName) {
     setFirstExistingAttribute(attributes, availableAttributes, ["LASTNAME", "NOM", "LAST_NAME"], lastName);
@@ -227,10 +240,12 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   // On préfère accepter le contact sans cet attribut plutôt que de faire échouer tout l'envoi.
 
   if (phone) {
-    // "SMS" impose un format E.164 strict côté Brevo.
-    // On privilégie PHONE/TELEPHONE pour éviter un rejet global des attributs
-    // quand l'utilisateur saisit un format local (ex: 06 xx xx xx xx).
-    setFirstExistingAttribute(attributes, availableAttributes, ["PHONE", "TELEPHONE", "SMS"], phone);
+    setFirstExistingAttribute(
+      attributes,
+      availableAttributes,
+      ["SMS", "PHONE", "TELEPHONE", "MOBILE"],
+      phone,
+    );
   }
   if (moment.length) {
     setAllExistingAttributes(
