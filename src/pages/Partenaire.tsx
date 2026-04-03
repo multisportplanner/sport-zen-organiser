@@ -72,7 +72,8 @@ const Partenaire = () => {
       postalCode,
       city,
       activities,
-      availability,
+      dispo,
+      moments,
       message,
       source: "partenaire",
     };
