@@ -41,7 +41,8 @@ const Partenaire = () => {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [activities, setActivities] = useState("");
-  const [availability, setAvailability] = useState("");
+  const [dispo, setDispo] = useState<string[]>([]);
+  const [moments, setMoments] = useState<string[]>([]);
   const [message, setMessage] = useState("");
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -71,7 +72,8 @@ const Partenaire = () => {
       postalCode,
       city,
       activities,
-      availability,
+      dispo,
+      moments,
       message,
       source: "partenaire",
     };
@@ -339,8 +341,25 @@ const Partenaire = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="p-availability" className="text-sm font-semibold">Disponibilités</Label>
-                      <Input id="p-availability" value={availability} onChange={(e) => setAvailability(e.target.value)} placeholder="Semaine, week-end, vacances..." className="mt-1.5" maxLength={200} />
+                      <Label className="text-sm font-semibold mb-2 block">Disponibilités</Label>
+                      <div className="flex flex-wrap gap-3">
+                        {["Semaine", "Week-end", "Les deux"].map((d) => (
+                          <button key={d} type="button" onClick={() => setDispo((prev) => prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d])} className={chipClass(dispo.includes(d))}>
+                            {d}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label className="text-sm font-semibold mb-2 block">Moment</Label>
+                      <div className="flex flex-wrap gap-3">
+                        {["Matin", "Midi", "Soir"].map((m) => (
+                          <button key={m} type="button" onClick={() => setMoments((prev) => prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m])} className={chipClass(moments.includes(m))}>
+                            {m}
+                          </button>
+                        ))}
+                      </div>
                     </div>
 
                     <div>
