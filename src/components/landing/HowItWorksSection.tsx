@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ClipboardList, Settings, Smile } from "lucide-react";
+import { CalendarDays, Settings, MessageSquare, Smile } from "lucide-react";
 
 const steps = [
-  { icon: ClipboardList, number: "1", title: "Tu nous dis ce que tu aimes", desc: "Activités, créneaux, rythme" },
-  { icon: Settings, number: "2", title: "MSP organise pour toi", desc: "On te propose un groupe adapté" },
-  { icon: Smile, number: "3", title: "Tu rejoins et tu profites", desc: "Tu viens, tu bouges, sans te poser de questions" },
+  { icon: CalendarDays, number: "1", title: "Tu dis quand tu es dispo", desc: "Semaine, week-end ou les deux. Matin, midi ou soir." },
+  { icon: Settings, number: "2", title: "On s'occupe de tout", desc: "Un petit groupe près de chez toi, un créneau, un lieu. Tu n'as rien à gérer." },
+  { icon: MessageSquare, number: "3", title: "Tu reçois ton rendez-vous", desc: "Un message simple avec toutes les infos." },
+  { icon: Smile, number: "4", title: "Tu viens et tu profites", desc: "Pas d'organisation. Juste le plaisir de bouger." },
 ];
 
 const HowItWorksSection = () => {
@@ -22,10 +23,10 @@ const HowItWorksSection = () => {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold text-center mb-16"
         >
-          Comment ça <span className="text-gradient">marche ?</span>
+          Comment ça se passe <span className="text-gradient">concrètement ?</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-10">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-10">
           {steps.map((s, i) => (
             <motion.div
               key={i}
@@ -52,10 +53,10 @@ const HowItWorksSection = () => {
           className="text-center"
         >
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-            Rejoindre un groupe
+            Rejoindre un groupe près de chez moi
           </Button>
           <p className="text-xs text-muted-foreground/70 mt-3">
-            Activité sportive • petit groupe • près de chez toi
+            Tu nous dis quand tu es dispo • On organise tout
           </p>
         </motion.div>
       </div>

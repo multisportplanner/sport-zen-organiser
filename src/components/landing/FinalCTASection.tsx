@@ -15,20 +15,15 @@ const FinalCTASection = () => {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            Et si faire une activité sportive devenait enfin{" "}
-            <span className="text-gradient">simple ?</span>
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-8">
+            Prêt à t'y mettre sans <span className="text-gradient">organiser ?</span>
           </h2>
-
-          <p className="text-muted-foreground mb-8">
-            Moins d'organisation, plus de plaisir.
-          </p>
 
           <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
             Rejoindre un groupe
           </Button>
           <p className="text-xs text-muted-foreground/70 mt-3">
-            Activité sportive • petit groupe • près de chez toi
+            Ça prend 30 secondes • On s'occupe du reste
           </p>
         </motion.div>
       </div>

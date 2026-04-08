@@ -1,47 +1,46 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
 
-const reasons = [
-  "Tu veux faire du sport sans te prendre la tête",
-  "Tu préfères bouger en petit groupe ou simplement avec tes amis",
-  "Tu veux une activité près de chez toi",
-  "Tu veux que ce soit simple et régulier",
+const timeline = [
+  { day: "Dimanche", text: "Tu nous dis quand tu es dispo" },
+  { day: "Lundi", text: "Tu reçois un message : \"Squash jeudi 19h, c'est calé\"" },
+  { day: "Jeudi soir", text: "Tu arrives. 1h après, tu repars, tu t'es dépensé et tu n'as rien organisé." },
+  { day: "Et la semaine suivante", text: "Ça recommence." },
 ];
 
-const SolutionSection = () => {
+const ProjectionSection = () => {
   const scrollToForm = () => {
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="solution" className="py-32">
+    <section className="py-32 bg-muted/30">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
-            MSP est fait pour toi <span className="text-gradient">si…</span>
+            Concrètement, ça donne <span className="text-gradient">quoi ?</span>
           </h2>
 
-          <div className="space-y-5 mb-10">
-            {reasons.map((r, i) => (
+          <div className="space-y-6 mb-10">
+            {timeline.map((t, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.4 }}
-                className="flex items-start gap-4 bg-card rounded-xl px-5 py-4 shadow-card"
+                transition={{ delay: i * 0.15, duration: 0.4 }}
+                className="flex items-start gap-4"
               >
-                <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center flex-shrink-0 mt-0.5 shadow-glow">
-                  <Check className="w-4 h-4 text-primary-foreground" />
+                <div className="w-auto min-w-[120px] flex-shrink-0">
+                  <span className="text-sm font-bold text-primary">{t.day}</span>
                 </div>
-                <p className="text-foreground font-medium">{r}</p>
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <p className="text-foreground font-medium">{t.text}</p>
               </motion.div>
             ))}
           </div>
@@ -56,7 +55,7 @@ const SolutionSection = () => {
               Rejoindre un groupe
             </Button>
             <p className="text-xs text-muted-foreground/70 mt-3">
-              Sans pression • À ton rythme
+              Un seul message suffit pour commencer
             </p>
           </motion.div>
         </motion.div>
@@ -65,4 +64,4 @@ const SolutionSection = () => {
   );
 };
 
-export default SolutionSection;
+export default ProjectionSection;

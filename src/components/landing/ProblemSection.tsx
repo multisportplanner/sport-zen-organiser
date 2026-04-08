@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { CalendarDays, Sparkles, ClipboardList, UserX } from "lucide-react";
+import { Brain, CalendarDays, UserX, Users } from "lucide-react";
 
 const pain = [
-  { icon: CalendarDays, text: "Trouver le bon moment" },
-  { icon: Sparkles, text: "Choisir une activité qui donne envie" },
-  { icon: ClipboardList, text: "Réserver et s'organiser" },
-  { icon: UserX, text: "Y aller seul ou motiver d'autres personnes" },
+  { icon: Brain, text: "Tu y penses mais tu oublies" },
+  { icon: CalendarDays, text: "Tu veux t'y mettre mais il faut organiser" },
+  { icon: UserX, text: "Y aller seul ou motiver des amis" },
+  { icon: Users, text: "Trouver un créneau qui convient à tout le monde" },
 ];
 
 const ProblemSection = () => (
@@ -19,15 +19,9 @@ const ProblemSection = () => (
         className="max-w-2xl mx-auto text-center"
       >
         <h2 className="text-3xl md:text-5xl font-bold mb-6">
-          Pourquoi est-ce si difficile de faire une activité sportive{" "}
+          Pourquoi c'est si difficile de faire du sport{" "}
           <span className="text-gradient">régulièrement ?</span>
         </h2>
-
-        <p className="text-muted-foreground mb-10">
-          Pas forcément par manque d'envie.
-          <br />
-          Souvent, c'est tout ce qu'il faut organiser autour qui bloque.
-        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-lg mx-auto">
           {pain.map((p, i) => (
@@ -50,11 +44,11 @@ const ProblemSection = () => (
         <div className="w-12 h-px bg-border mx-auto mb-6" />
 
         <p className="text-lg text-muted-foreground mb-4">
-          Résultat : <strong className="text-foreground">on repousse, on annule ou on ne sait jamais vraiment quoi faire.</strong>
+          Résultat : <strong className="text-foreground">tu repousses, tu laisses tomber.</strong>
         </p>
 
         <p className="text-sm font-medium text-primary">
-          MSP simplifie tout ça.
+          Pas par manque de motivation, mais à cause de l'organisation.
         </p>
       </motion.div>
     </div>
