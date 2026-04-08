@@ -1,22 +1,21 @@
 import { motion } from "framer-motion";
-import { Activity, Dumbbell, Heart, Sparkles, Flame, StretchHorizontal, Mountain, Waves, TreePine, Compass, Footprints } from "lucide-react";
+import { Dumbbell, Heart, Activity, Flame, Sparkles, Footprints, Mountain, Waves, TreePine, Compass, Cable } from "lucide-react";
 
 const regulieres = [
-  { icon: Activity, label: "Mobilité" },
   { icon: Dumbbell, label: "Renforcement" },
-  { icon: Flame, label: "Fitness" },
-  { icon: Heart, label: "Bien-être" },
-  { icon: Sparkles, label: "Remise en forme" },
-  { icon: StretchHorizontal, label: "Mouvement doux" },
+  { icon: Heart, label: "Yoga" },
+  { icon: Sparkles, label: "Pilates" },
+  { icon: Activity, label: "Mobilité" },
+  { icon: Flame, label: "Cross training" },
 ];
 
 const ponctuelles = [
   { icon: Footprints, label: "Randonnée" },
-  { icon: Compass, label: "Yoga outdoor" },
-  { icon: Waves, label: "Paddle" },
   { icon: Mountain, label: "Canyoning" },
+  { icon: Cable, label: "Via ferrata" },
+  { icon: Waves, label: "Rafting" },
   { icon: TreePine, label: "Escalade" },
-  { icon: Compass, label: "Activités outdoor" },
+  { icon: Compass, label: "Paddle" },
 ];
 
 const SportsSection = () => (
@@ -31,9 +30,6 @@ const SportsSection = () => (
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
           Des activités selon <span className="text-gradient">tes envies</span>
         </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto">
-          Certaines activités s'intègrent facilement dans la semaine. D'autres se vivent plutôt le week-end ou pendant les vacances.
-        </p>
       </motion.div>
 
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 mt-12">
@@ -89,10 +85,6 @@ const SportsSection = () => (
           </div>
         </motion.div>
       </div>
-
-      <p className="text-sm text-muted-foreground text-center mt-8">
-        Les activités évoluent selon les saisons, les envies et les partenaires
-      </p>
     </div>
   </section>
 );

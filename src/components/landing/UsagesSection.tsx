@@ -19,13 +19,10 @@ const UsagesSection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             2 façons d'utiliser <span className="text-gradient">MSP</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Que tu veuilles bouger chaque semaine ou simplement profiter d'une activité de temps en temps, MSP t'aide à rejoindre un groupe sans te prendre la tête.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12">
-          {/* Card 1 - Régulier */}
+          {/* Bloc 1 - Régulier */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,9 +33,9 @@ const UsagesSection = () => {
             <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 shadow-glow">
               <CalendarCheck className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Tu veux bouger régulièrement</h3>
+            <h3 className="text-xl font-bold mb-3">Tu veux t'y mettre régulièrement</h3>
             <p className="text-sm text-muted-foreground mb-5">
-              MSP t'aide à rejoindre un petit groupe adapté à ton rythme pour pratiquer une activité chaque semaine, sans avoir à gérer l'organisation.
+              Chaque semaine, un créneau est organisé pour toi, avec un petit groupe.
             </p>
             <ul className="space-y-2 mb-6 flex-1">
               {[
@@ -57,7 +54,7 @@ const UsagesSection = () => {
             </Button>
           </motion.div>
 
-          {/* Card 2 - Ponctuel */}
+          {/* Bloc 2 - Ponctuel */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -68,9 +65,9 @@ const UsagesSection = () => {
             <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 shadow-glow">
               <Sun className="w-6 h-6 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Tu veux faire une activité le week-end ou pendant les vacances</h3>
+            <h3 className="text-xl font-bold mb-3">Tu veux te faire plaisir quand tu en as envie</h3>
             <p className="text-sm text-muted-foreground mb-5">
-              MSP te permet de rejoindre facilement un groupe pour une activité ponctuelle, juste pour te faire plaisir, découvrir, sortir et partager un bon moment.
+              Le week-end ou pendant les vacances, MSP organise des activités outdoor simples à rejoindre.
             </p>
             <ul className="space-y-2 mb-6 flex-1">
               {[
@@ -85,7 +82,7 @@ const UsagesSection = () => {
               ))}
             </ul>
             <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
-              Rejoindre un groupe
+              Je rejoins une sortie
             </Button>
           </motion.div>
         </div>

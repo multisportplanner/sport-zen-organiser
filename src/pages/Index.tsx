@@ -3,11 +3,10 @@ import HeroSection from "@/components/landing/HeroSection";
 import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionSection from "@/components/landing/SolutionSection";
 import UsagesSection from "@/components/landing/UsagesSection";
-import IdentificationSection from "@/components/landing/IdentificationSection";
-import SportsSection from "@/components/landing/SportsSection";
-import DifferentiationSection from "@/components/landing/DifferentiationSection";
-import EmotionSection from "@/components/landing/EmotionSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
+import ProjectionSection from "@/components/landing/ProjectionSection";
+import DeplacementSection from "@/components/landing/DeplacementSection";
+import SportsSection from "@/components/landing/SportsSection";
 import WaitlistForm from "@/components/landing/WaitlistForm";
 import PartnerTeaser from "@/components/landing/PartnerTeaser";
 import FAQSection from "@/components/landing/FAQSection";
@@ -23,11 +22,10 @@ const Index = () => {
         <ProblemSection />
         <SolutionSection />
         <UsagesSection />
-        <IdentificationSection />
-        <SportsSection />
-        <DifferentiationSection />
-        <EmotionSection />
         <HowItWorksSection />
+        <ProjectionSection />
+        <DeplacementSection />
+        <SportsSection />
         <WaitlistForm />
         <PartnerTeaser />
         <FAQSection />

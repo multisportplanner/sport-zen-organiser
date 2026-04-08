@@ -34,19 +34,8 @@ const HeroSection = () => {
           </p>
 
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto mb-4">
-            Chaque semaine ou quand tu en as envie, MSP organise pour toi une activité sportive sur la Côte d'Azur.
+            Chaque semaine ou quand tu en as envie, MSP organise pour toi une activité sportive sur la Côte d'Azur, avec tes amis ou avec d'autres personnes.
           </p>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6"
-          >
-            Petit groupe, activités outdoor ou bien-être, en semaine ou le week-end.
-            <br />
-            Tu choisis ce qui te fait plaisir, on s'occupe du reste.
-          </motion.p>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -72,7 +61,7 @@ const HeroSection = () => {
           </motion.div>
 
           <p className="text-xs text-muted-foreground/70">
-            Activité sportive • petit groupe • près de chez toi
+            Ça prend 30 secondes • On s'occupe du reste
           </p>
         </motion.div>
       </div>
