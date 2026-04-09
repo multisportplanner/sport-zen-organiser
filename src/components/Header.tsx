@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
@@ -66,12 +66,12 @@ const Header = () => {
           >
             Comment ça marche
           </button>
-          <Link
-            to="/partenaire"
+          <button
+            onClick={() => scrollToSection("partenaires")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Partenaires
-          </Link>
+          </button>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
             Rejoindre un groupe
           </Button>
@@ -108,13 +108,12 @@ const Header = () => {
           >
             Comment ça marche
           </button>
-          <Link
-            to="/partenaire"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          <button
+            onClick={() => scrollToSection("partenaires")}
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
           >
             Partenaires
-          </Link>
+          </button>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
             Rejoindre un groupe
           </Button>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Handshake } from "lucide-react";
 
 const PartnerTeaser = () => (
-  <section className="py-32">
+  <section id="partenaires" className="py-32">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

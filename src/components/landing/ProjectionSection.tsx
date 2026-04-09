@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 const timeline = [
   { day: "Dimanche", text: "Tu nous dis quand tu es dispo" },
   { day: "Lundi", text: "Tu reçois un message : \"Squash jeudi 19h, c'est calé\"" },
+  { day: "Mercredi", text: "Tu reçois un rappel pour ne pas lâcher" },
   { day: "Jeudi soir", text: "Tu arrives. 1h après, tu repars, tu t'es dépensé et tu n'as rien organisé." },
-  { day: "Et la semaine suivante", text: "Ça recommence." },
+  { day: "Et la semaine suivante", text: "Ça recommence, avec une nouvelle activité ou la même si tu préfères." },
 ];
 
 const ProjectionSection = () => {
@@ -23,7 +24,7 @@ const ProjectionSection = () => {
           className="max-w-2xl mx-auto"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
-            Concrètement, ça donne <span className="text-gradient">quoi ?</span>
+            Dans la vraie vie, ça donne <span className="text-gradient">quoi ?</span>
           </h2>
 
           <div className="space-y-6 mb-10">

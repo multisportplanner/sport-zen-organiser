@@ -3,10 +3,11 @@ import { Dumbbell, Heart, Activity, Flame, Sparkles, Footprints, Mountain, Waves
 
 const regulieres = [
   { icon: Dumbbell, label: "Renforcement" },
-  { icon: Heart, label: "Yoga" },
-  { icon: Sparkles, label: "Pilates" },
   { icon: Activity, label: "Mobilité" },
-  { icon: Flame, label: "Cross training" },
+  { icon: Flame, label: "Cross-training" },
+  { icon: Heart, label: "Cardio" },
+  { icon: Sparkles, label: "Stretching" },
+  { icon: Footprints, label: "Reprise / sport santé" },
 ];
 
 const ponctuelles = [

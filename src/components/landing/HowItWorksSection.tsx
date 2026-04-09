@@ -23,7 +23,7 @@ const HowItWorksSection = () => {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold text-center mb-16"
         >
-          Comment ça se passe <span className="text-gradient">concrètement ?</span>
+          Comment ça <span className="text-gradient">se passe ?</span>
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-10">
