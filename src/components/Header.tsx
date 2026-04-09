@@ -66,12 +66,12 @@ const Header = () => {
           >
             Comment ça marche
           </button>
-          <Link
-            to="/partenaire"
+          <button
+            onClick={() => scrollToSection("partenaires")}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Partenaires
-          </Link>
+          </button>
           <Button variant="cta" size="sm" onClick={scrollToForm}>
             Rejoindre un groupe
           </Button>
