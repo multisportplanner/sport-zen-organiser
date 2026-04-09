@@ -204,7 +204,9 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   const rgpdConsent = isAffirmative(payload.gdpr ?? payload.rgpd) ? "Oui" : "Non";
 
   const usage = toSingleValue(payload.usage);
-  const rechercheInput = usage ? [usage] : toStringArray(payload.recherche);
+  const rechercheInput = usage
+    ? [usage]
+    : toStringArray(getPayloadValue(payload, "recherche", "RECHERCHE"));
   const partnerType = toSingleValue(getPayloadValue(payload, "partnerType", "partenaire", "PARTENAIRE"));
   const activities = toSingleValue(getPayloadValue(payload, "activities", "activiteProposee", "ACTIVITEPROPOSEE"));
   const message = toSingleValue(getPayloadValue(payload, "message", "messageLibre", "MESSAGELIBRE"));
@@ -220,8 +222,25 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   );
   const recherche = pickAllowed(rechercheInput, ALLOWED.recherche);
   const partenaire = pickAllowed(toStringArray(payload.partenaire), ALLOWED.partenaire);
-  const motivation = pickAllowed(toStringArray(payload.motivations), ALLOWED.motivation);
-  const activityType = pickAllowed(toStringArray(payload.activityTypes), ALLOWED.activityType);
+  const motivation = pickAllowed(
+    toStringArray(getPayloadValue(payload, "motivations", "motivation", "MOTIVATION")),
+    ALLOWED.motivation,
+  );
+  const activityType = pickAllowed(
+    toStringArray(
+      getPayloadValue(
+        payload,
+        "activityTypes",
+        "activityType",
+        "ACTIVITYTYPE",
+        "type",
+        "TYPE",
+        "activite",
+        "ACTIVITE",
+      ),
+    ),
+    ALLOWED.activityType,
+  );
 
   if (firstName) {
     setFirstExistingAttribute(

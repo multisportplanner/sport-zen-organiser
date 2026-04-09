@@ -58,6 +58,12 @@ const WaitlistForm = () => {
       activityTypes,
       motivations,
       // Alias explicites pour Make/Brevo (attributs personnalisés)
+      moment: moments,
+      disponibilite: dispo,
+      motivation: motivations,
+      activityType: activityTypes,
+      type: activityTypes,
+      activite: activityTypes,
       recherche: usage ? [usage] : [],
       partenaire: partnerPreferences,
       source: "waitlist",
