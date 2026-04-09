@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/landing/Footer";
 import { motion } from "framer-motion";
@@ -32,6 +33,7 @@ const etapes = [
 type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sportive" | "Autre";
 
 const Partenaire = () => {
+  const location = useLocation();
   const [submitted, setSubmitted] = useState(false);
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -134,6 +136,20 @@ const Partenaire = () => {
     document.getElementById("partenaire-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    if (location.hash === "#partenaire-form") {
+      document.getElementById("partenaire-form")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (location.hash === "#partenaire-top") {
+      document.getElementById("partenaire-top")?.scrollIntoView({ behavior: "auto" });
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.hash]);
+
   const chipClass = (active: boolean) =>
     `flex-1 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 ${
       active
@@ -146,7 +162,7 @@ const Partenaire = () => {
       <Header />
       <main className="pt-16 md:pt-20">
         {/* Hero */}
-        <section className="relative py-24 md:py-32 overflow-hidden">
+        <section id="partenaire-top" className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
             <div className="absolute bottom-0 -left-40 w-[400px] h-[400px] rounded-full bg-accent/10 blur-3xl" />

@@ -35,6 +35,11 @@ const Header = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const goToPartnerPage = () => {
+    setMobileOpen(false);
+    window.location.href = "/partenaire#partenaire-top";
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container flex items-center justify-between h-16 md:h-20">
@@ -67,7 +72,7 @@ const Header = () => {
             Comment ça marche
           </button>
           <button
-            onClick={() => scrollToSection("partenaires")}
+            onClick={goToPartnerPage}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Partenaires
@@ -109,7 +114,7 @@ const Header = () => {
             Comment ça marche
           </button>
           <button
-            onClick={() => scrollToSection("partenaires")}
+            onClick={goToPartnerPage}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
           >
             Partenaires
