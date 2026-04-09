@@ -108,13 +108,12 @@ const Header = () => {
           >
             Comment ça marche
           </button>
-          <Link
-            to="/partenaire"
-            onClick={() => setMobileOpen(false)}
-            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          <button
+            onClick={() => scrollToSection("partenaires")}
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
           >
             Partenaires
-          </Link>
+          </button>
           <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
             Rejoindre un groupe
           </Button>
