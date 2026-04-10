@@ -19,7 +19,7 @@ const Footer = () => (
 
       <div className="flex items-center justify-center gap-4 pt-1">
         <a
-          href="https://www.instagram.com/lizette0406/"
+          href="https://www.instagram.com/claire0406msp/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
