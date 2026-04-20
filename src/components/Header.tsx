@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
@@ -7,11 +7,12 @@ import logo from "@/assets/logo.png";
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const scrollToForm = () => {
     setMobileOpen(false);
     if (location.pathname !== "/") {
-      window.location.href = "/#waitlist-form";
+      navigate("/#waitlist-form");
       return;
     }
     document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
@@ -20,7 +21,7 @@ const Header = () => {
   const scrollToTop = () => {
     setMobileOpen(false);
     if (location.pathname !== "/") {
-      window.location.href = "/#hero";
+      navigate("/#hero");
       return;
     }
     document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
@@ -29,7 +30,7 @@ const Header = () => {
   const scrollToSection = (id: string) => {
     setMobileOpen(false);
     if (location.pathname !== "/") {
-      window.location.href = `/#${id}`;
+      navigate(`/#${id}`);
       return;
     }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -37,7 +38,7 @@ const Header = () => {
 
   const goToPartnerPage = () => {
     setMobileOpen(false);
-    window.location.href = "/partenaire#partenaire-top";
+    navigate("/partenaire#partenaire-top");
   };
 
   return (
