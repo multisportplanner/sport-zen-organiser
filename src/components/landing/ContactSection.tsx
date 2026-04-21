@@ -35,15 +35,15 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="waitlist-form" className="py-32 bg-muted/30">
+    <section id="waitlist-form" className="py-32 md:py-40 bg-background">
       <div className="container">
-        <div className="max-w-lg mx-auto space-y-10">
+        <div className="max-w-lg mx-auto space-y-8">
           {/* Bloc principal WhatsApp */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-card rounded-3xl p-8 md:p-10 shadow-card"
+            className="bg-muted/50 rounded-3xl p-8 md:p-12 shadow-card"
           >
             <div className="w-14 h-14 rounded-2xl bg-gradient-hero mx-auto mb-6 flex items-center justify-center shadow-glow">
               <MessageCircle className="w-7 h-7 text-primary-foreground" />
@@ -90,7 +90,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-background border border-border rounded-2xl p-6 md:p-8"
+            className="bg-muted/50 rounded-2xl p-6 md:p-8"
           >
             {submitted ? (
               <div className="text-center py-2">
