@@ -69,7 +69,14 @@ const parseBody = (body: unknown): Record<string, unknown> => {
     try {
       return JSON.parse(body) as Record<string, unknown>;
     } catch {
-      return {};
+      const params = new URLSearchParams(body);
+      if ([...params.keys()].length === 0) return {};
+
+      const parsed: Record<string, unknown> = {};
+      for (const [key, value] of params.entries()) {
+        parsed[key] = value;
+      }
+      return parsed;
     }
   }
 
@@ -78,6 +85,17 @@ const parseBody = (body: unknown): Record<string, unknown> => {
   }
 
   return {};
+};
+
+const getFirstEnv = (...keys: string[]): string | undefined => {
+  for (const key of keys) {
+    const value = process.env[key];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return undefined;
 };
 
 const getPayloadValue = (payload: Record<string, unknown>, ...keys: string[]): unknown => {
@@ -365,13 +383,19 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
 };
 
 export default async function handler(req: any, res: any) {
+  if (req.method === "OPTIONS") {
+    res.status(204).end();
+    return;
+  }
+
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
   }
 
-  const apiKey = process.env.BREVO_API_KEY;
-  const listId = Number(process.env.BREVO_LIST_ID);
+  const apiKey = getFirstEnv("BREVO_API_KEY", "BREVO_V3_API_KEY", "SENDINBLUE_API_KEY");
+  const listIdRaw = getFirstEnv("BREVO_LIST_ID", "BREVO_DEFAULT_LIST_ID", "SENDINBLUE_LIST_ID");
+  const listId = Number(listIdRaw);
 
   if (!apiKey) {
     res.status(500).json({ error: "Missing BREVO_API_KEY" });
