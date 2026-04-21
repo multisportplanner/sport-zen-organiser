@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Check, MessageCircle, Rocket } from "lucide-react";
 
 const WHATSAPP_URL =
-  "https://wa.me/33759933888?text=Salut%20MSP%2C%20oui%20%C3%A7a%20m'int%C3%A9resse.%20Comment%20ca%20marche%20%3F%20%3A)";
+  "https://wa.me/33759933888?text=Salut%20MSP%20👋%0AJe%20souhaite%20faire%20du%20sport%20sans%20avoir%20%C3%A0%20organiser.%0AComment%20%C3%A7a%20fonctionne%20%3F";
 
 const ContactSection = () => {
   const [email, setEmail] = useState("");
@@ -56,7 +56,7 @@ const ContactSection = () => {
             <p className="text-muted-foreground text-center mb-6 leading-relaxed">
               Échange directement sur WhatsApp pour organiser une activité sportive près de chez toi.
               <br />
-              Tu nous dis tes disponibilités et les sports qui t'intéressent, on s'occupe du reste.
+              On te pose seulement 3 questions, puis on s'occupe du reste.
             </p>
 
             <ul className="space-y-3 mb-8 max-w-xs mx-auto">
@@ -70,6 +70,10 @@ const ContactSection = () => {
               ))}
             </ul>
 
+            <p className="text-xs text-muted-foreground text-center mb-2">
+              Ça prend moins d'1 minute
+            </p>
+
             <Button asChild variant="cta" className="w-full h-12 text-base">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 Échanger sur WhatsApp
@@ -77,7 +81,7 @@ const ContactSection = () => {
             </Button>
 
             <p className="text-xs text-muted-foreground text-center mt-3">
-              Simple et rapide • Pas de formulaire à remplir
+              Réponse immédiate via WhatsApp • Pas de formulaire à remplir
             </p>
           </motion.div>
 
@@ -101,12 +105,23 @@ const ContactSection = () => {
             ) : (
               <>
                 <h4 className="text-lg md:text-xl font-bold text-center mb-2">
-                  Tu préfères commencer plus tranquillement ?
+                  Tu préfères y aller doucement ?
                 </h4>
-                <p className="text-sm text-muted-foreground text-center mb-5">
-                  Laisse simplement ton email pour suivre le lancement, recevoir les articles du blog
-                  et profiter d'avantages exclusifs et parrainage.
+                <p className="text-sm text-muted-foreground text-center mb-3">
+                  Laisse simplement ton email pour :
                 </p>
+                <ul className="space-y-2 mb-5 max-w-xs mx-auto">
+                  {[
+                    "accéder à des avantages réservés aux inscrits",
+                    "recevoir des idées d'activités",
+                    "découvrir les nouveautés près de chez toi",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div>
@@ -126,7 +141,7 @@ const ContactSection = () => {
                   </div>
 
                   <Button type="submit" variant="outline" className="w-full h-11">
-                    Recevoir les infos MSP
+                    Accéder aux avantages
                   </Button>
                 </form>
               </>
