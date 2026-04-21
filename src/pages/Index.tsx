@@ -26,7 +26,7 @@ const Index = () => {
         <ProjectionSection />
         <DeplacementSection />
         <SportsSection />
-        <WaitlistForm />
+        <ContactSection />
         <PartnerTeaser />
         <FAQSection />
         <FinalCTASection />
