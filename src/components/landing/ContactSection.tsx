@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Check, MessageCircle, Rocket } from "lucide-react";
 
 const WHATSAPP_URL =
-  "https://wa.me/33759933888?text=Salut%20MSP%20👋%0AJe%20souhaite%20faire%20du%20sport%20sans%20avoir%20%C3%A0%20organiser.%0AComment%20%C3%A7a%20fonctionne%20%3F";
+  "https://wa.me/33759933888?text=Salut%20MSP%2C%20oui%20%C3%A7a%20m'int%C3%A9resse.%20Comment%20ca%20marche%20%3F%20%3A)";
 
 const ContactSection = () => {
   const [email, setEmail] = useState("");
