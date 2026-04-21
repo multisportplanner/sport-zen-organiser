@@ -44,9 +44,6 @@ const Partenaire = () => {
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
   const [activities, setActivities] = useState("");
-  const [dispo, setDispo] = useState<string[]>([]);
-  const [moments, setMoments] = useState<string[]>([]);
-  const [message, setMessage] = useState("");
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -77,16 +74,6 @@ const Partenaire = () => {
       postalCode,
       city,
       activities,
-      dispo,
-      moments,
-      // Alias explicites pour Make/Brevo (attributs personnalisés)
-      // + variantes string pour les scénarios Make qui lisent du texte simple.
-      disponibilite: dispo,
-      disponibilites: dispo,
-      dispoText: dispo.join(", "),
-      moment: moments,
-      momentsText: moments.join(", "),
-      message,
       source: "partenaire",
       gdpr,
       rgpd: gdpr,
@@ -97,10 +84,7 @@ const Partenaire = () => {
       SMS: phone,
       VILLE: city,
       CODEPOSTAL: postalCode,
-      MESSAGELIBRE: message,
       ACTIVITEPROPOSEE: activities,
-      DISPONIBILITE: dispo.join(", "),
-      MOMENT: moments.join(", "),
       PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
       attributes: {
         SMS: phone,
@@ -111,10 +95,7 @@ const Partenaire = () => {
         PRENOM: firstName,
         VILLE: city,
         CODEPOSTAL: postalCode,
-        MESSAGELIBRE: message,
         ACTIVITEPROPOSEE: activities,
-        DISPONIBILITE: dispo.join(", "),
-        MOMENT: moments.join(", "),
         PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
       },
     };
@@ -399,40 +380,6 @@ const Partenaire = () => {
                     <div>
                       <Label htmlFor="p-activities" className="text-sm font-semibold">Type d'activités proposées</Label>
                       <Input id="p-activities" value={activities} onChange={(e) => setActivities(e.target.value)} placeholder="Ex : yoga, renforcement, escalade, kayak…" className="mt-1.5" maxLength={200} />
-                    </div>
-
-                    <div>
-                      <Label className="text-sm font-semibold mb-2 block">Disponibilités</Label>
-                      <div className="flex flex-wrap gap-3">
-                        {["Semaine", "Week-end", "Les deux"].map((d) => (
-                          <button key={d} type="button" onClick={() => setDispo((prev) => prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d])} className={chipClass(dispo.includes(d))}>
-                            {d}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label className="text-sm font-semibold mb-2 block">Moment</Label>
-                      <div className="flex flex-wrap gap-3">
-                        {["Matin", "Midi", "Soir"].map((m) => (
-                          <button key={m} type="button" onClick={() => setMoments((prev) => prev.includes(m) ? prev.filter((x) => x !== m) : [...prev, m])} className={chipClass(moments.includes(m))}>
-                            {m}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="p-message" className="text-sm font-semibold">Message libre</Label>
-                      <textarea
-                        id="p-message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Présentez-nous brièvement votre activité"
-                        className="mt-1.5 flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 min-h-[80px]"
-                        maxLength={1000}
-                      />
                     </div>
 
                     <div className="flex items-start gap-3">
