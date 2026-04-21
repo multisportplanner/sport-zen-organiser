@@ -7,7 +7,7 @@ import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import ProjectionSection from "@/components/landing/ProjectionSection";
 import DeplacementSection from "@/components/landing/DeplacementSection";
 import SportsSection from "@/components/landing/SportsSection";
-import WaitlistForm from "@/components/landing/WaitlistForm";
+import ContactSection from "@/components/landing/ContactSection";
 import PartnerTeaser from "@/components/landing/PartnerTeaser";
 import FAQSection from "@/components/landing/FAQSection";
 import FinalCTASection from "@/components/landing/FinalCTASection";
@@ -26,7 +26,7 @@ const Index = () => {
         <ProjectionSection />
         <DeplacementSection />
         <SportsSection />
-        <WaitlistForm />
+        <ContactSection />
         <PartnerTeaser />
         <FAQSection />
         <FinalCTASection />
