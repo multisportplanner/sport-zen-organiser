@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Check, MessageCircle, Rocket } from "lucide-react";
+import { MessageCircle, Rocket } from "lucide-react";
 
 const WHATSAPP_URL =
-  "https://wa.me/33759933888?text=Salut%20MSP%20👋%0AJe%20souhaite%20faire%20du%20sport%20sans%20avoir%20%C3%A0%20organiser.%0AComment%20%C3%A7a%20fonctionne%20%3F";
+  "https://wa.me/33759933888?text=Salut%20MSP%2C%20oui%20%C3%A7a%20m'int%C3%A9resse.%20Comment%20ca%20marche%20%3F%20%3A)";
 
 const ContactSection = () => {
   const [email, setEmail] = useState("");
@@ -37,41 +37,24 @@ const ContactSection = () => {
   return (
     <section id="waitlist-form" className="py-32 md:py-40 bg-background">
       <div className="container">
-        <div className="max-w-lg mx-auto space-y-8">
-          {/* Bloc principal WhatsApp */}
+        <div className="max-w-lg mx-auto space-y-10">
+          {/* Bloc principal WhatsApp - prioritaire */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-muted/50 rounded-3xl p-8 md:p-12 shadow-card"
+            className="bg-card border border-primary rounded-3xl p-8 md:p-12 shadow-card"
           >
             <div className="w-14 h-14 rounded-2xl bg-gradient-hero mx-auto mb-6 flex items-center justify-center shadow-glow">
               <MessageCircle className="w-7 h-7 text-primary-foreground" />
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-center mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-3">
               Le plus simple pour commencer
             </h3>
 
-            <p className="text-muted-foreground text-center mb-6 leading-relaxed">
-              Échange directement sur WhatsApp pour organiser une activité sportive près de chez toi.
-              <br />
-              On te pose seulement 3 questions, puis on s'occupe du reste.
-            </p>
-
-            <ul className="space-y-3 mb-8 max-w-xs mx-auto">
-              {["Tes disponibilités", "Les sports qui t'intéressent", "Ton lieu (ville)"].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm text-foreground">
-                  <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-primary" />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <p className="text-xs text-muted-foreground text-center mb-2">
-              Ça prend moins d'1 minute
+            <p className="text-muted-foreground text-center mb-8 leading-relaxed">
+              3 questions, 30 secondes, on s'occupe du reste
             </p>
 
             <Button asChild variant="cta" className="w-full h-12 text-base">
@@ -81,7 +64,7 @@ const ContactSection = () => {
             </Button>
 
             <p className="text-xs text-muted-foreground text-center mt-3">
-              Réponse immédiate via WhatsApp • Pas de formulaire à remplir
+              Réponse immédiate • Pas de formulaire à remplir
             </p>
           </motion.div>
 
@@ -90,7 +73,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-muted/50 rounded-2xl p-6 md:p-8"
+            className="bg-muted rounded-2xl p-6 md:p-8"
           >
             {submitted ? (
               <div className="text-center py-2">

@@ -53,10 +53,10 @@ const ProjectionSection = () => {
             className="text-center"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Rejoindre un groupe
+              Je me lance simplement
             </Button>
             <p className="text-xs text-muted-foreground/70 mt-3">
-              Un seul message suffit pour commencer
+              ✔️ 30 secondes &nbsp;•&nbsp; ✔️ 3 questions &nbsp;•&nbsp; ✔️ zéro organisation
             </p>
           </motion.div>
         </motion.div>

@@ -50,7 +50,7 @@ const UsagesSection = () => {
               ))}
             </ul>
             <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
-              Rejoindre un groupe
+              Je me lance simplement
             </Button>
           </motion.div>
 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Dumbbell, Heart, Activity, Flame, Sparkles, Footprints, Mountain, Waves, TreePine, Compass, Cable } from "lucide-react";
+import mspOrganiseImg from "@/assets/msp-organise.jpg";
 
 const regulieres = [
   { icon: Dumbbell, label: "Renforcement" },
@@ -31,9 +32,38 @@ const SportsSection = () => (
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
           Des activités selon <span className="text-gradient">tes envies</span>
         </h2>
+        <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+          Du renforcement au outdoor, on s'occupe de tout pour toi
+        </p>
       </motion.div>
 
-      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 mt-12">
+      {/* Illustration de projection */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="max-w-md mx-auto mt-10 mb-4"
+      >
+        <img
+          src={mspOrganiseImg}
+          alt="MSP organise pour toi, tu n'as rien à gérer"
+          loading="lazy"
+          width={1280}
+          height={640}
+          className="w-full h-auto"
+        />
+        <div className="flex items-center justify-around mt-2 px-2">
+          <p className="text-sm md:text-base font-semibold text-foreground text-center">
+            MSP organise pour toi
+          </p>
+          <p className="text-sm md:text-base font-semibold text-foreground text-center">
+            Tu n'as rien à gérer
+          </p>
+        </div>
+      </motion.div>
+
+      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 mt-16">
         {/* Régulières */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
