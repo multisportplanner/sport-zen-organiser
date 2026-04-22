@@ -53,7 +53,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
             <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Rejoindre un groupe
+              Je me lance simplement
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-8 text-base" onClick={scrollToHow}>
               Comment ça marche
@@ -61,7 +61,7 @@ const HeroSection = () => {
           </motion.div>
 
           <p className="text-xs text-muted-foreground/70">
-            Ça prend 30 secondes • On s'occupe du reste
+            ✔️ 30 secondes &nbsp;•&nbsp; ✔️ 3 questions &nbsp;•&nbsp; ✔️ zéro organisation
           </p>
         </motion.div>
       </div>
