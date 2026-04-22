@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Dumbbell, Heart, Activity, Flame, Sparkles, Footprints, Mountain, Waves, TreePine, Compass, Cable } from "lucide-react";
-import mspOrganiseImg from "@/assets/msp-organise.jpg";
+import mspOrganiseImg from "@/assets/msp-organise.png";
 
 const regulieres = [
   { icon: Dumbbell, label: "Renforcement" },
@@ -43,24 +43,16 @@ const SportsSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="max-w-md mx-auto mt-10 mb-4"
+        className="max-w-3xl mx-auto mt-12 mb-4 px-4"
       >
         <img
           src={mspOrganiseImg}
           alt="MSP organise pour toi, tu n'as rien à gérer"
           loading="lazy"
-          width={1280}
-          height={640}
+          width={1600}
+          height={800}
           className="w-full h-auto"
         />
-        <div className="flex items-center justify-around mt-2 px-2">
-          <p className="text-sm md:text-base font-semibold text-foreground text-center">
-            MSP organise pour toi
-          </p>
-          <p className="text-sm md:text-base font-semibold text-foreground text-center">
-            Tu n'as rien à gérer
-          </p>
-        </div>
       </motion.div>
 
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 mt-16">

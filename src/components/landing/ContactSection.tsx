@@ -43,7 +43,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-card border border-primary rounded-3xl p-8 md:p-12 shadow-card"
+            className="bg-card border-2 border-primary rounded-3xl p-10 md:p-14 shadow-glow"
           >
             <div className="w-14 h-14 rounded-2xl bg-gradient-hero mx-auto mb-6 flex items-center justify-center shadow-glow">
               <MessageCircle className="w-7 h-7 text-primary-foreground" />
@@ -53,17 +53,17 @@ const ContactSection = () => {
               Le plus simple pour commencer
             </h3>
 
-            <p className="text-muted-foreground text-center mb-8 leading-relaxed">
+            <p className="text-muted-foreground text-center mb-10 leading-relaxed">
               3 questions, 30 secondes, on s'occupe du reste
             </p>
 
-            <Button asChild variant="cta" className="w-full h-12 text-base">
+            <Button asChild variant="cta" className="w-full max-w-md mx-auto flex h-14 text-base">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 Échanger sur WhatsApp
               </a>
             </Button>
 
-            <p className="text-xs text-muted-foreground text-center mt-3">
+            <p className="text-sm text-foreground/70 text-center mt-5 font-medium">
               Réponse immédiate • Pas de formulaire à remplir
             </p>
           </motion.div>
