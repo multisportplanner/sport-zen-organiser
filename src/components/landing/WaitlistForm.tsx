@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rocket } from "lucide-react";
 import PostalCodeInput from "@/components/ui/postal-code-input";
+import { EMAIL_ALT_CTA_LABEL } from "@/lib/cta";
 
 type Usage = "Activité régulière" | "Activité ponctuelle" | "Les deux";
 type Dispo = "Semaine" | "Week-end" | "Les deux";
@@ -244,7 +245,7 @@ const WaitlistForm = () => {
               {errors.gdpr && <p className="text-destructive text-xs">{errors.gdpr}</p>}
 
               <Button variant="cta" type="submit" className="w-full h-12 text-base">
-                Rejoindre un groupe
+                {EMAIL_ALT_CTA_LABEL}
               </Button>
               <p className="text-xs text-muted-foreground text-center mt-3">
                 Aucun engagement • On te recontacte rapidement

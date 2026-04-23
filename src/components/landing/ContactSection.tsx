@@ -4,9 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MessageCircle, Rocket } from "lucide-react";
-
-const WHATSAPP_URL =
-  "https://wa.me/33759933888?text=Salut%20MSP%2C%20oui%20%C3%A7a%20m'int%C3%A9resse.%20Comment%20ca%20marche%20%3F%20%3A)";
+import {
+  CTA_MICRO_REASSURANCE,
+  CTA_SUBTEXT,
+  EMAIL_ALT_CTA_LABEL,
+  PRIMARY_CTA_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/cta";
 
 const ContactSection = () => {
   const [email, setEmail] = useState("");
@@ -59,13 +63,14 @@ const ContactSection = () => {
 
             <Button asChild variant="cta" className="w-full max-w-md mx-auto flex h-14 text-base">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                Échanger sur WhatsApp
+                {PRIMARY_CTA_LABEL}
               </a>
             </Button>
 
             <p className="text-sm text-foreground/70 text-center mt-5 font-medium">
-              Réponse immédiate • Pas de formulaire à remplir
+              {CTA_SUBTEXT}
             </p>
+            <p className="text-xs text-foreground/55 text-center mt-2">{CTA_MICRO_REASSURANCE}</p>
           </motion.div>
 
           {/* Bloc secondaire email */}
@@ -91,13 +96,13 @@ const ContactSection = () => {
                   Tu préfères y aller doucement ?
                 </h4>
                 <p className="text-sm text-muted-foreground text-center mb-3">
-                  Laisse simplement ton email pour :
+                  L'email reste une alternative si tu préfères.
                 </p>
                 <ul className="space-y-2 mb-5 max-w-xs mx-auto">
                   {[
-                    "accéder à des avantages réservés aux inscrits",
-                    "recevoir des idées d'activités",
+                    "recevoir les prochaines activités près de chez moi",
                     "découvrir les nouveautés près de chez toi",
+                    "choisir tranquillement ton prochain créneau",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
@@ -124,7 +129,7 @@ const ContactSection = () => {
                   </div>
 
                   <Button type="submit" variant="outline" className="w-full h-11">
-                    Accéder aux avantages
+                    {EMAIL_ALT_CTA_LABEL}
                   </Button>
                 </form>
               </>

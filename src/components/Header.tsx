@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
 import { SHOW_BLOG_IN_NAV } from "@/config/features";
 import logo from "@/assets/logo.png";
 
@@ -9,15 +10,6 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-
-  const scrollToForm = () => {
-    setMobileOpen(false);
-    if (location.pathname !== "/") {
-      navigate("/#waitlist-form");
-      return;
-    }
-    document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const scrollToTop = () => {
     setMobileOpen(false);
@@ -92,8 +84,8 @@ const Header = () => {
           >
             Partenaires
           </button>
-          <Button variant="cta" size="sm" onClick={scrollToForm}>
-            Je me lance
+          <Button asChild variant="cta" size="sm">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
           </Button>
         </nav>
 
@@ -142,8 +134,8 @@ const Header = () => {
           >
             Partenaires
           </button>
-          <Button variant="cta" size="sm" className="w-full" onClick={scrollToForm}>
-            Je me lance
+          <Button asChild variant="cta" size="sm" className="w-full">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
           </Button>
         </div>
       )}

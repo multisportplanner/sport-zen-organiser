@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
 
 const DeplacementSection = () => {
-  const scrollToForm = () => {
-    document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="py-32">
       <div className="container">
@@ -34,12 +31,13 @@ const DeplacementSection = () => {
             Tu continues à bouger, où que tu sois.
           </p>
 
-          <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-            Je me lance simplement
+          <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              {PRIMARY_CTA_LABEL}
+            </a>
           </Button>
-          <p className="text-xs text-muted-foreground/70 mt-3">
-            ✔️ 30 secondes &nbsp;•&nbsp; ✔️ 3 questions &nbsp;•&nbsp; ✔️ zéro organisation
-          </p>
+          <p className="text-xs text-muted-foreground/70 mt-3">{CTA_SUBTEXT}</p>
+          <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>
         </motion.div>
       </div>
     </section>

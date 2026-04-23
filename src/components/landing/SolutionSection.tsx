@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
 
 const reasons = [
   "Tu veux faire du sport sans te prendre la tête",
@@ -10,10 +11,6 @@ const reasons = [
 ];
 
 const SolutionSection = () => {
-  const scrollToForm = () => {
-    document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="solution" className="py-32">
       <div className="container">
@@ -52,12 +49,13 @@ const SolutionSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Je me lance simplement
+            <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
             </Button>
             <p className="text-xs text-muted-foreground/70 mt-3">
-              ✔️ 30 secondes &nbsp;•&nbsp; ✔️ 3 questions &nbsp;•&nbsp; ✔️ zéro organisation
+              {CTA_SUBTEXT}
             </p>
+            <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>
           </motion.div>
         </motion.div>
       </div>
