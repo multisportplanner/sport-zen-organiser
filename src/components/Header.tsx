@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SHOW_BLOG_IN_NAV } from "@/config/features";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
@@ -39,6 +40,11 @@ const Header = () => {
   const goToPartnerPage = () => {
     setMobileOpen(false);
     navigate("/partenaire#partenaire-top");
+  };
+
+  const goToBlog = () => {
+    setMobileOpen(false);
+    navigate("/blog");
   };
 
   return (
