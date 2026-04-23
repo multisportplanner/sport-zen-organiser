@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import {
+  CTA_MICRO_REASSURANCE,
+  CTA_SUBTEXT,
+  PRIMARY_CTA_LABEL,
+  WHATSAPP_URL,
+} from "@/lib/cta";
 import { cn } from "@/lib/utils";
 
 /**
- * Reuses the EXACT same primary CTA flow as the homepage ContactSection
- * (WhatsApp link + "Échanger sur WhatsApp" wording + same destination).
+ * Reuses the exact same primary CTA flow as the homepage ContactSection.
  * Used on /blog and at the bottom of every article.
  */
-
-const WHATSAPP_URL =
-  "https://wa.me/33759933888?text=Salut%20MSP%2C%20oui%20%C3%A7a%20m'int%C3%A9resse.%20Comment%20ca%20marche%20%3F%20%3A)";
 
 interface BlogCTASectionProps {
   title?: string | null;
@@ -24,9 +26,9 @@ interface BlogCTASectionProps {
 const BlogCTASection = ({
   title = "Tu veux essayer sans t'organiser ?",
   text = "Chaque semaine, MSP organise pour toi une séance de sport en petit groupe près de chez toi.",
-  buttonLabel = "Échanger sur WhatsApp",
-  subText = "Réponse immédiate • Pas de formulaire à remplir",
-  microText,
+  buttonLabel = PRIMARY_CTA_LABEL,
+  subText = CTA_SUBTEXT,
+  microText = CTA_MICRO_REASSURANCE,
   compactTopSpacing = false,
 }: BlogCTASectionProps) => {
   return (

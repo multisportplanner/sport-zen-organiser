@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
 
 const HeroSection = () => {
-  const scrollToForm = () => {
-    document.getElementById("waitlist-form")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const scrollToHow = () => {
     document.getElementById("comment-ca-marche")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -52,17 +49,18 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
-            <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToForm}>
-              Je me lance simplement
+            <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                {PRIMARY_CTA_LABEL}
+              </a>
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-8 text-base" onClick={scrollToHow}>
               Comment ça marche
             </Button>
           </motion.div>
 
-          <p className="text-xs text-muted-foreground/70">
-            ✔️ 30 secondes &nbsp;•&nbsp; ✔️ 3 questions &nbsp;•&nbsp; ✔️ zéro organisation
-          </p>
+          <p className="text-xs text-muted-foreground/70">{CTA_SUBTEXT}</p>
+          <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>
         </motion.div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import Footer from "@/components/landing/Footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mountain, Waves, Bike, Anchor, TreePine, MapPin, Clock, Users } from "lucide-react";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
 
 const activities = [
   {
@@ -48,10 +49,6 @@ const activities = [
 ];
 
 const Activites = () => {
-  const scrollToContact = () => {
-    document.getElementById("activites-contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -109,8 +106,8 @@ const Activites = () => {
                     </div>
                   </div>
 
-                  <Button variant="cta" size="sm" className="w-full" onClick={scrollToContact}>
-                    Faire une demande
+                  <Button asChild variant="cta" size="sm" className="w-full">
+                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
                   </Button>
                 </motion.div>
               ))}
@@ -133,19 +130,13 @@ const Activites = () => {
               <p className="text-muted-foreground mb-8">
                 Dis-nous quelle activité t'intéresse et on s'occupe de tout.
               </p>
-              <Button
-                variant="cta"
-                size="lg"
-                className="h-14 px-10 text-lg"
-                onClick={() => {
-                  window.location.href = "/#waitlist-form";
-                }}
-              >
-                Trouver mon activité
+              <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
               </Button>
               <p className="text-xs text-muted-foreground/70 mt-3">
-                Activité sportive • petit groupe • près de chez toi
+                {CTA_SUBTEXT}
               </p>
+              <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>
             </motion.div>
           </div>
         </section>
