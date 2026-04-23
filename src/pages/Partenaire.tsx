@@ -47,6 +47,12 @@ const Partenaire = () => {
   const [gdpr, setGdpr] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const cleanupPartnerHash = () => {
+    if (window.location.hash === "#partenaire-top") {
+      window.history.replaceState(null, "", `${location.pathname}${location.search}`);
+    }
+  };
+
   const validate = () => {
     const e: Record<string, string> = {};
     if (!lastName.trim()) e.lastName = "Nom requis";
@@ -114,6 +120,7 @@ const Partenaire = () => {
 
     if (response.ok) {
       setSubmitted(true);
+      cleanupPartnerHash();
     } else {
       alert("Une erreur est survenue. Merci de réessayer.");
     }
