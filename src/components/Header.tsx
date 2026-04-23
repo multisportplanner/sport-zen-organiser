@@ -78,6 +78,14 @@ const Header = () => {
           >
             Comment ça marche
           </button>
+          {SHOW_BLOG_IN_NAV && (
+            <button
+              onClick={goToBlog}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Blog
+            </button>
+          )}
           <button
             onClick={goToPartnerPage}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -120,6 +128,14 @@ const Header = () => {
           >
             Comment ça marche
           </button>
+          {SHOW_BLOG_IN_NAV && (
+            <button
+              onClick={goToBlog}
+              className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
+            >
+              Blog
+            </button>
+          )}
           <button
             onClick={goToPartnerPage}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
