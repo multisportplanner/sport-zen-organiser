@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
+import { CONVERSION_SECTION_ID, PRIMARY_CTA_LABEL } from "@/lib/cta";
 import { SHOW_BLOG_IN_NAV } from "@/config/features";
 import logo from "@/assets/logo.png";
 
@@ -37,6 +37,15 @@ const Header = () => {
   const goToBlog = () => {
     setMobileOpen(false);
     navigate("/blog");
+  };
+
+  const goToConversionSection = () => {
+    setMobileOpen(false);
+    if (location.pathname !== "/") {
+      navigate(`/#${CONVERSION_SECTION_ID}`);
+      return;
+    }
+    document.getElementById(CONVERSION_SECTION_ID)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -84,8 +93,8 @@ const Header = () => {
           >
             Partenaires
           </button>
-          <Button asChild variant="cta" size="sm">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
+          <Button variant="cta" size="sm" onClick={goToConversionSection}>
+            {PRIMARY_CTA_LABEL}
           </Button>
         </nav>
 
@@ -134,8 +143,8 @@ const Header = () => {
           >
             Partenaires
           </button>
-          <Button asChild variant="cta" size="sm" className="w-full">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
+          <Button variant="cta" size="sm" className="w-full" onClick={goToConversionSection}>
+            {PRIMARY_CTA_LABEL}
           </Button>
         </div>
       )}

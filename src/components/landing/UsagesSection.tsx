@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CalendarCheck, Sun, Check } from "lucide-react";
-import { PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
+import { PRIMARY_CTA_LABEL, scrollToConversionSection } from "@/lib/cta";
 
 const UsagesSection = () => {
   return (
@@ -46,8 +46,8 @@ const UsagesSection = () => {
                 </li>
               ))}
             </ul>
-            <Button asChild variant="cta" size="sm" className="w-full">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
+            <Button variant="cta" size="sm" className="w-full" onClick={scrollToConversionSection}>
+              {PRIMARY_CTA_LABEL}
             </Button>
           </motion.div>
 
@@ -78,8 +78,8 @@ const UsagesSection = () => {
                 </li>
               ))}
             </ul>
-            <Button asChild variant="cta" size="sm" className="w-full">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">{PRIMARY_CTA_LABEL}</a>
+            <Button variant="cta" size="sm" className="w-full" onClick={scrollToConversionSection}>
+              {PRIMARY_CTA_LABEL}
             </Button>
           </motion.div>
         </div>
