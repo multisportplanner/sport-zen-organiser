@@ -76,7 +76,7 @@ const Partenaire = () => {
       partner_type: normalizedPartnerType,
       partnerType: normalizedPartnerType,
       partnerTypeLabel: normalizedPartnerType,
-      partnerType,
+      partnerTypes: partnerType,
       postalCode,
       city,
       activities,

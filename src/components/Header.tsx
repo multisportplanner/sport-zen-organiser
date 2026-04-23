@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SHOW_BLOG_IN_NAV } from "@/config/features";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
@@ -41,6 +42,11 @@ const Header = () => {
     navigate("/partenaire#partenaire-top");
   };
 
+  const goToBlog = () => {
+    setMobileOpen(false);
+    navigate("/blog");
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container flex items-center justify-between h-16 md:h-20">
@@ -72,6 +78,14 @@ const Header = () => {
           >
             Comment ça marche
           </button>
+          {SHOW_BLOG_IN_NAV && (
+            <button
+              onClick={goToBlog}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Blog
+            </button>
+          )}
           <button
             onClick={goToPartnerPage}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -114,6 +128,14 @@ const Header = () => {
           >
             Comment ça marche
           </button>
+          {SHOW_BLOG_IN_NAV && (
+            <button
+              onClick={goToBlog}
+              className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
+            >
+              Blog
+            </button>
+          )}
           <button
             onClick={goToPartnerPage}
             className="block text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
