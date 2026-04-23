@@ -387,13 +387,13 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   if (activityType.length) setFirstExistingAttribute(attributes, availableAttributes, ["ACTIVITYTYPE"], activityType);
 
   if (partnerType) {
+    setFirstExistingAttribute(attributes, availableAttributes, ["PARTNER_TYPE"], partnerType);
     setAllExistingAttributes(
       attributes,
       availableAttributes,
       [
         "TYPE_PARTENAIRE",
         "TYPEPARTENAIRE",
-        "PARTNER_TYPE",
         "PARTENAIRE_TYPE",
         "TYPE_DE_PARTENAIRE",
         "PARTENAIRE_TYPE_LIBELLE",
@@ -484,6 +484,7 @@ export default async function handler(req: any, res: any) {
   }
 
   const allAttributes = buildAttributes(body, availableAttributes);
+  const partnerTypeRaw = body.partnerType ?? body.partner_type ?? body.partnerTypes ?? "";
 
   const brevoPayload = {
     email,
@@ -502,8 +503,9 @@ export default async function handler(req: any, res: any) {
       body: JSON.stringify(payload),
     });
 
-    console.log("[brevo-contact] partner_type(raw):", body.partner_type ?? body.partnerType ?? body.partnerTypes ?? "");
-    console.log("[brevo-contact] payload sent to Brevo:", brevoPayload);
+    console.log("partnerType raw:", partnerTypeRaw);
+    console.log("Brevo attributes:", allAttributes);
+    console.log("Brevo payload:", brevoPayload);
 
     let response = await sendToBrevo(brevoPayload);
     let responseBody = await response.json().catch(() => null);
