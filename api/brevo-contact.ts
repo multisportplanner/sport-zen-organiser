@@ -50,20 +50,25 @@ const normalizePhoneNumber = (value: string): { raw: string; e164: string } => {
 
   if (!digitsOnly) return { raw, e164: "" };
 
+  let e164 = "";
+
   if (digitsAndPlus.startsWith("+")) {
-    return { raw, e164: `+${digitsOnly}` };
+    e164 = `+${digitsOnly}`;
+  } else if (digitsOnly.startsWith("00") && digitsOnly.length > 2) {
+    e164 = `+${digitsOnly.slice(2)}`;
+  } else if (digitsOnly.length === 10 && digitsOnly.startsWith("0")) {
+    // Normalisation France (06XXXXXXXX, 07XXXXXXXX, 0XXXXXXXXX -> +33XXXXXXXXX)
+    e164 = `+33${digitsOnly.slice(1)}`;
+  } else {
+    e164 = `+${digitsOnly}`;
   }
 
-  if (digitsOnly.startsWith("00") && digitsOnly.length > 2) {
-    return { raw, e164: `+${digitsOnly.slice(2)}` };
+  // Brevo attend un numéro E.164 valide pour l'attribut SMS.
+  if (!/^\+[1-9]\d{7,14}$/.test(e164)) {
+    return { raw, e164: "" };
   }
 
-  // Normalisation France (06XXXXXXXX, 07XXXXXXXX, 0XXXXXXXXX -> +33XXXXXXXXX)
-  if (digitsOnly.length === 10 && digitsOnly.startsWith("0")) {
-    return { raw, e164: `+33${digitsOnly.slice(1)}` };
-  }
-
-  return { raw, e164: `+${digitsOnly}` };
+  return { raw, e164 };
 };
 
 const isAffirmative = (value: unknown): boolean => {
@@ -387,7 +392,7 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   if (activityType.length) setFirstExistingAttribute(attributes, availableAttributes, ["ACTIVITYTYPE"], activityType);
 
   if (partnerType) {
-    setFirstExistingAttribute(attributes, availableAttributes, ["PARTNER_TYPE"], partnerType);
+    setFirstExistingAttribute(attributes, availableAttributes, ["PARTENAIRE"], partnerType);
     setAllExistingAttributes(
       attributes,
       availableAttributes,
@@ -532,7 +537,6 @@ export default async function handler(req: any, res: any) {
         "ACTIVITE_PROPOSEE",
         "TYPE_PARTENAIRE",
         "TYPEPARTENAIRE",
-        "PARTNER_TYPE",
         "PARTENAIRE_TYPE",
         "SMS",
         // À conserver le plus longtemps possible :

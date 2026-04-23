@@ -91,7 +91,7 @@ const Partenaire = () => {
       VILLE: city,
       CODEPOSTAL: postalCode,
       ACTIVITEPROPOSEE: activities,
-      PARTNER_TYPE: normalizedPartnerType,
+      PARTENAIRE: normalizedPartnerType,
       attributes: {
         SMS: phone,
         FNAME: firstName,
@@ -102,7 +102,7 @@ const Partenaire = () => {
         VILLE: city,
         CODEPOSTAL: postalCode,
         ACTIVITEPROPOSEE: activities,
-        PARTNER_TYPE: normalizedPartnerType,
+        PARTENAIRE: normalizedPartnerType,
       },
     };
 
