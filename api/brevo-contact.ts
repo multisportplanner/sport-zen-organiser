@@ -43,6 +43,29 @@ const toSingleValue = (value: unknown): string => {
   return String(value ?? "").trim();
 };
 
+const normalizePhoneNumber = (value: string): { raw: string; e164: string } => {
+  const raw = value.trim();
+  const digitsAndPlus = raw.replace(/[^\d+]/g, "");
+  const digitsOnly = digitsAndPlus.replace(/\D/g, "");
+
+  if (!digitsOnly) return { raw, e164: "" };
+
+  if (digitsAndPlus.startsWith("+")) {
+    return { raw, e164: `+${digitsOnly}` };
+  }
+
+  if (digitsOnly.startsWith("00") && digitsOnly.length > 2) {
+    return { raw, e164: `+${digitsOnly.slice(2)}` };
+  }
+
+  // Normalisation France (06XXXXXXXX, 07XXXXXXXX, 0XXXXXXXXX -> +33XXXXXXXXX)
+  if (digitsOnly.length === 10 && digitsOnly.startsWith("0")) {
+    return { raw, e164: `+33${digitsOnly.slice(1)}` };
+  }
+
+  return { raw, e164: `+${digitsOnly}` };
+};
+
 const isAffirmative = (value: unknown): boolean => {
   if (typeof value === "boolean") return value;
   if (typeof value === "number") return value === 1;
@@ -217,6 +240,7 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   const lastName = toSingleValue(getPayloadValue(payload, "lastName", "nom", "NOM", "lname", "LNAME"));
   const firstName = toSingleValue(getPayloadValue(payload, "firstName", "prenom", "PRENOM", "name", "fname", "FNAME"));
   const phone = toSingleValue(getPayloadValue(payload, "phone", "sms", "SMS"));
+  const { raw: rawPhone, e164: e164Phone } = normalizePhoneNumber(phone);
   const city = toSingleValue(getPayloadValue(payload, "city", "ville", "VILLE"));
   const postalCode = toSingleValue(getPayloadValue(payload, "postalCode", "codePostal", "CODEPOSTAL"));
   const rgpdConsent = isAffirmative(payload.gdpr ?? payload.rgpd) ? "Oui" : "Non";
@@ -225,7 +249,20 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   const rechercheInput = usage
     ? [usage]
     : toStringArray(getPayloadValue(payload, "recherche", "RECHERCHE"));
-  const partnerType = toSingleValue(getPayloadValue(payload, "partnerType", "partenaire", "PARTENAIRE"));
+  const partnerType = toSingleValue(
+    getPayloadValue(
+      payload,
+      "partnerType",
+      "partnerTypeLabel",
+      "partenaireType",
+      "typePartenaire",
+      "TYPE_PARTENAIRE",
+      "PARTENAIRE_TYPE",
+      "PARTNER_TYPE",
+      "PARTENAIRE",
+      "partenaire",
+    ),
+  );
   const activities = toSingleValue(getPayloadValue(payload, "activities", "activiteProposee", "ACTIVITEPROPOSEE"));
   const message = toSingleValue(getPayloadValue(payload, "message", "messageLibre", "MESSAGELIBRE"));
 
@@ -300,13 +337,22 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   // n'existe côté Brevo : cela provoque une erreur 400 "attribute does not exist".
   // On préfère accepter le contact sans cet attribut plutôt que de faire échouer tout l'envoi.
 
-  if (phone) {
-    setFirstExistingAttribute(
+  if (rawPhone) {
+    setAllExistingAttributes(
       attributes,
       availableAttributes,
-      ["SMS", "PHONE", "TELEPHONE", "MOBILE"],
-      phone,
+      ["PHONE", "TELEPHONE"],
+      rawPhone,
     );
+
+    if (e164Phone) {
+      setAllExistingAttributes(
+        attributes,
+        availableAttributes,
+        ["SMS", "MOBILE"],
+        e164Phone,
+      );
+    }
   }
   if (moment.length) {
     setAllExistingAttributes(
@@ -339,7 +385,8 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
         "TYPEPARTENAIRE",
         "PARTNER_TYPE",
         "PARTENAIRE_TYPE",
-        "PARTENAIRE",
+        "TYPE_DE_PARTENAIRE",
+        "PARTENAIRE_TYPE_LIBELLE",
       ],
       partnerType,
     );
