@@ -71,7 +71,9 @@ const renderSection = (section: ArticleSection, idx: number) => {
 const BlogArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
-  const isSportSimpleArticle = article?.slug === "faire-du-sport-simplement";
+  const hasCustomFinalCta =
+    article?.slug === "faire-du-sport-simplement" ||
+    article?.slug === "reprendre-le-sport-facilement";
 
   useEffect(() => {
     if (!article) return;
@@ -148,7 +150,7 @@ const BlogArticle = () => {
         </section>
 
         {/* Content */}
-        <article className={isSportSimpleArticle ? "pb-6" : "pb-20"}>
+        <article className={hasCustomFinalCta ? "pb-6" : "pb-20"}>
           <div className="container">
             <div className="max-w-3xl mx-auto">
               {article.content.map(renderSection)}
@@ -158,22 +160,22 @@ const BlogArticle = () => {
 
         {/* CTA — same component as homepage */}
         <BlogCTASection
-          title={isSportSimpleArticle ? null : undefined}
-          text={isSportSimpleArticle ? null : undefined}
+          title={hasCustomFinalCta ? null : undefined}
+          text={hasCustomFinalCta ? null : undefined}
           buttonLabel={
-            isSportSimpleArticle ? "Rejoins un groupe près de chez toi" : undefined
+            hasCustomFinalCta ? "Rejoins un groupe près de chez toi" : undefined
           }
           subText={
-            isSportSimpleArticle
+            hasCustomFinalCta
               ? "Réponse immédiate sur WhatsApp, en privé"
               : undefined
           }
           microText={
-            isSportSimpleArticle
+            hasCustomFinalCta
               ? "Pas de groupe WhatsApp. Juste un échange rapide."
               : undefined
           }
-          compactTopSpacing={isSportSimpleArticle}
+          compactTopSpacing={hasCustomFinalCta}
         />
 
         {/* FAQ */}
