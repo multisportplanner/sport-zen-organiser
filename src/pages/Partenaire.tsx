@@ -32,6 +32,20 @@ const etapes = [
 
 type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sportive" | "Autre";
 
+const sanitizePhone = (value: string) => value.replace(/[\s.-]/g, "").trim();
+
+const toFrenchInternationalPhone = (value: string): string | null => {
+  const sanitized = sanitizePhone(value);
+
+  if (!sanitized) return null;
+
+  if (/^\+33[67]\d{8}$/.test(sanitized)) return sanitized;
+  if (/^0033[67]\d{8}$/.test(sanitized)) return `+${sanitized.slice(2)}`;
+  if (/^0[67]\d{8}$/.test(sanitized)) return `+33${sanitized.slice(1)}`;
+
+  return null;
+};
+
 const Partenaire = () => {
   const location = useLocation();
   const [submitted, setSubmitted] = useState(false);
@@ -52,7 +66,11 @@ const Partenaire = () => {
     if (!lastName.trim()) e.lastName = "Nom requis";
     if (!firstName.trim()) e.firstName = "Prénom requis";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email invalide";
-    if (!phone.trim()) e.phone = "Téléphone requis";
+    if (!phone.trim()) {
+      e.phone = "Téléphone requis";
+    } else if (!toFrenchInternationalPhone(phone)) {
+      e.phone = "Numéro invalide (ex: 06 12 34 56 78)";
+    }
     if (partnerType.includes("Autre") && !otherType.trim()) e.otherType = "Précise ton activité";
     if (!postalCode.trim() || postalCode.length !== 5) e.postalCode = "Code postal requis (5 chiffres)";
     if (!gdpr) e.gdpr = "Acceptation requise";
@@ -63,6 +81,11 @@ const Partenaire = () => {
   const handleSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
     if (!validate()) return;
+    const normalizedPhone = toFrenchInternationalPhone(phone);
+    if (!normalizedPhone) {
+      setErrors((prev) => ({ ...prev, phone: "Numéro invalide (ex: 06 12 34 56 78)" }));
+      return;
+    }
 
     const normalizedPartnerType = partnerType
       .map((partnerType) => (partnerType === "Autre" ? `Autre: ${otherType.trim()}` : partnerType))
@@ -72,7 +95,7 @@ const Partenaire = () => {
       lastName,
       firstName,
       email,
-      phone,
+      phone: normalizedPhone,
       partner_type: normalizedPartnerType,
       partnerType: normalizedPartnerType,
       partnerTypeLabel: normalizedPartnerType,
@@ -87,13 +110,13 @@ const Partenaire = () => {
       NOM: lastName,
       PRENOM: firstName,
       EMAIL: email,
-      SMS: phone,
+      SMS: normalizedPhone,
       VILLE: city,
       CODEPOSTAL: postalCode,
       ACTIVITEPROPOSEE: activities,
       PARTENAIRE: normalizedPartnerType,
       attributes: {
-        SMS: phone,
+        SMS: normalizedPhone,
         FNAME: firstName,
         LNAME: lastName,
         EMAIL: email,
@@ -355,7 +378,17 @@ const Partenaire = () => {
 
                     <div>
                       <Label htmlFor="p-phone" className="text-sm font-semibold">Téléphone *</Label>
-                      <Input id="p-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="06 00 00 00 00" className="mt-1.5" maxLength={20} />
+                      <Input
+                        id="p-phone"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="06 12 34 56 78"
+                        className="mt-1.5"
+                        maxLength={20}
+                      />
                       {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
                     </div>
 
