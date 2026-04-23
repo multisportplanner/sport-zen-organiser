@@ -32,6 +32,13 @@ const etapes = [
 
 type PartnerType = "Guide / encadrant outdoor" | "Coach sportif" | "Structure sportive" | "Autre";
 
+const PARTNER_TYPE_TO_BREVO_VALUE: Record<PartnerType, string> = {
+  "Guide / encadrant outdoor": "guide",
+  "Coach sportif": "coach",
+  "Structure sportive": "structure sportive",
+  Autre: "autre",
+};
+
 const Partenaire = () => {
   const location = useLocation();
   const [submitted, setSubmitted] = useState(false);
@@ -65,12 +72,16 @@ const Partenaire = () => {
     ev.preventDefault();
     if (!validate()) return;
 
+    const normalizedPartnerType = partnerType === "Autre" ? `autre: ${otherType}` : PARTNER_TYPE_TO_BREVO_VALUE[partnerType];
+    const partnerTypeLabel = partnerType === "Autre" ? `Autre: ${otherType}` : partnerType;
+
     const data = {
       lastName,
       firstName,
       email,
       phone,
-      partnerType: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
+      partnerType: normalizedPartnerType,
+      partnerTypeLabel,
       postalCode,
       city,
       activities,
@@ -85,7 +96,9 @@ const Partenaire = () => {
       VILLE: city,
       CODEPOSTAL: postalCode,
       ACTIVITEPROPOSEE: activities,
-      PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
+      PARTENAIRE_TYPE: normalizedPartnerType,
+      TYPE_PARTENAIRE: normalizedPartnerType,
+      PARTENAIRE_TYPE_LIBELLE: partnerTypeLabel,
       attributes: {
         SMS: phone,
         FNAME: firstName,
@@ -96,7 +109,9 @@ const Partenaire = () => {
         VILLE: city,
         CODEPOSTAL: postalCode,
         ACTIVITEPROPOSEE: activities,
-        PARTENAIRE: partnerType === "Autre" ? `Autre: ${otherType}` : partnerType,
+        PARTENAIRE_TYPE: normalizedPartnerType,
+        TYPE_PARTENAIRE: normalizedPartnerType,
+        PARTENAIRE_TYPE_LIBELLE: partnerTypeLabel,
       },
     };
 
