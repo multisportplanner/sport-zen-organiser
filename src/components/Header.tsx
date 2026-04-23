@@ -39,7 +39,7 @@ const Header = () => {
 
   const goToPartnerPage = () => {
     setMobileOpen(false);
-    navigate("/partenaire#partenaire-top");
+    navigate("/partenaire");
   };
 
   const goToBlog = () => {
