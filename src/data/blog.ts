@@ -119,21 +119,133 @@ export const ARTICLES: BlogArticle[] = [
     content: [
       {
         type: "intro",
-        text: "Le sport est devenu une affaire de programmes, d'applis, d'objectifs. Et si on revenait à l'essentiel : bouger, ensemble, sans pression ?",
+        text: "Sur le papier, faire du sport, c'est simple : on choisit une activité, on bloque un créneau, on y va. En réalité, c'est souvent tout l'inverse.",
       },
-      { type: "h2", text: "Pourquoi le sport est devenu compliqué" },
       {
         type: "paragraph",
-        text: "Plus le choix est large, plus la décision est difficile. C'est le paradoxe du choix appliqué au sport.",
+        text: "Avant même de bouger, il faut trouver un moment, voir avec qui pratiquer, choisir l'activité, réserver un lieu et s'organiser. Et souvent, rien que ça suffit à abandonner.",
       },
-      { type: "h2", text: "La règle des 3 critères" },
+      { type: "h2", text: "Le vrai problème, ce n'est pas la motivation" },
+      {
+        type: "paragraph",
+        text: "On pense souvent qu'on ne fait pas assez de sport par manque de motivation. Mais la motivation fluctue : certains jours elle est là, d'autres non. Ce qui change vraiment la donne, c'est la simplicité.",
+      },
+      {
+        type: "highlight",
+        text: "Quand quelque chose est simple, on le fait. Quand c'est compliqué, on repousse, même avec de la motivation.",
+      },
+      { type: "h2", text: "Pourquoi le sport devient compliqué" },
+      {
+        type: "paragraph",
+        text: "Aujourd'hui, faire du sport demande souvent trop d'efforts avant même de commencer.",
+      },
       {
         type: "list",
         items: [
-          "Proche : moins de 15 minutes de trajet.",
-          "Régulier : un créneau fixe par semaine.",
-          "Convivial : en petit groupe, jamais seul.",
+          "Trop de décisions à prendre : quel sport, quel niveau, quel lieu, avec qui ?",
+          "Une organisation lourde : coordonner les agendas, trouver un créneau commun, réserver.",
+          "Un manque de régularité : refaire toute l'organisation chaque semaine devient une charge mentale.",
         ],
+      },
+      {
+        type: "paragraph",
+        text: "Résultat : on décroche, non pas parce qu'on ne veut pas, mais parce que tout paraît trop compliqué.",
+      },
+      { type: "h2", text: "Et si on simplifiait tout ?" },
+      {
+        type: "paragraph",
+        text: "Imagine une autre façon de faire : tu ne t'occupes pas de l'organisation, tu n'as pas à coordonner, tu n'as pas à chercher.",
+      },
+      {
+        type: "list",
+        items: [
+          "Tu dis ce que tu veux faire.",
+          "Tu indiques quand tu es disponible.",
+          "Le reste est géré pour toi.",
+        ],
+      },
+      { type: "h2", text: "Faire du sport devient naturel" },
+      {
+        type: "paragraph",
+        text: "Quand tout est simplifié, quelque chose change : tu n'as plus besoin de te motiver pendant des heures, tu y vas sans réfléchir.",
+      },
+      {
+        type: "list",
+        items: [
+          "Le créneau est déjà fixé.",
+          "L'activité est déjà choisie.",
+          "Le lieu est déjà réservé.",
+        ],
+      },
+      { type: "h2", text: "La clé, ce n'est pas l'intensité, c'est la régularité" },
+      {
+        type: "paragraph",
+        text: "On pense souvent qu'il faut faire du sport intensément pour que ce soit efficace. En pratique, ce qui transforme vraiment le quotidien, c'est la régularité.",
+      },
+      {
+        type: "paragraph",
+        text: "Et la régularité ne vient pas de la motivation. Elle vient de la simplicité. Quand c'est simple, tu continues, tu t'installes dans une routine et ça devient une habitude.",
+      },
+      { type: "h2", text: "Le rôle du collectif" },
+      {
+        type: "paragraph",
+        text: "Faire du sport seul demande souvent plus d'énergie mentale. À plusieurs, c'est plus engageant, plus motivant et surtout plus agréable.",
+      },
+      {
+        type: "list",
+        items: [
+          "Tu te sens attendu.",
+          "Tu gardes plus facilement ton engagement.",
+          "Tu prends plus de plaisir à chaque séance.",
+        ],
+      },
+      { type: "h2", text: "Faire du sport sans l'organiser" },
+      {
+        type: "paragraph",
+        text: "C'est exactement l'idée derrière MSP : te permettre de faire du sport sans gérer toute la partie organisation.",
+      },
+      {
+        type: "list",
+        items: [
+          "Tu n'as plus à chercher une activité.",
+          "Tu n'as plus à trouver des partenaires.",
+          "Tu n'as plus à coordonner les agendas.",
+          "Tu n'as plus à réserver un lieu.",
+        ],
+      },
+      { type: "h2", text: "Concrètement, comment ça se passe ?" },
+      {
+        type: "list",
+        items: [
+          "Tu indiques les sports qui t'intéressent.",
+          "Tu précises tes disponibilités.",
+          "Tu reçois une proposition de séance.",
+          "Tu n'as plus qu'à y aller.",
+        ],
+      },
+      { type: "h2", text: "Et même en déplacement" },
+      {
+        type: "paragraph",
+        text: "Que tu sois chez toi ou ailleurs, le principe reste le même : continuer à faire du sport facilement, sans tout recommencer à chaque fois.",
+      },
+      { type: "h2", text: "Reprendre le sport sans pression" },
+      {
+        type: "paragraph",
+        text: "Faire du sport simplement, c'est aussi enlever la pression : pas besoin d'être performant, pas besoin d'être régulier dès le début. L'objectif, c'est de bouger et de retrouver du plaisir.",
+      },
+      { type: "h2", text: "Finalement, ce qui bloque, ce n'est pas toi" },
+      {
+        type: "paragraph",
+        text: "Si tu as du mal à faire du sport régulièrement, ce n'est probablement pas un manque de volonté. C'est surtout que c'est trop compliqué aujourd'hui. Et ça peut changer.",
+      },
+      { type: "h2", text: "Et si tu essayais autrement ?" },
+      {
+        type: "paragraph",
+        text: "Tu peux continuer à essayer de tout organiser seul, ou tester une autre manière de faire : plus simple, plus fluide, plus naturelle.",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi et découvre ce que ça fait de faire du sport sans avoir à l'organiser.",
       },
     ],
     faq: [
