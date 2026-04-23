@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
-import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, scrollToConversionSection } from "@/lib/cta";
 
 const DeplacementSection = () => {
   return (
@@ -31,10 +31,8 @@ const DeplacementSection = () => {
             Tu continues à bouger, où que tu sois.
           </p>
 
-          <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              {PRIMARY_CTA_LABEL}
-            </a>
+          <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToConversionSection}>
+            {PRIMARY_CTA_LABEL}
           </Button>
           <p className="text-xs text-muted-foreground/70 mt-3">{CTA_SUBTEXT}</p>
           <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>

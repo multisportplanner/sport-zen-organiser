@@ -164,7 +164,7 @@ const BlogArticle = () => {
           title={hasCustomFinalCta ? null : undefined}
           text={hasCustomFinalCta ? null : undefined}
           buttonLabel={
-            hasCustomFinalCta ? "Rejoins un groupe près de chez toi" : undefined
+            hasCustomFinalCta ? "On m’organise ma séance" : undefined
           }
           subText={
             hasCustomFinalCta

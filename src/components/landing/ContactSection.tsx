@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MessageCircle, Rocket } from "lucide-react";
 import {
+  CONVERSION_SECTION_ID,
   CTA_MICRO_REASSURANCE,
   CTA_SUBTEXT,
   EMAIL_ALT_CTA_LABEL,
@@ -39,7 +40,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="waitlist-form" className="py-32 md:py-40 bg-background">
+    <section id={CONVERSION_SECTION_ID} className="py-32 md:py-40 bg-background">
       <div className="container">
         <div className="max-w-lg mx-auto space-y-10">
           {/* Bloc principal WhatsApp - prioritaire */}

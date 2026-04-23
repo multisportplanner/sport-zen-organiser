@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, WHATSAPP_URL } from "@/lib/cta";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, scrollToConversionSection } from "@/lib/cta";
 
 const HeroSection = () => {
   const scrollToHow = () => {
@@ -49,10 +49,8 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
-            <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                {PRIMARY_CTA_LABEL}
-              </a>
+            <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToConversionSection}>
+              {PRIMARY_CTA_LABEL}
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-8 text-base" onClick={scrollToHow}>
               Comment ça marche
