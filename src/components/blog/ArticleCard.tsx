@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin } from "lucide-react";
-import type { BlogArticle } from "@/data/blog";
+import type { BlogArticle } from "@/data/blogArticles";
 
 interface ArticleCardProps {
   article: BlogArticle;
@@ -37,7 +37,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         <h3 className="text-lg font-bold leading-snug group-hover:text-primary transition-colors">
           {article.title}
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-1">{article.description}</p>
+        <p className="text-sm text-muted-foreground line-clamp-1">{article.excerpt}</p>
       </div>
     </Link>
   );
