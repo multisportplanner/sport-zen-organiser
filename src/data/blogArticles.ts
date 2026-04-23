@@ -15,9 +15,13 @@ export interface FAQItem {
 export interface BlogArticle {
   slug: string;
   title: string;
-  description: string;
+  metaTitle: string;
+  metaDescription: string;
   category: BlogCategory;
+  date: string;
+  excerpt: string;
   image: string;
+  featuredImageAlt: string;
   location?: string;
   /** Full content rendered on the article page. */
   content: ArticleSection[];
@@ -42,10 +46,16 @@ export const ARTICLES: BlogArticle[] = [
   {
     slug: "reprendre-le-sport-facilement",
     title: "Comment reprendre le sport facilement",
-    description:
+    metaTitle:
+      "Comment reprendre le sport facilement et durablement | MultiSport Planner",
+    metaDescription:
+      "Conseils simples pour reprendre le sport facilement, retrouver une routine et bouger près de chez vous sans toute la charge d’organisation.",
+    date: "2026-04-23",
+    excerpt:
       "Reprendre le sport n’est pas une question de motivation. Quand tout devient plus simple, bouger redevient naturel.",
     category: "Reprendre le sport",
     image: reprendreSportImg,
+    featuredImageAlt: "Personnes reprenant le sport simplement en petit groupe",
     content: [
       {
         type: "intro",
@@ -262,9 +272,16 @@ export const ARTICLES: BlogArticle[] = [
   {
     slug: "faire-du-sport-simplement",
     title: "Faire du sport simplement : la fin du sport compliqué",
-    description: "Pas besoin de salle, d'abonnement ni de programme. Voici comment bouger sans se prendre la tête.",
+    metaTitle:
+      "Faire du sport simplement : la fin du sport compliqué | MultiSport Planner",
+    metaDescription:
+      "Pas besoin de salle, d'abonnement ni de programme. Découvrez comment bouger simplement sans se prendre la tête.",
+    date: "2026-04-23",
+    excerpt:
+      "Pas besoin de salle, d'abonnement ni de programme. Voici comment bouger sans se prendre la tête.",
     category: "Faire du sport simplement",
     image: sportSimplementImg,
+    featuredImageAlt: "Groupe faisant du sport en extérieur de manière simple",
     content: [
       {
         type: "intro",
@@ -411,9 +428,16 @@ export const ARTICLES: BlogArticle[] = [
   {
     slug: "faire-du-sport-pres-de-chez-vous-nice",
     title: "Faire du sport près de chez vous à Nice : par où commencer",
-    description: "Les meilleurs endroits pour bouger sur la Côte d'Azur, sans abonnement et en petit groupe.",
+    metaTitle:
+      "Faire du sport près de chez vous à Nice : par où commencer | MultiSport Planner",
+    metaDescription:
+      "Découvrez des spots accessibles à Nice pour bouger facilement, sans abonnement, seul ou en petit groupe.",
+    date: "2026-04-23",
+    excerpt:
+      "Les meilleurs endroits pour bouger sur la Côte d'Azur, sans abonnement et en petit groupe.",
     category: "Faire du sport près de chez vous",
     image: sportPresImg,
+    featuredImageAlt: "Personnes faisant du sport en plein air à Nice",
     location: "Nice",
     content: [
       {

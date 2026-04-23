@@ -5,7 +5,7 @@ import Footer from "@/components/landing/Footer";
 import ArticleCard from "@/components/blog/ArticleCard";
 import BlogCTASection from "@/components/blog/BlogCTASection";
 import { Button } from "@/components/ui/button";
-import { ARTICLES, BLOG_CATEGORIES, type BlogCategory } from "@/data/blog";
+import { ARTICLES, BLOG_CATEGORIES, type BlogCategory } from "@/data/blogArticles";
 
 type Filter = "Tous les articles" | BlogCategory;
 

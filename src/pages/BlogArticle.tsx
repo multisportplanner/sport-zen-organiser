@@ -12,7 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import NotFound from "@/pages/NotFound";
-import { getArticleBySlug, type ArticleSection } from "@/data/blog";
+import { getArticleBySlug, type ArticleSection } from "@/data/blogArticles";
 
 const renderSection = (section: ArticleSection, idx: number) => {
   switch (section.type) {
@@ -77,14 +77,14 @@ const BlogArticle = () => {
 
   useEffect(() => {
     if (!article) return;
-    document.title = `${article.title} — MSP`;
+    document.title = article.metaTitle;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute("content", article.description);
+    meta.setAttribute("content", article.metaDescription);
     window.scrollTo(0, 0);
   }, [article]);
 
@@ -124,8 +124,9 @@ const BlogArticle = () => {
                 <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
                   {article.title}
                 </h1>
+                <p className="text-sm text-muted-foreground mb-3">{article.date}</p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  {article.description}
+                  {article.excerpt}
                 </p>
               </motion.div>
             </div>
@@ -139,7 +140,7 @@ const BlogArticle = () => {
               <div className="aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
                 <img
                   src={article.image}
-                  alt={article.title}
+                  alt={article.featuredImageAlt}
                   width={1024}
                   height={640}
                   className="w-full h-full object-cover"
