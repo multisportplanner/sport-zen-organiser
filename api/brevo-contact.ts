@@ -156,6 +156,15 @@ const toBrevoValue = (value: string | string[]): string => {
   return value;
 };
 
+const toPartnerTypeValue = (value: unknown): string => {
+  const values = toStringArray(value);
+  if (values.length > 0) {
+    return values.join(", ");
+  }
+
+  return toSingleValue(value);
+};
+
 const setFirstExistingAttribute = (
   target: Record<string, string | string[]>,
   availableAttributes: Set<string>,
@@ -249,9 +258,10 @@ const buildAttributes = (payload: Record<string, unknown>, availableAttributes: 
   const rechercheInput = usage
     ? [usage]
     : toStringArray(getPayloadValue(payload, "recherche", "RECHERCHE"));
-  const partnerType = toSingleValue(
+  const partnerType = toPartnerTypeValue(
     getPayloadValue(
       payload,
+      "partner_type",
       "partnerType",
       "partnerTypeLabel",
       "partenaireType",
@@ -491,6 +501,9 @@ export default async function handler(req: any, res: any) {
       },
       body: JSON.stringify(payload),
     });
+
+    console.log("[brevo-contact] partner_type(raw):", body.partner_type ?? body.partnerType ?? body.partnerTypes ?? "");
+    console.log("[brevo-contact] payload sent to Brevo:", brevoPayload);
 
     let response = await sendToBrevo(brevoPayload);
     let responseBody = await response.json().catch(() => null);
