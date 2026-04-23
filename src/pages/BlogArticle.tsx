@@ -71,6 +71,7 @@ const renderSection = (section: ArticleSection, idx: number) => {
 const BlogArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
+  const isSportSimpleArticle = article?.slug === "faire-du-sport-simplement";
 
   useEffect(() => {
     if (!article) return;
@@ -147,7 +148,7 @@ const BlogArticle = () => {
         </section>
 
         {/* Content */}
-        <article className="pb-20">
+        <article className={isSportSimpleArticle ? "pb-10" : "pb-20"}>
           <div className="container">
             <div className="max-w-3xl mx-auto">
               {article.content.map(renderSection)}
@@ -156,7 +157,22 @@ const BlogArticle = () => {
         </article>
 
         {/* CTA — same component as homepage */}
-        <BlogCTASection />
+        <BlogCTASection
+          title={isSportSimpleArticle ? null : undefined}
+          text={isSportSimpleArticle ? null : undefined}
+          buttonLabel={
+            isSportSimpleArticle ? "Rejoins un groupe près de chez toi" : undefined
+          }
+          subText={
+            isSportSimpleArticle
+              ? "Réponse immédiate sur WhatsApp, en privé"
+              : undefined
+          }
+          microText={
+            isSportSimpleArticle ? "Pas de groupe WhatsApp. Juste 3 questions." : undefined
+          }
+          compactTopSpacing={isSportSimpleArticle}
+        />
 
         {/* FAQ */}
         {article.faq.length > 0 && (
