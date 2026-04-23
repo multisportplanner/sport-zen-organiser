@@ -39,7 +39,7 @@ const Partenaire = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [partnerTypes, setPartnerTypes] = useState<PartnerType[]>([]);
+  const [partnerType, setPartnerType] = useState<PartnerType[]>([]);
   const [otherType, setOtherType] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [city, setCity] = useState("");
@@ -53,7 +53,7 @@ const Partenaire = () => {
     if (!firstName.trim()) e.firstName = "Prénom requis";
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email invalide";
     if (!phone.trim()) e.phone = "Téléphone requis";
-    if (partnerTypes.includes("Autre") && !otherType.trim()) e.otherType = "Précise ton activité";
+    if (partnerType.includes("Autre") && !otherType.trim()) e.otherType = "Précise ton activité";
     if (!postalCode.trim() || postalCode.length !== 5) e.postalCode = "Code postal requis (5 chiffres)";
     if (!gdpr) e.gdpr = "Acceptation requise";
     setErrors(e);
@@ -64,7 +64,7 @@ const Partenaire = () => {
     ev.preventDefault();
     if (!validate()) return;
 
-    const normalizedPartnerType = partnerTypes
+    const normalizedPartnerType = partnerType
       .map((partnerType) => (partnerType === "Autre" ? `Autre: ${otherType.trim()}` : partnerType))
       .join(", ");
 
@@ -76,7 +76,7 @@ const Partenaire = () => {
       partner_type: normalizedPartnerType,
       partnerType: normalizedPartnerType,
       partnerTypeLabel: normalizedPartnerType,
-      partnerTypes,
+      partnerType,
       postalCode,
       city,
       activities,
@@ -92,9 +92,6 @@ const Partenaire = () => {
       CODEPOSTAL: postalCode,
       ACTIVITEPROPOSEE: activities,
       PARTNER_TYPE: normalizedPartnerType,
-      PARTENAIRE_TYPE: normalizedPartnerType,
-      TYPE_PARTENAIRE: normalizedPartnerType,
-      PARTENAIRE_TYPE_LIBELLE: normalizedPartnerType,
       attributes: {
         SMS: phone,
         FNAME: firstName,
@@ -106,9 +103,6 @@ const Partenaire = () => {
         CODEPOSTAL: postalCode,
         ACTIVITEPROPOSEE: activities,
         PARTNER_TYPE: normalizedPartnerType,
-        PARTENAIRE_TYPE: normalizedPartnerType,
-        TYPE_PARTENAIRE: normalizedPartnerType,
-        PARTENAIRE_TYPE_LIBELLE: normalizedPartnerType,
       },
     };
 
@@ -151,7 +145,7 @@ const Partenaire = () => {
     }`;
 
   const togglePartnerType = (value: PartnerType) => {
-    setPartnerTypes((prev) => {
+    setPartnerType((prev) => {
       if (prev.includes(value)) {
         return prev.filter((item) => item !== value);
       }
@@ -367,17 +361,17 @@ const Partenaire = () => {
 
                     <div>
                       <Label className="text-sm font-semibold mb-2 block">Type de partenaire</Label>
-                      <input type="hidden" name="partner_type" value={partnerTypes.join(", ")} />
+                      <input type="hidden" name="partner_type" value={partnerType.join(", ")} />
                       <div className="grid grid-cols-1 gap-3">
                         {(["Guide / encadrant outdoor", "Coach sportif", "Structure sportive", "Autre"] as PartnerType[]).map((t) => (
-                          <button key={t} type="button" name="partner_type" value={t} onClick={() => togglePartnerType(t)} className={chipClass(partnerTypes.includes(t))}>
+                          <button key={t} type="button" name="partner_type" value={t} onClick={() => togglePartnerType(t)} className={chipClass(partnerType.includes(t))}>
                             {t}
                           </button>
                         ))}
                       </div>
                     </div>
 
-                    {partnerTypes.includes("Autre") && (
+                    {partnerType.includes("Autre") && (
                       <div>
                         <Label htmlFor="p-otherType" className="text-sm font-semibold">Précise ton activité *</Label>
                         <Input id="p-otherType" value={otherType} onChange={(e) => setOtherType(e.target.value)} placeholder="Votre type d'activité" className="mt-1.5" maxLength={200} />
