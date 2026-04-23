@@ -41,72 +41,221 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 export const ARTICLES: BlogArticle[] = [
   {
     slug: "reprendre-le-sport-facilement",
-    title: "Comment reprendre le sport facilement (sans motivation et sans s'organiser)",
-    description: "Le vrai blocage n'est pas la motivation, c'est l'organisation. Voici comment s'y remettre simplement.",
+    title: "Comment reprendre le sport facilement",
+    description:
+      "Reprendre le sport n’est pas une question de motivation. Quand tout devient plus simple, bouger redevient naturel.",
     category: "Reprendre le sport",
     image: reprendreSportImg,
     content: [
       {
         type: "intro",
-        text: "Tu veux reprendre le sport… mais entre le travail, les enfants et la fatigue, ça ne tient jamais dans la durée.",
+        text: "Reprendre le sport fait partie de ces envies qu’on remet souvent à plus tard.",
       },
-      {
-        type: "quickAnswer",
-        question: "Comment reprendre le sport facilement ?",
-        answer:
-          "En simplifiant l'organisation, en réduisant le choix et en pratiquant en groupe près de chez soi.",
-      },
-      { type: "h2", text: "Le vrai problème" },
       {
         type: "paragraph",
-        text: "Quand on essaie de se remettre au sport, on bute presque toujours sur trois obstacles bien connus :",
+        text: "On se dit qu’on va s’y remettre lundi. Puis le lundi passe. On pense au mois prochain. Puis aux vacances. Puis à la rentrée.",
+      },
+      {
+        type: "paragraph",
+        text: "Et plus le temps passe, plus cela semble compliqué.",
+      },
+      {
+        type: "paragraph",
+        text: "Pourtant, reprendre le sport ne devrait pas être une montagne.",
+      },
+      {
+        type: "paragraph",
+        text: "Ce n’est pas forcément une question de volonté. Ce n’est pas non plus une question de performance.",
+      },
+      {
+        type: "paragraph",
+        text: "Très souvent, le vrai sujet, c’est de trouver une façon simple, réaliste et agréable de recommencer.",
+      },
+      { type: "h2", text: "Reprendre le sport, ce n’est pas repartir de zéro" },
+      {
+        type: "paragraph",
+        text: "Quand on n’a pas fait de sport depuis un moment, on peut avoir l’impression qu’il faut “redevenir sportif” avant même de commencer.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est souvent là que ça bloque.",
       },
       {
         type: "list",
         items: [
-          "Le manque de temps : la semaine passe trop vite, on remet à plus tard.",
-          "L'organisation : trouver le bon créneau, le bon lieu, la bonne activité, ça décourage.",
-          "La solitude : pratiquer seul rend l'effort moins agréable et moins régulier.",
+          "des séances trop intenses",
+          "un rythme impossible à tenir",
+          "des douleurs",
+          "un niveau qu’on n’a plus",
         ],
       },
-      { type: "h2", text: "Le déclic" },
+      {
+        type: "paragraph",
+        text: "Résultat : on reporte.",
+      },
+      {
+        type: "paragraph",
+        text: "Mais reprendre le sport, c’est juste recommencer à bouger, à son rythme.",
+      },
+      { type: "h2", text: "Le plus difficile, c’est souvent de s’y remettre seul" },
+      {
+        type: "paragraph",
+        text: "Le problème n’est pas seulement de choisir une activité.",
+      },
+      {
+        type: "paragraph",
+        text: "Il faut aussi :",
+      },
+      {
+        type: "list",
+        items: [
+          "trouver un créneau",
+          "choisir un endroit",
+          "s’organiser",
+          "réussir à tenir dans la durée",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Et c’est souvent là que tout s’arrête.",
+      },
+      { type: "h2", text: "Pour reprendre facilement, il faut commencer petit" },
+      {
+        type: "paragraph",
+        text: "Pas besoin de viser trop haut dès le début.",
+      },
+      {
+        type: "paragraph",
+        text: "Ce qui compte :",
+      },
+      {
+        type: "list",
+        items: [
+          "retrouver une régularité",
+          "reprendre confiance",
+          "ressentir du plaisir",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Une seule séance bien placée peut suffire à relancer la dynamique.",
+      },
+      { type: "h2", text: "La régularité compte plus que la performance" },
+      {
+        type: "paragraph",
+        text: "Ce qui change vraiment les choses, ce n’est pas l’intensité.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est la continuité.",
+      },
+      {
+        type: "paragraph",
+        text: "Faire un peu, mais régulièrement, permet de créer une habitude.",
+      },
+      {
+        type: "paragraph",
+        text: "Et c’est cette habitude qui fait toute la différence.",
+      },
+      { type: "h2", text: "Le collectif aide énormément" },
+      {
+        type: "paragraph",
+        text: "Reprendre seul est difficile.",
+      },
+      {
+        type: "paragraph",
+        text: "À plusieurs, c’est plus simple :",
+      },
+      {
+        type: "list",
+        items: ["plus engageant", "plus motivant", "plus naturel"],
+      },
+      {
+        type: "paragraph",
+        text: "On hésite moins à y aller.",
+      },
+      { type: "h2", text: "Simplifier l’organisation change tout" },
+      {
+        type: "paragraph",
+        text: "Le vrai levier, ce n’est pas la discipline.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est la simplicité.",
+      },
+      {
+        type: "paragraph",
+        text: "Quand tout est plus fluide :",
+      },
+      {
+        type: "list",
+        items: ["on y va plus facilement", "on annule moins", "on continue"],
+      },
+      { type: "h2", text: "Reprendre le sport près de chez soi" },
+      {
+        type: "paragraph",
+        text: "Plus c’est proche, plus c’est facile.",
+      },
+      {
+        type: "paragraph",
+        text: "Moins de logistique = plus de régularité.",
+      },
+      { type: "h2", text: "Retrouver du plaisir" },
+      {
+        type: "paragraph",
+        text: "Reprendre le sport, ce n’est pas se forcer.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est retrouver une sensation simple : bouger, respirer, se sentir bien.",
+      },
+      { type: "h2", text: "Une autre façon de reprendre" },
+      {
+        type: "paragraph",
+        text: "C’est l’idée de MSP.",
+      },
+      {
+        type: "paragraph",
+        text: "Tu indiques :",
+      },
+      {
+        type: "list",
+        items: ["ce que tu veux faire", "quand tu es disponible"],
+      },
+      {
+        type: "paragraph",
+        text: "Et on s’occupe du reste.",
+      },
+      { type: "h2", text: "Reprendre le sport facilement, c’est possible" },
+      {
+        type: "paragraph",
+        text: "Pas besoin d’être parfait.",
+      },
+      {
+        type: "paragraph",
+        text: "Juste commencer.",
+      },
+      {
+        type: "paragraph",
+        text: "Et recommencer.",
+      },
       {
         type: "highlight",
-        text: "Le problème, ce n'est pas ta motivation. C'est l'organisation.",
-      },
-      {
-        type: "paragraph",
-        text: "Tant que reprendre le sport demande de planifier, choisir, comparer, s'inscrire, l'effort mental est plus grand que l'effort physique. Forcément, on lâche.",
-      },
-      { type: "h2", text: "Solutions simples" },
-      {
-        type: "list",
-        items: [
-          "Arrêter de chercher le bon sport : commence par bouger, le reste viendra.",
-          "Bloquer un créneau fixe dans la semaine, comme un rendez-vous avec toi-même.",
-          "Pratiquer en groupe pour profiter de l'énergie collective.",
-          "Réduire la friction : moins tu as à organiser, plus tu y vas.",
-          "Rester proche : choisis une activité à moins de 15 minutes de chez toi.",
-        ],
-      },
-      { type: "h2", text: "Et MSP dans tout ça ?" },
-      {
-        type: "paragraph",
-        text: "C'est exactement pour ça que MultiSport Planner existe. On te propose chaque semaine une séance en petit groupe près de chez toi, sans choix à faire, sans organisation. Tu viens, tu profites.",
+        text: "Rejoins un groupe près de chez toi et reprends le sport facilement, sans avoir à tout organiser.",
       },
     ],
     faq: [
       {
         q: "Comment reprendre le sport facilement ?",
-        a: "Commence petit, bloque un créneau fixe, pratique en groupe et choisis une activité proche de chez toi. La régularité vient quand l'organisation disparaît.",
+        a: "En commençant petit, à ton rythme, et en simplifiant l’organisation. La régularité vient plus facilement quand c’est fluide.",
       },
       {
-        q: "Comment être régulier dans le sport ?",
-        a: "Le secret : un créneau fixe, un groupe qui t'attend et zéro décision à prendre le jour J. Plus c'est simple, plus c'est régulier.",
+        q: "Pourquoi est-ce si difficile de reprendre seul ?",
+        a: "Parce qu’il faut tout gérer : le créneau, le lieu, la motivation et la régularité. À plusieurs, c’est souvent plus engageant et plus simple.",
       },
       {
-        q: "Quel sport choisir ?",
-        a: "Le meilleur sport est celui que tu vas réellement pratiquer. Préfère une activité accessible, proche de chez toi et qui te plaît, plutôt que la plus efficace en théorie.",
+        q: "Faut-il être motivé pour reprendre le sport ?",
+        a: "Pas forcément. Ce qui compte le plus, c’est d’avoir une organisation simple et réaliste pour recommencer sans pression.",
       },
     ],
   },
