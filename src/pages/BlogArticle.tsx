@@ -148,7 +148,7 @@ const BlogArticle = () => {
         </section>
 
         {/* Content */}
-        <article className={isSportSimpleArticle ? "pb-10" : "pb-20"}>
+        <article className={isSportSimpleArticle ? "pb-6" : "pb-20"}>
           <div className="container">
             <div className="max-w-3xl mx-auto">
               {article.content.map(renderSection)}
@@ -169,7 +169,9 @@ const BlogArticle = () => {
               : undefined
           }
           microText={
-            isSportSimpleArticle ? "Pas de groupe WhatsApp. Juste 3 questions." : undefined
+            isSportSimpleArticle
+              ? "Pas de groupe WhatsApp. Juste un échange rapide."
+              : undefined
           }
           compactTopSpacing={isSportSimpleArticle}
         />
