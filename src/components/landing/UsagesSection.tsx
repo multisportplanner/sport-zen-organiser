@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CalendarCheck, Sun, Check } from "lucide-react";
-import { PRIMARY_CTA_LABEL, scrollToConversionSection } from "@/lib/cta";
+import {
+  OCCASIONAL_CTA_LABEL,
+  PRIMARY_CTA_LABEL,
+  scrollToConversionSection,
+  trackCtaClick,
+} from "@/lib/cta";
 
 const UsagesSection = () => {
   return (
@@ -46,7 +51,20 @@ const UsagesSection = () => {
                 </li>
               ))}
             </ul>
-            <Button variant="cta" size="sm" className="w-full" onClick={scrollToConversionSection}>
+            <Button
+              variant="cta"
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                trackCtaClick({
+                  cta_location: "two_ways_section",
+                  page_type: "home",
+                  cta_label: PRIMARY_CTA_LABEL,
+                  destination: "scroll",
+                });
+                scrollToConversionSection();
+              }}
+            >
               {PRIMARY_CTA_LABEL}
             </Button>
           </motion.div>
@@ -78,8 +96,21 @@ const UsagesSection = () => {
                 </li>
               ))}
             </ul>
-            <Button variant="cta" size="sm" className="w-full" onClick={scrollToConversionSection}>
-              {PRIMARY_CTA_LABEL}
+            <Button
+              variant="cta"
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                trackCtaClick({
+                  cta_location: "two_ways_section",
+                  page_type: "home",
+                  cta_label: OCCASIONAL_CTA_LABEL,
+                  destination: "scroll",
+                });
+                scrollToConversionSection();
+              }}
+            >
+              {OCCASIONAL_CTA_LABEL}
             </Button>
           </motion.div>
         </div>
