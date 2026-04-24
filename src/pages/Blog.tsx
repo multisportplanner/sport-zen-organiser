@@ -5,11 +5,11 @@ import Footer from "@/components/landing/Footer";
 import ArticleCard from "@/components/blog/ArticleCard";
 import BlogCTASection from "@/components/blog/BlogCTASection";
 import { Button } from "@/components/ui/button";
-import { ARTICLES, BLOG_CATEGORIES, type BlogCategory } from "@/data/blogArticles";
+import { blogArticles, blogCategories, type BlogCategory } from "@/data/blogArticles";
 
 type Filter = "Tous les articles" | BlogCategory;
 
-const FILTERS: Filter[] = ["Tous les articles", ...BLOG_CATEGORIES];
+const FILTERS: Filter[] = ["Tous les articles", ...blogCategories];
 
 const Blog = () => {
   const [filter, setFilter] = useState<Filter>("Tous les articles");
@@ -27,7 +27,9 @@ const Blog = () => {
   }, []);
 
   const filtered =
-    filter === "Tous les articles" ? ARTICLES : ARTICLES.filter((a) => a.category === filter);
+    filter === "Tous les articles"
+      ? blogArticles
+      : blogArticles.filter((a) => a.category === filter);
 
   return (
     <div className="min-h-screen bg-background">

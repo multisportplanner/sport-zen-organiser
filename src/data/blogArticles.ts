@@ -36,13 +36,7 @@ export type ArticleSection =
   | { type: "list"; items: string[] }
   | { type: "highlight"; text: string };
 
-export const BLOG_CATEGORIES: BlogCategory[] = [
-  "Reprendre le sport",
-  "Faire du sport simplement",
-  "Faire du sport près de chez vous",
-];
-
-export const ARTICLES: BlogArticle[] = [
+export const blogArticles: BlogArticle[] = [
   {
     slug: "reprendre-le-sport-facilement",
     title: "Comment reprendre le sport facilement",
@@ -469,4 +463,12 @@ export const ARTICLES: BlogArticle[] = [
 ];
 
 export const getArticleBySlug = (slug: string): BlogArticle | undefined =>
-  ARTICLES.find((a) => a.slug === slug);
+  blogArticles.find((a) => a.slug === slug);
+
+export const blogCategories: BlogCategory[] = Array.from(
+  new Set(blogArticles.map((article) => article.category)),
+);
+
+// Backward-compatible aliases for existing imports
+export const ARTICLES = blogArticles;
+export const BLOG_CATEGORIES = blogCategories;
