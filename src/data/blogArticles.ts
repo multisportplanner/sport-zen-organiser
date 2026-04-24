@@ -571,6 +571,32 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
+    slug: "faire-du-sport-sans-motivation",
+    title: "Faire du sport sans motivation : est-ce vraiment possible ?",
+    metaTitle:
+      "Faire du sport sans motivation : est-ce possible ? | MultiSport Planner",
+    metaDescription:
+      "Peut-on faire du sport sans motivation ? Oui, si tout devient plus simple. Découvrez comment bouger régulièrement sans discipline extrême.",
+    date: "2026-04-24",
+    excerpt:
+      "La motivation ne suffit pas pour faire du sport. La clé, c’est la simplicité et un système qui facilite l’action.",
+    category: "Faire du sport simplement",
+    image: sportSimplementImg,
+    featuredImageAlt:
+      "Personne faisant du sport facilement sans dépendre de la motivation",
+    content: [
+      {
+        type: "intro",
+        text: "[COLLER ICI L’ARTICLE COMPLET]",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+    ],
+    faq: [],
+  },
+  {
     slug: "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport",
     title: "Pourquoi je n’arrive pas à être régulier dans le sport",
     metaTitle:
