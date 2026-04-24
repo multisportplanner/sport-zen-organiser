@@ -421,42 +421,345 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "faire-du-sport-pres-de-chez-vous-nice",
-    title: "Faire du sport près de chez vous à Nice : par où commencer",
+    title: "Faire du sport près de chez vous à Nice : par où commencer ?",
     metaTitle:
-      "Faire du sport près de chez vous à Nice : par où commencer | MultiSport Planner",
+      "Faire du sport près de chez vous à Nice : par où commencer ? | MultiSport Planner",
     metaDescription:
-      "Découvrez des spots accessibles à Nice pour bouger facilement, sans abonnement, seul ou en petit groupe.",
-    date: "2026-04-23",
+      "Envie de faire du sport près de chez vous à Nice sans tout organiser ? Découvrez comment reprendre simplement, trouver une activité adaptée et bouger plus régulièrement.",
+    date: "2026-04-24",
     excerpt:
-      "Les meilleurs endroits pour bouger sur la Côte d'Azur, sans abonnement et en petit groupe.",
+      "À Nice, reprendre le sport peut être plus simple quand l’activité est proche, adaptée à votre rythme et organisée pour vous.",
     category: "Faire du sport près de chez vous",
     image: sportPresImg,
-    featuredImageAlt: "Personnes faisant du sport en plein air à Nice",
+    featuredImageAlt: "Personnes faisant du sport simplement près de chez elles à Nice",
     location: "Nice",
     content: [
       {
         type: "intro",
-        text: "Nice est l'un des terrains de jeu les plus accessibles de France pour faire du sport. Encore faut-il savoir par où commencer.",
+        text: "Faire du sport près de chez soi paraît simple.",
       },
-      { type: "h2", text: "Les meilleurs spots" },
+      {
+        type: "paragraph",
+        text: "À Nice, les possibilités ne manquent pas : mer, collines, parcs, salles, clubs, terrains, cours collectifs, activités en extérieur.",
+      },
+      {
+        type: "paragraph",
+        text: "Et pourtant, malgré toutes ces options, ce n’est pas toujours évident de s’y mettre.",
+      },
+      {
+        type: "paragraph",
+        text: "Parce que le vrai problème n’est pas seulement de trouver une activité.",
+      },
+      {
+        type: "paragraph",
+        text: "Le vrai problème, c’est souvent de trouver une activité qui correspond à son rythme, à son niveau, à ses envies, et surtout qui ne demande pas trop d’organisation.",
+      },
+      { type: "h2", text: "Pourquoi faire du sport près de chez soi change tout" },
+      {
+        type: "paragraph",
+        text: "Quand une activité est proche de chez soi, on a beaucoup plus de chances d’y aller.",
+      },
+      {
+        type: "list",
+        items: ["Moins de trajet.", "Moins de logistique.", "Moins d’excuses.", "Moins de charge mentale."],
+      },
+      {
+        type: "paragraph",
+        text: "À l’inverse, si une séance demande trop d’anticipation, trop de transport ou trop de coordination, elle devient vite une contrainte.",
+      },
+      {
+        type: "paragraph",
+        text: "Et quand le sport devient une contrainte, on finit souvent par repousser.",
+      },
+      {
+        type: "paragraph",
+        text: "Faire du sport près de chez soi, ce n’est donc pas seulement une question de confort. C’est un vrai levier de régularité.",
+      },
+      { type: "h2", text: "À Nice, il y a beaucoup d’options, mais trop de choix peut bloquer" },
+      { type: "paragraph", text: "Nice est une ville idéale pour bouger." },
+      {
+        type: "paragraph",
+        text: "On peut faire du sport :",
+      },
       {
         type: "list",
         items: [
-          "La Promenade des Anglais pour la course et le vélo.",
-          "Le Parc de la Colline du Château pour le renforcement en plein air.",
-          "Les collines de l'arrière-pays pour la randonnée.",
+          "en bord de mer",
+          "dans les parcs",
+          "en salle",
+          "en petit groupe",
+          "avec un coach",
+          "en club",
+          "en extérieur",
+          "sur les collines ou dans l’arrière-pays",
         ],
       },
-      { type: "h2", text: "Comment s'y mettre simplement" },
       {
         type: "paragraph",
-        text: "Le plus dur, c'est de commencer seul. Rejoindre un petit groupe rend la première séance beaucoup plus facile.",
+        text: "Mais parfois, trop de choix rend les choses plus compliquées.",
+      },
+      {
+        type: "list",
+        items: [
+          "Quel sport choisir ?",
+          "Où aller ?",
+          "Avec qui ?",
+          "À quel moment ?",
+          "Est-ce adapté à mon niveau ?",
+          "Est-ce que je vais tenir dans la durée ?",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "À force de se poser toutes ces questions, on peut finir par ne rien faire.",
+      },
+      { type: "h2", text: "Le plus important : commencer simplement" },
+      {
+        type: "paragraph",
+        text: "Pour reprendre ou pratiquer plus régulièrement, il n’est pas nécessaire de chercher l’activité parfaite.",
+      },
+      { type: "paragraph", text: "Le plus important est de commencer par une activité :" },
+      {
+        type: "list",
+        items: [
+          "accessible",
+          "proche de chez soi",
+          "compatible avec son agenda",
+          "adaptée à son niveau",
+          "agréable à refaire",
+        ],
+      },
+      { type: "paragraph", text: "La simplicité est souvent plus efficace que la motivation." },
+      { type: "paragraph", text: "Car la motivation varie." },
+      { type: "paragraph", text: "La simplicité, elle, aide à continuer." },
+      { type: "h2", text: "Quels sports pratiquer facilement près de Nice ?" },
+      {
+        type: "paragraph",
+        text: "Selon vos envies, plusieurs types d’activités peuvent être adaptés.",
+      },
+      { type: "paragraph", text: "Pour reprendre en douceur :" },
+      {
+        type: "list",
+        items: [
+          "marche active",
+          "stretching",
+          "mobilité",
+          "renforcement doux",
+          "yoga",
+          "pilates",
+        ],
+      },
+      { type: "paragraph", text: "Pour retrouver de l’énergie :" },
+      {
+        type: "list",
+        items: [
+          "cardio léger",
+          "circuit training",
+          "cross-training adapté",
+          "course à pied en petit groupe",
+        ],
+      },
+      { type: "paragraph", text: "Pour profiter du cadre niçois :" },
+      {
+        type: "list",
+        items: [
+          "randonnée",
+          "marche en bord de mer",
+          "activités nautiques",
+          "vélo",
+          "sorties encadrées dans l’arrière-pays",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "L’objectif n’est pas de choisir le sport le plus impressionnant.",
+      },
+      {
+        type: "paragraph",
+        text: "L’objectif est de choisir celui que vous aurez réellement envie de refaire.",
+      },
+      { type: "h2", text: "Le collectif aide à être plus régulier" },
+      { type: "paragraph", text: "Faire du sport seul peut être difficile." },
+      {
+        type: "list",
+        items: ["On repousse plus facilement.", "On annule plus facilement.", "On hésite plus facilement."],
+      },
+      { type: "paragraph", text: "À plusieurs, c’est différent." },
+      { type: "paragraph", text: "Le collectif apporte :" },
+      {
+        type: "list",
+        items: [
+          "un cadre",
+          "une motivation naturelle",
+          "un rendez-vous concret",
+          "une ambiance plus agréable",
+          "moins de pression",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "On n’a pas besoin d’être ultra motivé.",
+      },
+      {
+        type: "paragraph",
+        text: "On sait juste qu’une séance est prévue, et on y va.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est souvent ce qui permet de transformer une envie en habitude.",
+      },
+      { type: "h2", text: "Le vrai frein : l’organisation" },
+      {
+        type: "paragraph",
+        text: "Même quand on a envie de faire du sport, il reste souvent toute l’organisation.",
+      },
+      { type: "paragraph", text: "Il faut :" },
+      {
+        type: "list",
+        items: [
+          "trouver une activité",
+          "identifier un lieu",
+          "vérifier les horaires",
+          "trouver d’autres personnes",
+          "coordonner les disponibilités",
+          "réserver si besoin",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Et quand on a déjà une semaine chargée, cela devient vite trop lourd.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est précisément cette charge d’organisation qui empêche beaucoup de personnes de pratiquer régulièrement.",
+      },
+      { type: "h2", text: "Et si on retirait cette charge ?" },
+      {
+        type: "paragraph",
+        text: "Imaginez une façon plus simple de faire du sport à Nice.",
+      },
+      { type: "paragraph", text: "Vous indiquez :" },
+      {
+        type: "list",
+        items: [
+          "les activités qui vous intéressent",
+          "vos disponibilités",
+          "votre zone",
+        ],
+      },
+      { type: "paragraph", text: "Et vous recevez une proposition adaptée." },
+      {
+        type: "list",
+        items: [
+          "Pas besoin de chercher pendant des heures.",
+          "Pas besoin de coordonner tout le monde.",
+          "Pas besoin de tout organiser.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Vous n’avez plus qu’à confirmer et profiter de la séance.",
+      },
+      { type: "paragraph", text: "C’est l’idée de MultiSport Planner." },
+      { type: "h2", text: "Faire du sport à Nice sans tout organiser" },
+      {
+        type: "paragraph",
+        text: "MultiSport Planner aide à rendre la pratique sportive plus simple.",
+      },
+      {
+        type: "paragraph",
+        text: "L’objectif n’est pas de vous ajouter une contrainte.",
+      },
+      {
+        type: "paragraph",
+        text: "L’objectif est de vous aider à bouger plus facilement, près de chez vous, dans un cadre simple, humain et adapté à votre rythme.",
+      },
+      {
+        type: "paragraph",
+        text: "Que vous soyez à Nice, autour de Sophia Antipolis, Antibes, Cannes ou plus largement sur la Côte d’Azur, l’idée reste la même :",
+      },
+      {
+        type: "paragraph",
+        text: "vous permettre de faire du sport sans porter toute l’organisation.",
+      },
+      { type: "h2", text: "Par où commencer ?" },
+      {
+        type: "paragraph",
+        text: "Le plus simple est de ne pas chercher à tout planifier.",
+      },
+      { type: "paragraph", text: "Commencez par répondre à trois questions :" },
+      {
+        type: "list",
+        items: [
+          "quel type d’activité vous donne envie ?",
+          "quand êtes-vous disponible ?",
+          "dans quelle zone voulez-vous bouger ?",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "À partir de là, il devient beaucoup plus facile de vous proposer une activité adaptée.",
+      },
+      {
+        type: "list",
+        items: [
+          "Pas besoin de vous engager dans un programme compliqué.",
+          "Pas besoin d’être déjà sportif.",
+          "Pas besoin d’avoir un objectif parfait.",
+        ],
+      },
+      { type: "paragraph", text: "Il suffit de commencer." },
+      { type: "h2", text: "Faire du sport près de chez soi, c’est aussi retrouver du plaisir" },
+      { type: "paragraph", text: "Le sport ne devrait pas être une charge de plus." },
+      { type: "paragraph", text: "Il peut redevenir :" },
+      {
+        type: "list",
+        items: [
+          "un moment pour soi",
+          "une parenthèse dans la semaine",
+          "une occasion de rencontrer d’autres personnes",
+          "une façon simple de bouger",
+          "un plaisir plutôt qu’une contrainte",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Et souvent, quand l’organisation devient plus simple, le plaisir revient plus facilement.",
+      },
+      { type: "h2", text: "Conclusion" },
+      {
+        type: "paragraph",
+        text: "À Nice, les possibilités pour faire du sport sont nombreuses.",
+      },
+      {
+        type: "paragraph",
+        text: "Mais ce qui fait vraiment la différence, ce n’est pas seulement le nombre d’activités disponibles.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est la facilité à passer à l’action.",
+      },
+      {
+        type: "paragraph",
+        text: "Quand l’activité est proche, adaptée, organisée et simple à rejoindre, il devient beaucoup plus facile de pratiquer régulièrement.",
+      },
+      {
+        type: "highlight",
+        text: "Et c’est exactement ce que MultiSport Planner veut rendre possible.",
       },
     ],
     faq: [
       {
-        q: "Où faire du sport à Nice sans abonnement ?",
-        a: "La Promenade, les parcs et les collines offrent de nombreuses options gratuites. Avec MSP, tu peux aussi rejoindre des séances en petit groupe sans engagement.",
+        q: "Comment faire du sport près de chez soi à Nice sans tout organiser ?",
+        a: "Le plus simple est de choisir une activité proche, adaptée à votre niveau et à votre agenda, puis de rejoindre un cadre déjà organisé pour limiter la charge mentale.",
+      },
+      {
+        q: "Quelle activité sportive choisir pour reprendre en douceur sur la Côte d’Azur ?",
+        a: "La marche active, le yoga, le pilates, la mobilité et le renforcement doux sont de bonnes options pour reprendre progressivement et rester régulier.",
+      },
+      {
+        q: "Pourquoi le collectif aide à faire du sport plus régulièrement ?",
+        a: "Parce qu’un rendez-vous concret, une ambiance agréable et un cadre clair réduisent les hésitations et rendent la pratique plus naturelle dans la durée.",
       },
     ],
   },
