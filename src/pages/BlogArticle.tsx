@@ -71,6 +71,9 @@ const renderSection = (section: ArticleSection, idx: number) => {
 const BlogArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
+  const useLocalGroupCta =
+    article?.slug === "faire-du-sport-pres-de-chez-vous-nice" ||
+    article?.slug === "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport";
   useEffect(() => {
     if (!article) return;
     document.title = article.metaTitle;
@@ -157,20 +160,10 @@ const BlogArticle = () => {
 
         {/* CTA — same component as homepage */}
         <BlogCTASection
-          buttonLabel={
-            article.slug === "faire-du-sport-pres-de-chez-vous-nice"
-              ? "Rejoins un groupe près de chez toi"
-              : undefined
-          }
-          subText={
-            article.slug === "faire-du-sport-pres-de-chez-vous-nice"
-              ? "Réponse immédiate sur WhatsApp, en privé"
-              : undefined
-          }
+          buttonLabel={useLocalGroupCta ? "Rejoins un groupe près de chez toi" : undefined}
+          subText={useLocalGroupCta ? "Réponse immédiate sur WhatsApp, en privé" : undefined}
           microText={
-            article.slug === "faire-du-sport-pres-de-chez-vous-nice"
-              ? "Pas de groupe WhatsApp. Juste un échange rapide."
-              : undefined
+            useLocalGroupCta ? "Pas de groupe WhatsApp. Juste un échange rapide." : undefined
           }
           ctaLocation="end_article"
           pageType="article"

@@ -420,6 +420,169 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
+    slug: "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport",
+    title: "Pourquoi je n’arrive pas à être régulier dans le sport",
+    metaTitle:
+      "Pourquoi je n’arrive pas à être régulier dans le sport | MultiSport Planner",
+    metaDescription:
+      "Vous avez du mal à être régulier dans le sport ? Ce n’est pas un problème de motivation. Découvrez comment simplifier votre pratique pour tenir dans la durée.",
+    date: "2026-04-24",
+    excerpt:
+      "Être régulier dans le sport ne dépend pas de la motivation. Quand tout devient plus simple, la régularité s’installe naturellement.",
+    category: "Reprendre le sport",
+    image: reprendreSportImg,
+    featuredImageAlt:
+      "Personne ayant du mal à être régulière dans le sport et retrouvant une pratique simple",
+    content: [
+      {
+        type: "intro",
+        text: "Tu veux faire du sport régulièrement, mais ça ne tient jamais plus de quelques semaines ?",
+      },
+      {
+        type: "paragraph",
+        text: "Tu n’es pas seul. Et surtout : ce n’est pas un défaut personnel.",
+      },
+      {
+        type: "paragraph",
+        text: "La plupart des personnes pensent manquer de motivation. En réalité, elles font surtout face à trop de friction dans leur organisation.",
+      },
+      {
+        type: "quickAnswer",
+        question: "Pourquoi je n’arrive pas à être régulier dans le sport ?",
+        answer:
+          "Parce que ta pratique est trop compliquée à maintenir dans une vraie semaine. La régularité vient quand l’organisation devient simple, claire et réaliste.",
+      },
+      { type: "h2", text: "Le vrai problème n’est pas ta motivation" },
+      {
+        type: "paragraph",
+        text: "La motivation varie, c’est normal. Elle dépend de l’énergie, du travail, du moral, des imprévus.",
+      },
+      {
+        type: "paragraph",
+        text: "Compter uniquement sur elle pour être constant est une stratégie fragile.",
+      },
+      {
+        type: "paragraph",
+        text: "Ce qui tient dans le temps, c’est un cadre simple que tu peux suivre même pendant les semaines chargées.",
+      },
+      { type: "h2", text: "Ce qui casse la régularité au quotidien" },
+      {
+        type: "paragraph",
+        text: "Souvent, on décroche avant même la séance à cause d’une accumulation de petites contraintes :",
+      },
+      {
+        type: "list",
+        items: [
+          "choisir une activité différente à chaque fois",
+          "chercher un créneau au dernier moment",
+          "organiser seul la logistique",
+          "devoir se remotiver de zéro chaque semaine",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Une seule contrainte semble supportable. Mais additionnées, elles épuisent la volonté.",
+      },
+      { type: "h2", text: "Pourquoi “faire plus” ne marche pas toujours" },
+      {
+        type: "paragraph",
+        text: "Quand on culpabilise, on veut compenser avec des objectifs trop ambitieux.",
+      },
+      {
+        type: "paragraph",
+        text: "Trois ou quatre séances, très intenses, avec un planning parfait.",
+      },
+      {
+        type: "paragraph",
+        text: "Le problème : ce format tient rarement face à la vraie vie. Et quand on rate, on a l’impression d’avoir échoué.",
+      },
+      {
+        type: "paragraph",
+        text: "Mieux vaut une pratique plus modeste, mais répétable.",
+      },
+      { type: "h2", text: "La régularité vient de la simplicité" },
+      {
+        type: "paragraph",
+        text: "Pour durer, la question n’est pas “comment me motiver plus ?” mais “comment rendre ma pratique plus facile à répéter ?”.",
+      },
+      {
+        type: "list",
+        items: [
+          "un créneau fixe et réaliste",
+          "une activité accessible à ton niveau",
+          "un lieu proche de chez toi",
+          "un cadre déjà organisé",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Quand c’est clair et fluide, l’effort mental diminue. Tu y vas plus souvent, sans te battre contre toi-même.",
+      },
+      { type: "h2", text: "L’environnement compte plus que la volonté" },
+      {
+        type: "paragraph",
+        text: "Être régulier ne repose pas seulement sur toi. Ton environnement joue un rôle énorme.",
+      },
+      {
+        type: "paragraph",
+        text: "Si tout est loin, flou ou compliqué, tu repousses. Si c’est proche, cadré et simple, tu tiens plus facilement.",
+      },
+      { type: "h2", text: "Le collectif aide à rester constant" },
+      {
+        type: "paragraph",
+        text: "Faire du sport seul demande beaucoup de discipline. En petit groupe, c’est plus naturel : tu es attendu, tu réfléchis moins, tu gardes le rythme.",
+      },
+      {
+        type: "paragraph",
+        text: "Ce n’est pas de la magie. C’est juste plus simple à maintenir.",
+      },
+      { type: "h2", text: "Comment retrouver une pratique durable" },
+      {
+        type: "paragraph",
+        text: "Commence petit et enlève un maximum de friction.",
+      },
+      {
+        type: "list",
+        items: [
+          "vaut mieux 1 séance régulière que 4 séances impossibles",
+          "vaut mieux un format simple qu’un plan parfait",
+          "vaut mieux un rythme stable qu’un départ trop intense",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "En quelques semaines, cette continuité change déjà ton énergie, ton moral et ta confiance.",
+      },
+      { type: "h2", text: "Tu n’as pas besoin d’être parfait pour être régulier" },
+      {
+        type: "paragraph",
+        text: "La régularité n’est pas une question de personnalité. C’est une question de système.",
+      },
+      {
+        type: "paragraph",
+        text: "Si ton système est simple, ta pratique devient naturelle.",
+      },
+      {
+        type: "highlight",
+        text: "Ce n’est pas toi qu’il faut “réparer”. C’est l’organisation qu’il faut simplifier.",
+      },
+    ],
+    faq: [
+      {
+        q: "Pourquoi je manque de régularité dans le sport ?",
+        a: "Le plus souvent, ce n’est pas un manque de motivation mais une organisation trop complexe à répéter chaque semaine.",
+      },
+      {
+        q: "Comment devenir régulier sans se forcer ?",
+        a: "En réduisant les frictions : créneau clair, activité accessible, lieu proche et cadre simple. Plus c’est fluide, plus tu tiens.",
+      },
+      {
+        q: "Faut-il faire beaucoup de sport pour progresser ?",
+        a: "Non. Une pratique modérée mais régulière donne de meilleurs résultats qu’un rythme intense impossible à maintenir.",
+      },
+    ],
+  },
+  {
     slug: "faire-du-sport-pres-de-chez-vous-nice",
     title: "Faire du sport près de chez vous à Nice : par où commencer ?",
     metaTitle:
