@@ -6,13 +6,11 @@ import {
   CTA_SUBTEXT,
   PRIMARY_CTA_LABEL,
   WHATSAPP_URL,
+  type CtaLocation,
+  type PageType,
+  trackCtaClick,
 } from "@/lib/cta";
 import { cn } from "@/lib/utils";
-
-/**
- * Reuses the exact same primary CTA flow as the homepage ContactSection.
- * Used on /blog and at the bottom of every article.
- */
 
 interface BlogCTASectionProps {
   title?: string | null;
@@ -21,15 +19,21 @@ interface BlogCTASectionProps {
   subText?: string;
   microText?: string;
   compactTopSpacing?: boolean;
+  ctaLocation?: CtaLocation;
+  pageType?: PageType;
+  articleSlug?: string;
 }
 
 const BlogCTASection = ({
-  title = "Tu veux essayer sans t'organiser ?",
-  text = "Chaque semaine, MSP organise pour toi une séance de sport en petit groupe près de chez toi.",
+  title = "Le plus simple pour commencer",
+  text = "3 questions, 30 secondes, on s’occupe du reste",
   buttonLabel = PRIMARY_CTA_LABEL,
   subText = CTA_SUBTEXT,
   microText = CTA_MICRO_REASSURANCE,
   compactTopSpacing = false,
+  ctaLocation = "final_block",
+  pageType = "blog",
+  articleSlug,
 }: BlogCTASectionProps) => {
   return (
     <section
@@ -54,7 +58,20 @@ const BlogCTASection = ({
           {text && <p className="text-muted-foreground text-center mb-8 leading-relaxed">{text}</p>}
 
           <Button asChild variant="cta" className="w-full max-w-md mx-auto flex h-14 text-base">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackCtaClick({
+                  cta_location: ctaLocation,
+                  page_type: pageType,
+                  cta_label: buttonLabel,
+                  destination: "whatsapp",
+                  article_slug: articleSlug,
+                });
+              }}
+            >
               {buttonLabel}
             </a>
           </Button>

@@ -11,6 +11,7 @@ import {
   EMAIL_ALT_CTA_LABEL,
   PRIMARY_CTA_LABEL,
   WHATSAPP_URL,
+  trackCtaClick,
 } from "@/lib/cta";
 
 const ContactSection = () => {
@@ -40,7 +41,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id={CONVERSION_SECTION_ID} className="py-32 md:py-40 bg-background">
+    <section id={CONVERSION_SECTION_ID} className="py-32 md:py-40 bg-background scroll-mt-24">
       <div className="container">
         <div className="max-w-lg mx-auto space-y-10">
           {/* Bloc principal WhatsApp - prioritaire */}
@@ -59,18 +60,28 @@ const ContactSection = () => {
             </h3>
 
             <p className="text-muted-foreground text-center mb-10 leading-relaxed">
-              3 questions, 30 secondes, on s'occupe du reste
+              3 questions, 30 secondes, on s’occupe du reste
             </p>
 
             <Button asChild variant="cta" className="w-full max-w-md mx-auto flex h-14 text-base">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackCtaClick({
+                    cta_location: "final_block",
+                    page_type: "home",
+                    cta_label: PRIMARY_CTA_LABEL,
+                    destination: "whatsapp",
+                  });
+                }}
+              >
                 {PRIMARY_CTA_LABEL}
               </a>
             </Button>
 
-            <p className="text-sm text-foreground/70 text-center mt-5 font-medium">
-              {CTA_SUBTEXT}
-            </p>
+            <p className="text-sm text-foreground/70 text-center mt-5 font-medium">{CTA_SUBTEXT}</p>
             <p className="text-xs text-foreground/55 text-center mt-2">{CTA_MICRO_REASSURANCE}</p>
           </motion.div>
 
@@ -87,15 +98,11 @@ const ContactSection = () => {
                   <Rocket className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <h4 className="text-lg font-bold mb-1">Merci !</h4>
-                <p className="text-sm text-muted-foreground">
-                  On te tient au courant des nouveautés MSP.
-                </p>
+                <p className="text-sm text-muted-foreground">On te tient au courant des nouveautés MSP.</p>
               </div>
             ) : (
               <>
-                <h4 className="text-lg md:text-xl font-bold text-center mb-2">
-                  Tu préfères y aller doucement ?
-                </h4>
+                <h4 className="text-lg md:text-xl font-bold text-center mb-2">Tu préfères y aller doucement ?</h4>
                 <p className="text-sm text-muted-foreground text-center mb-3">
                   L'email reste une alternative si tu préfères.
                 </p>
@@ -129,7 +136,19 @@ const ContactSection = () => {
                     {error && <p className="text-destructive text-xs mt-1">{error}</p>}
                   </div>
 
-                  <Button type="submit" variant="outline" className="w-full h-11">
+                  <Button
+                    type="submit"
+                    variant="outline"
+                    className="w-full h-11"
+                    onClick={() => {
+                      trackCtaClick({
+                        cta_location: "final_block",
+                        page_type: "home",
+                        cta_label: EMAIL_ALT_CTA_LABEL,
+                        destination: "email",
+                      });
+                    }}
+                  >
                     {EMAIL_ALT_CTA_LABEL}
                   </Button>
                 </form>

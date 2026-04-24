@@ -71,10 +71,6 @@ const renderSection = (section: ArticleSection, idx: number) => {
 const BlogArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
-  const hasCustomFinalCta =
-    article?.slug === "faire-du-sport-simplement" ||
-    article?.slug === "reprendre-le-sport-facilement";
-
   useEffect(() => {
     if (!article) return;
     document.title = article.metaTitle;
@@ -151,7 +147,7 @@ const BlogArticle = () => {
         </section>
 
         {/* Content */}
-        <article className={hasCustomFinalCta ? "pb-6" : "pb-20"}>
+        <article className="pb-20">
           <div className="container">
             <div className="max-w-3xl mx-auto">
               {article.content.map(renderSection)}
@@ -161,22 +157,9 @@ const BlogArticle = () => {
 
         {/* CTA — same component as homepage */}
         <BlogCTASection
-          title={hasCustomFinalCta ? null : undefined}
-          text={hasCustomFinalCta ? null : undefined}
-          buttonLabel={
-            hasCustomFinalCta ? "On m’organise ma séance" : undefined
-          }
-          subText={
-            hasCustomFinalCta
-              ? "Réponse immédiate sur WhatsApp, en privé"
-              : undefined
-          }
-          microText={
-            hasCustomFinalCta
-              ? "Pas de groupe WhatsApp. Juste un échange rapide."
-              : undefined
-          }
-          compactTopSpacing={hasCustomFinalCta}
+          ctaLocation="end_article"
+          pageType="article"
+          articleSlug={article.slug}
         />
 
         {/* FAQ */}

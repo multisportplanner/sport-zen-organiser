@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CONVERSION_SECTION_ID, PRIMARY_CTA_LABEL } from "@/lib/cta";
+import { CONVERSION_SECTION_ID, PRIMARY_CTA_LABEL, trackCtaClick } from "@/lib/cta";
 import { SHOW_BLOG_IN_NAV } from "@/config/features";
 import logo from "@/assets/logo.png";
 
@@ -41,11 +41,26 @@ const Header = () => {
 
   const goToConversionSection = () => {
     setMobileOpen(false);
+    const pageType = location.pathname === "/" ? "home" : location.pathname.startsWith("/blog/") ? "article" : "blog";
+
+    trackCtaClick({
+      cta_location: "header",
+      page_type: pageType,
+      cta_label: PRIMARY_CTA_LABEL,
+      destination: "scroll",
+    });
+
     if (location.pathname !== "/") {
       navigate(`/#${CONVERSION_SECTION_ID}`);
       return;
     }
-    document.getElementById(CONVERSION_SECTION_ID)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const target = document.getElementById(CONVERSION_SECTION_ID);
+    if (!target) return;
+    const header = document.querySelector("header");
+    const offset = (header?.getBoundingClientRect().height ?? 0) + 8;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   };
 
   return (

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, scrollToConversionSection } from "@/lib/cta";
+import { CTA_MICRO_REASSURANCE, CTA_SUBTEXT, PRIMARY_CTA_LABEL, scrollToConversionSection, trackCtaClick } from "@/lib/cta";
 
 const timeline = [
   { day: "Dimanche", text: "Tu nous dis quand tu es dispo" },
@@ -49,7 +49,15 @@ const ProjectionSection = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={scrollToConversionSection}>
+            <Button variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={() => {
+            trackCtaClick({
+              cta_location: "hero",
+              page_type: "home",
+              cta_label: PRIMARY_CTA_LABEL,
+              destination: "scroll",
+            });
+            scrollToConversionSection();
+          }}>
               {PRIMARY_CTA_LABEL}
             </Button>
             <p className="text-xs text-muted-foreground/70 mt-3">
