@@ -420,6 +420,157 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
+    slug: "faire-du-sport-quand-on-travaille",
+    title: "Faire du sport quand on travaille : comment s’organiser simplement",
+    metaTitle:
+      "Faire du sport quand on travaille facilement | MultiSport Planner",
+    metaDescription:
+      "Pas le temps de faire du sport avec le travail ? Découvrez comment simplifier votre organisation pour rester régulier sans contrainte.",
+    date: "2026-04-24",
+    excerpt:
+      "Quand on travaille, faire du sport devient vite compliqué. La clé n’est pas la motivation, mais la simplicité.",
+    category: "Faire du sport simplement",
+    image: sportSimplementImg,
+    featuredImageAlt:
+      "Personne active trouvant une solution simple pour faire du sport après le travail",
+    content: [
+      {
+        type: "intro",
+        text: "Quand on travaille, on a souvent l’impression que le sport passe automatiquement en dernier.",
+      },
+      {
+        type: "paragraph",
+        text: "Entre les journées chargées, la fatigue, les trajets et les imprévus, trouver du temps semble compliqué.",
+      },
+      {
+        type: "paragraph",
+        text: "Et pourtant, ce n’est pas forcément un problème de motivation.",
+      },
+      {
+        type: "quickAnswer",
+        question: "Comment faire du sport quand on travaille sans se compliquer la vie ?",
+        answer:
+          "En simplifiant au maximum l’organisation : un créneau réaliste, une activité proche, et un cadre déjà prêt. Moins il y a de friction, plus la régularité devient naturelle.",
+      },
+      { type: "h2", text: "Le vrai frein n’est pas le manque de volonté" },
+      {
+        type: "paragraph",
+        text: "Beaucoup de personnes se disent : “je manque de discipline”.",
+      },
+      {
+        type: "paragraph",
+        text: "En réalité, elles essaient surtout de caser un format trop lourd dans un agenda déjà plein.",
+      },
+      {
+        type: "paragraph",
+        text: "Quand le sport demande trop de décisions et de coordination, il saute dès que la semaine se tend.",
+      },
+      { type: "h2", text: "Pourquoi c’est difficile après le travail" },
+      {
+        type: "list",
+        items: [
+          "Tu finis la journée avec moins d’énergie mentale.",
+          "Tu dois encore gérer la logistique perso (repas, famille, tâches).",
+          "Tu hésites entre te reposer et “te forcer”.",
+          "Tu dois tout réorganiser à chaque séance.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Le problème n’est donc pas “faire l’effort”. Le problème, c’est d’avoir trop d’étapes avant même de commencer.",
+      },
+      { type: "h2", text: "Commencer simple est plus efficace que viser parfait" },
+      {
+        type: "paragraph",
+        text: "Après une journée de travail, tu n’as pas besoin d’un plan idéal. Tu as besoin d’un plan faisable.",
+      },
+      {
+        type: "list",
+        items: [
+          "1 à 2 créneaux réalistes par semaine",
+          "une activité qui te plaît vraiment",
+          "un lieu facile d’accès",
+          "un format que tu peux répéter",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Ce qui compte, ce n’est pas l’intensité maximale. C’est la continuité.",
+      },
+      { type: "h2", text: "La régularité vient quand la charge mentale baisse" },
+      {
+        type: "paragraph",
+        text: "Si chaque séance demande de tout replanifier, ta motivation s’épuise vite.",
+      },
+      {
+        type: "paragraph",
+        text: "À l’inverse, quand c’est clair et déjà organisé, tu peux décider plus facilement, même les soirs chargés.",
+      },
+      {
+        type: "paragraph",
+        text: "Faire du sport devient alors une habitude réaliste, pas un projet compliqué.",
+      },
+      { type: "h2", text: "Le collectif aide quand on manque de temps" },
+      {
+        type: "paragraph",
+        text: "Faire du sport seul après le travail demande beaucoup d’autodiscipline.",
+      },
+      {
+        type: "paragraph",
+        text: "En groupe, tout devient plus simple : tu es attendu, le cadre est posé, et tu réfléchis moins avant d’y aller.",
+      },
+      {
+        type: "list",
+        items: [
+          "moins de reports",
+          "moins d’annulations",
+          "plus de constance dans la durée",
+        ],
+      },
+      { type: "h2", text: "Une méthode concrète pour t’organiser simplement" },
+      {
+        type: "list",
+        items: [
+          "Choisis un créneau compatible avec ta vraie semaine (pas ta semaine idéale).",
+          "Privilégie la proximité pour réduire les trajets.",
+          "Fixe un objectif minimal : juste y aller régulièrement.",
+          "Appuie-toi sur un cadre déjà organisé pour ne pas tout porter seul.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "En procédant comme ça, tu protèges ton énergie et tu rends la pratique durable.",
+      },
+      { type: "h2", text: "Ce qu’il faut retenir" },
+      {
+        type: "paragraph",
+        text: "Quand on travaille, réussir à faire du sport ne dépend pas d’un “mental plus fort”.",
+      },
+      {
+        type: "paragraph",
+        text: "Cela dépend surtout d’une organisation plus légère.",
+      },
+      {
+        type: "highlight",
+        text: "Moins tu as à organiser, plus tu as de chances de rester régulier — même avec un agenda chargé.",
+      },
+    ],
+    faq: [
+      {
+        q: "Comment faire du sport quand on n’a pas le temps avec le travail ?",
+        a: "Il faut simplifier : un créneau réaliste, une activité proche, et un cadre clair. Le but est de réduire les décisions à prendre après la journée.",
+      },
+      {
+        q: "Faut-il faire beaucoup de sport pour que ce soit utile ?",
+        a: "Non. Une à deux séances régulières par semaine apportent déjà des bénéfices concrets sur l’énergie, le sommeil et le moral.",
+      },
+      {
+        q: "Pourquoi j’arrive à tenir quelques semaines puis j’arrête ?",
+        a: "Souvent parce que l’organisation demande trop d’efforts mentaux. Quand le système est trop lourd, il devient difficile à maintenir pendant les semaines chargées.",
+      },
+    ],
+  },
+  {
     slug: "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport",
     title: "Pourquoi je n’arrive pas à être régulier dans le sport",
     metaTitle:

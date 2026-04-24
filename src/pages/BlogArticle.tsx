@@ -73,7 +73,8 @@ const BlogArticle = () => {
   const article = slug ? getArticleBySlug(slug) : undefined;
   const useLocalGroupCta =
     article?.slug === "faire-du-sport-pres-de-chez-vous-nice" ||
-    article?.slug === "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport";
+    article?.slug === "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport" ||
+    article?.slug === "faire-du-sport-quand-on-travaille";
   useEffect(() => {
     if (!article) return;
     document.title = article.metaTitle;
