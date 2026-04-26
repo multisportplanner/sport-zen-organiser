@@ -264,6 +264,128 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
+    slug: "quel-sport-choisir-pour-reprendre",
+    title: "Quel sport choisir pour reprendre le sport ?",
+    metaTitle: "Quel sport choisir pour reprendre le sport facilement | MSP",
+    metaDescription:
+      "Vous voulez reprendre le sport mais ne savez pas quoi choisir ? Découvrez comment trouver une activité adaptée simplement et sans pression.",
+    date: "2026-04-24",
+    excerpt:
+      "Le meilleur sport n’est pas le plus efficace, mais celui que vous pouvez pratiquer régulièrement.",
+    category: "Reprendre le sport",
+    image: reprendreSportImg,
+    featuredImageAlt:
+      "Personne hésitant entre plusieurs sports pour reprendre une activité",
+    content: [
+      {
+        type: "intro",
+        text: "Quand on veut reprendre le sport, la première question est souvent : quel sport choisir ?",
+      },
+      {
+        type: "paragraph",
+        text: "On compare, on hésite, on regarde ce qui “marche le mieux”... et parfois on ne commence jamais.",
+      },
+      {
+        type: "quickAnswer",
+        question: "Quel sport choisir pour reprendre sans se décourager ?",
+        answer:
+          "Choisissez un sport simple à intégrer dans votre semaine, proche de chez vous, et que vous avez réellement envie de pratiquer. La régularité compte plus qu’un choix “parfait”.",
+      },
+      {
+        type: "h2",
+        text: "Le meilleur sport n’est pas le plus intense",
+      },
+      {
+        type: "paragraph",
+        text: "Pour reprendre, inutile de viser l’activité la plus difficile ou la plus “rentable”.",
+      },
+      {
+        type: "paragraph",
+        text: "Le bon sport est celui que vous pouvez refaire la semaine suivante, puis encore après.",
+      },
+      { type: "h2", text: "Posez-vous 3 questions simples" },
+      {
+        type: "list",
+        items: [
+          "Est-ce que cette activité me donne vraiment envie ?",
+          "Est-ce que je peux la faire facilement (lieu, horaire, accès) ?",
+          "Est-ce que je peux tenir ce rythme sans pression ?",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Si vous répondez “oui” à ces trois points, vous avez déjà une très bonne base.",
+      },
+      { type: "h2", text: "Quels sports sont adaptés pour une reprise ?" },
+      {
+        type: "paragraph",
+        text: "L’objectif est de reprendre progressivement, sans vous épuiser dès le départ.",
+      },
+      {
+        type: "list",
+        items: [
+          "Marche active ou randonnée légère",
+          "Renforcement doux",
+          "Yoga, mobilité ou pilates",
+          "Vélo à intensité modérée",
+          "Sports collectifs à rythme progressif",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Il n’y a pas de sport universel. Il y a surtout un format qui vous correspond aujourd’hui.",
+      },
+      { type: "h2", text: "Évitez le piège du “tout ou rien”" },
+      {
+        type: "paragraph",
+        text: "Beaucoup abandonnent parce qu’ils veulent reprendre “à fond” dès la première semaine.",
+      },
+      {
+        type: "paragraph",
+        text: "Mieux vaut commencer avec une à deux séances réalistes que viser trop haut et arrêter rapidement.",
+      },
+      {
+        type: "h2",
+        text: "Le plaisir et la simplicité font la différence",
+      },
+      {
+        type: "paragraph",
+        text: "Vous tiendrez plus facilement une activité qui vous plaît qu’un programme imposé.",
+      },
+      {
+        type: "paragraph",
+        text: "Quand c’est simple à organiser, vous hésitez moins et vous restez plus régulier.",
+      },
+      { type: "h2", text: "Ce qu’il faut retenir" },
+      {
+        type: "paragraph",
+        text: "Choisir un sport pour reprendre, ce n’est pas chercher la meilleure discipline sur le papier.",
+      },
+      {
+        type: "paragraph",
+        text: "C’est choisir une activité faisable, proche de votre réalité, et suffisamment agréable pour revenir chaque semaine.",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+    ],
+    faq: [
+      {
+        q: "Quel est le meilleur sport pour reprendre après une pause ?",
+        a: "Le meilleur sport est celui que vous pouvez pratiquer régulièrement, sans douleur ni contrainte excessive. La continuité est plus importante que l’intensité.",
+      },
+      {
+        q: "Faut-il choisir un sport cardio ou renforcement pour recommencer ?",
+        a: "Les deux peuvent convenir. Le plus utile est de démarrer avec un format progressif, adapté à votre niveau actuel, puis d’ajuster selon vos sensations.",
+      },
+      {
+        q: "Comment savoir si j’ai choisi la bonne activité ?",
+        a: "Si vous arrivez à y retourner chaque semaine sans stress, avec une sensation globale positive, c’est probablement le bon choix pour votre reprise.",
+      },
+    ],
+  },
+  {
     slug: "faire-du-sport-simplement",
     title: "Faire du sport simplement : la fin du sport compliqué",
     metaTitle:
