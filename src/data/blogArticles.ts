@@ -596,6 +596,35 @@ export const blogArticles: BlogArticle[] = [
     ],
     faq: [],
   },
+
+  {
+    slug: "faire-du-sport-pres-de-chez-vous-antibes",
+    title:
+      "Faire du sport près de chez vous à Antibes : comment s’y remettre simplement ?",
+    metaTitle: "Faire du sport à Antibes facilement | MultiSport Planner",
+    metaDescription:
+      "Envie de faire du sport à Antibes sans vous compliquer la vie ? Découvrez comment reprendre simplement et rester régulier près de chez vous.",
+    date: "2026-04-24",
+    excerpt:
+      "À Antibes, faire du sport devient plus simple quand l’activité s’intègre naturellement dans votre quotidien.",
+    category: "Faire du sport près de chez vous",
+    image: sportPresImg,
+    featuredImageAlt:
+      "Personnes faisant du sport simplement près de chez elles à Antibes",
+    location: "Antibes",
+    content: [
+      {
+        type: "intro",
+        text: "[COLLER ICI L’ARTICLE COMPLET]",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+    ],
+    faq: [],
+  },
+
   {
     slug: "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport",
     title: "Pourquoi je n’arrive pas à être régulier dans le sport",

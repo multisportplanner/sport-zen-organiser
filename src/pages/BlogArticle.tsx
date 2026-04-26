@@ -75,7 +75,8 @@ const BlogArticle = () => {
     article?.slug === "faire-du-sport-pres-de-chez-vous-nice" ||
     article?.slug === "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport" ||
     article?.slug === "faire-du-sport-quand-on-travaille" ||
-    article?.slug === "faire-du-sport-sans-motivation";
+    article?.slug === "faire-du-sport-sans-motivation" ||
+    article?.slug === "faire-du-sport-pres-de-chez-vous-antibes";
   useEffect(() => {
     if (!article) return;
     document.title = article.metaTitle;
