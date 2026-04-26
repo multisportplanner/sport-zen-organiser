@@ -625,6 +625,36 @@ export const blogArticles: BlogArticle[] = [
     faq: [],
   },
 
+
+  {
+    slug: "faire-du-sport-pres-de-chez-vous-sophia-antipolis",
+    title:
+      "Faire du sport près de chez vous à Sophia Antipolis : comment rester régulier malgré le travail ?",
+    metaTitle:
+      "Faire du sport à Sophia Antipolis facilement | MultiSport Planner",
+    metaDescription:
+      "Pas le temps de faire du sport à Sophia Antipolis ? Découvrez comment rester régulier malgré le travail avec une approche simple et sans organisation.",
+    date: "2026-04-24",
+    excerpt:
+      "À Sophia Antipolis, faire du sport devient plus simple quand il s’intègre directement dans le quotidien professionnel.",
+    category: "Faire du sport près de chez vous",
+    image: sportPresImg,
+    featuredImageAlt:
+      "Personne active faisant du sport facilement près de son travail à Sophia Antipolis",
+    location: "Sophia Antipolis",
+    content: [
+      {
+        type: "intro",
+        text: "[COLLER ICI L’ARTICLE COMPLET]",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+    ],
+    faq: [],
+  },
+
   {
     slug: "pourquoi-je-n-arrive-pas-a-etre-regulier-dans-le-sport",
     title: "Pourquoi je n’arrive pas à être régulier dans le sport",
