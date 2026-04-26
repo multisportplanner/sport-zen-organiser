@@ -598,6 +598,33 @@ export const blogArticles: BlogArticle[] = [
   },
 
   {
+    slug: "trouver-activite-sportive-pres-de-chez-moi",
+    title:
+      "Comment trouver une activité sportive près de chez moi (sans se compliquer la vie)",
+    metaTitle:
+      "Trouver une activité sportive près de chez moi facilement | MultiSport Planner",
+    metaDescription:
+      "Vous cherchez une activité sportive près de chez vous ? Découvrez comment trouver facilement une pratique adaptée sans perdre de temps à chercher.",
+    date: "2026-04-24",
+    excerpt:
+      "Trouver une activité sportive près de chez soi ne devrait pas être compliqué. Le vrai enjeu, c’est la simplicité.",
+    category: "Faire du sport près de chez vous",
+    image: sportPresImg,
+    featuredImageAlt:
+      "Personne trouvant facilement une activité sportive près de chez elle",
+    content: [
+      {
+        type: "intro",
+        text: "[COLLER ICI L’ARTICLE COMPLET]",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+    ],
+    faq: [],
+  },
+  {
     slug: "faire-du-sport-pres-de-chez-vous-antibes",
     title:
       "Faire du sport près de chez vous à Antibes : comment s’y remettre simplement ?",
