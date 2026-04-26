@@ -386,6 +386,113 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
+    slug: "quel-sport-debutant-adulte",
+    title: "Quel sport pour débutant adulte ? Par où commencer simplement",
+    metaTitle: "Quel sport pour débutant adulte ? Conseils simples | MSP",
+    metaDescription:
+      "Quel sport choisir quand on débute à l’âge adulte ? Découvrez des activités simples pour commencer sans pression et rester régulier.",
+    date: "2026-04-24",
+    excerpt:
+      "Débuter le sport à l’âge adulte n’est pas une question de niveau, mais de simplicité et de régularité.",
+    category: "Reprendre le sport",
+    image: reprendreSportImg,
+    featuredImageAlt: "Adulte débutant une activité sportive en douceur",
+    content: [
+      {
+        type: "intro",
+        text: "Commencer le sport à l’âge adulte peut sembler impressionnant, surtout quand on a l’impression de partir de loin.",
+      },
+      {
+        type: "paragraph",
+        text: "La bonne nouvelle : vous n’avez pas besoin d’être “sportif” pour vous y mettre. Vous avez surtout besoin d’un format simple, réaliste et agréable à répéter.",
+      },
+      {
+        type: "quickAnswer",
+        question: "Quel sport choisir quand on débute à l’âge adulte ?",
+        answer:
+          "Choisissez une activité douce, facile à organiser et compatible avec votre semaine. Le meilleur choix est celui que vous pouvez refaire régulièrement, sans pression.",
+      },
+      { type: "h2", text: "Le bon sport, c’est celui que vous pouvez tenir" },
+      {
+        type: "paragraph",
+        text: "Quand on débute, on cherche souvent l’activité “idéale”. En pratique, le critère principal est la régularité.",
+      },
+      {
+        type: "paragraph",
+        text: "Un sport parfait sur le papier mais impossible à caler dans votre agenda ne durera pas.",
+      },
+      { type: "h2", text: "Par où commencer simplement" },
+      {
+        type: "list",
+        items: [
+          "Commencez petit : une à deux séances par semaine suffisent.",
+          "Privilégiez une activité proche de chez vous.",
+          "Choisissez un effort progressif pour éviter de vous décourager.",
+          "Misez sur une routine simple plutôt qu’un programme strict.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Quels sports sont adaptés à un débutant adulte ?",
+      },
+      {
+        type: "list",
+        items: [
+          "Marche active ou randonnée légère",
+          "Renforcement doux au poids du corps",
+          "Vélo à rythme modéré",
+          "Yoga, mobilité ou pilates",
+          "Sports collectifs en format loisir",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "L’objectif n’est pas de performer vite, mais de construire une habitude durable.",
+      },
+      { type: "h2", text: "Évitez le piège du démarrage trop intense" },
+      {
+        type: "paragraph",
+        text: "Beaucoup d’adultes arrêtent après quelques semaines parce qu’ils démarrent trop fort. Fatigue, douleurs, frustration : le rythme devient vite difficile à tenir.",
+      },
+      {
+        type: "paragraph",
+        text: "Mieux vaut un départ modeste et régulier qu’un pic d’effort suivi d’un arrêt.",
+      },
+      { type: "h2", text: "Le plaisir et la simplicité font la différence" },
+      {
+        type: "paragraph",
+        text: "Vous serez plus constant avec une activité qui vous plaît vraiment. Plus c’est simple à organiser, moins vous hésitez à y retourner.",
+      },
+      {
+        type: "paragraph",
+        text: "À plusieurs, c’est souvent encore plus facile de garder le rythme : l’engagement est plus naturel et la séance paraît plus légère.",
+      },
+      { type: "h2", text: "Ce qu’il faut retenir" },
+      {
+        type: "paragraph",
+        text: "Débuter le sport à l’âge adulte ne demande pas un niveau particulier. Cela demande surtout une organisation simple, progressive et adaptée à votre quotidien.",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+    ],
+    faq: [
+      {
+        q: "Quel est le meilleur sport quand on débute adulte ?",
+        a: "Le meilleur sport est celui que vous pouvez pratiquer régulièrement, sans contrainte excessive. Une activité simple et agréable sera toujours plus efficace dans la durée.",
+      },
+      {
+        q: "Combien de fois par semaine faut-il commencer ?",
+        a: "Commencer avec une à deux séances par semaine est souvent suffisant. Le plus important est de créer une routine tenable dans votre vraie semaine.",
+      },
+      {
+        q: "Faut-il être en forme avant de commencer le sport ?",
+        a: "Non. Vous pouvez commencer à votre niveau actuel, avec des formats progressifs. L’objectif est d’avancer pas à pas, sans pression.",
+      },
+    ],
+  },
+  {
     slug: "faire-du-sport-simplement",
     title: "Faire du sport simplement : la fin du sport compliqué",
     metaTitle:
