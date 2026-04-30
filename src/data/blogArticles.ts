@@ -493,6 +493,109 @@ export const blogArticles: BlogArticle[] = [
     ],
   },
   {
+    slug: "decouvrir-padel-a-deux",
+    title:
+      "Découvrir le padel à deux : une activité simple, ludique et accessible",
+    metaTitle: "Découvrir le padel facilement : activité accessible | MSP",
+    metaDescription:
+      "Envie de découvrir le padel ? Une activité ludique, accessible et idéale pour reprendre le sport simplement et sans pression.",
+    date: "2026-04-24",
+    excerpt:
+      "Le padel est une activité idéale pour commencer le sport facilement, à deux et sans pression.",
+    category: "Faire du sport simplement",
+    image: sportSimplementImg,
+    featuredImageAlt: "Deux personnes découvrant le padel de manière conviviale",
+    content: [
+      {
+        type: "intro",
+        text: "Le padel attire de plus en plus de personnes qui veulent reprendre une activité physique sans pression.",
+      },
+      {
+        type: "paragraph",
+        text: "Accessible, dynamique et convivial, ce sport se pratique généralement à quatre, mais il existe aussi un format à deux idéal pour débuter à son rythme.",
+      },
+      {
+        type: "quickAnswer",
+        question: "Pourquoi découvrir le padel à deux ?",
+        answer:
+          "Parce que le format à deux permet de jouer simplement, de progresser progressivement et de prendre du plaisir sans viser la performance.",
+      },
+      { type: "h2", text: "Un sport facile à prendre en main" },
+      {
+        type: "paragraph",
+        text: "Le padel se découvre rapidement : les échanges commencent vite et les premières sensations positives arrivent dès les premières sessions.",
+      },
+      {
+        type: "paragraph",
+        text: "Pas besoin d’être déjà sportif pour commencer. L’objectif est surtout de bouger, s’amuser et revenir régulièrement.",
+      },
+      { type: "h2", text: "Le format à deux simplifie l’expérience" },
+      {
+        type: "list",
+        items: [
+          "Organisation plus simple pour trouver un créneau",
+          "Rythme de jeu plus lisible quand on débute",
+          "Progression plus naturelle séance après séance",
+          "Ambiance détendue, sans pression de résultat",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Jouer à deux permet de se concentrer sur les bases, d’apprendre tranquillement et de gagner en confiance.",
+      },
+      { type: "h2", text: "Une activité ludique qui motive dans la durée" },
+      {
+        type: "paragraph",
+        text: "Quand une activité est agréable, il est plus facile de rester régulier. Le padel combine mouvement, coordination et côté jeu, ce qui le rend particulièrement motivant.",
+      },
+      {
+        type: "paragraph",
+        text: "Même avec un emploi du temps chargé, une session bien placée dans la semaine peut suffire à relancer une routine sportive.",
+      },
+      { type: "h2", text: "Comment commencer simplement" },
+      {
+        type: "list",
+        items: [
+          "Prévoir un créneau fixe chaque semaine",
+          "Commencer avec des sessions courtes et progressives",
+          "Privilégier un lieu proche pour limiter la logistique",
+          "Se concentrer sur le plaisir avant la performance",
+        ],
+      },
+      { type: "h2", text: "Ce qu’il faut retenir" },
+      {
+        type: "paragraph",
+        text: "Découvrir le padel à deux, c’est une façon simple de reprendre le sport : plus accessible, plus ludique et plus facile à intégrer dans le quotidien.",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+      {
+        type: "paragraph",
+        text: "Réponse immédiate sur WhatsApp, en privé",
+      },
+      {
+        type: "paragraph",
+        text: "Pas de groupe WhatsApp. Juste un échange rapide.",
+      },
+    ],
+    faq: [
+      {
+        q: "Le padel est-il adapté quand on reprend le sport ?",
+        a: "Oui, c’est une activité progressive et ludique qui permet de bouger sans pression, même après une longue pause sportive.",
+      },
+      {
+        q: "Pourquoi débuter en format à deux ?",
+        a: "Le format à deux facilite l’organisation, rend le jeu plus lisible et permet de progresser tranquillement, avec un cadre plus simple.",
+      },
+      {
+        q: "Faut-il un niveau particulier pour commencer le padel ?",
+        a: "Non. Le padel est accessible aux débutants. Le plus important est de commencer à son rythme et de privilégier la régularité.",
+      },
+    ],
+  },
+  {
     slug: "faire-du-sport-simplement",
     title: "Faire du sport simplement : la fin du sport compliqué",
     metaTitle:
