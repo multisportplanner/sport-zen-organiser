@@ -595,6 +595,111 @@ export const blogArticles: BlogArticle[] = [
       },
     ],
   },
+
+  {
+    slug: "decouvrir-pickleball",
+    title:
+      "Découvrir le pickleball : une activité ludique et accessible pour bouger simplement",
+    metaTitle: "Pickleball : sport facile et accessible pour débuter | MSP",
+    metaDescription:
+      "Envie de découvrir le pickleball ? Un sport ludique, accessible et parfait pour reprendre une activité physique simplement.",
+    date: "2026-04-24",
+    excerpt:
+      "Le pickleball est un sport simple et ludique, idéal pour commencer ou reprendre une activité physique sans pression.",
+    category: "Faire du sport simplement",
+    image: sportSimplementImg,
+    featuredImageAlt:
+      "Personnes jouant au pickleball dans une ambiance conviviale",
+    content: [
+      {
+        type: "intro",
+        text: "Le pickleball séduit de plus en plus celles et ceux qui veulent bouger sans pression, dans un cadre simple et convivial.",
+      },
+      {
+        type: "paragraph",
+        text: "Facile à prendre en main, ce sport mélange des repères du tennis, du badminton et du ping-pong, avec une intensité progressive adaptée à tous les niveaux.",
+      },
+      {
+        type: "quickAnswer",
+        question: "Pourquoi découvrir le pickleball pour reprendre une activité ?",
+        answer:
+          "Parce que c’est un sport ludique, accessible et rapide à apprendre, qui permet de bouger régulièrement sans viser la performance.",
+      },
+      { type: "h2", text: "Un sport accessible dès les premières séances" },
+      {
+        type: "paragraph",
+        text: "Le pickleball se joue sur un terrain plus compact et avec des échanges souvent plus fluides, ce qui facilite l’entrée dans le jeu même quand on débute.",
+      },
+      {
+        type: "paragraph",
+        text: "On progresse rapidement, on prend confiance, et on ressent vite le plaisir de jouer sans se sentir dépassé.",
+      },
+      { type: "h2", text: "Une activité ludique qui donne envie de revenir" },
+      {
+        type: "list",
+        items: [
+          "Règles simples à comprendre",
+          "Échanges dynamiques mais abordables",
+          "Ambiance conviviale et détendue",
+          "Format idéal pour jouer à plusieurs sans pression",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Quand une activité est plaisante, il devient plus naturel de garder un rythme régulier semaine après semaine.",
+      },
+      { type: "h2", text: "Parfait pour reprendre le sport simplement" },
+      {
+        type: "paragraph",
+        text: "Pas besoin d’être très entraîné ni de viser une performance particulière. Le pickleball permet de reprendre une activité physique de façon progressive, à son rythme.",
+      },
+      {
+        type: "paragraph",
+        text: "Une séance bien placée dans la semaine peut déjà faire la différence sur l’énergie, la forme et la motivation.",
+      },
+      { type: "h2", text: "Comment commencer facilement" },
+      {
+        type: "list",
+        items: [
+          "Choisir un créneau réaliste dans la semaine",
+          "Privilégier un lieu proche pour limiter la logistique",
+          "Commencer avec des sessions courtes et régulières",
+          "Se concentrer sur le plaisir avant la performance",
+        ],
+      },
+      { type: "h2", text: "Ce qu’il faut retenir" },
+      {
+        type: "paragraph",
+        text: "Découvrir le pickleball, c’est choisir une activité simple, ludique et accessible pour bouger davantage sans se compliquer la vie.",
+      },
+      {
+        type: "highlight",
+        text: "Rejoins un groupe près de chez toi",
+      },
+      {
+        type: "paragraph",
+        text: "Réponse immédiate sur WhatsApp, en privé",
+      },
+      {
+        type: "paragraph",
+        text: "Pas de groupe WhatsApp. Juste un échange rapide.",
+      },
+    ],
+    faq: [
+      {
+        q: "Le pickleball est-il adapté aux débutants ?",
+        a: "Oui, c’est un sport accessible avec des règles simples et une prise en main rapide, même si vous reprenez après une longue pause.",
+      },
+      {
+        q: "Faut-il être en bonne condition physique pour commencer ?",
+        a: "Non. Vous pouvez commencer progressivement, à votre rythme. L’objectif est surtout de bouger régulièrement sans pression.",
+      },
+      {
+        q: "Pourquoi le pickleball aide-t-il à rester régulier ?",
+        a: "Parce qu’il est ludique et facile à organiser. Quand l’activité est agréable et simple, on a plus de chances d’y retourner chaque semaine.",
+      },
+    ],
+  },
   {
     slug: "faire-du-sport-simplement",
     title: "Faire du sport simplement : la fin du sport compliqué",
