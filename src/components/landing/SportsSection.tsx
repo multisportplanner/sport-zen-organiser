@@ -15,7 +15,7 @@ const ponctuelles = [
   { icon: Footprints, label: "Randonnée" },
   { icon: Mountain, label: "Canyoning" },
   { icon: Cable, label: "Via ferrata" },
-  { icon: Waves, label: "Rafting" },
+  { icon: Waves, label: "Rafting / Kayak" },
   { icon: TreePine, label: "Escalade" },
   { icon: Compass, label: "Paddle" },
 ];
