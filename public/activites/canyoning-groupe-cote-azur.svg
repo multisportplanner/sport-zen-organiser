@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
+  <title id="title">Groupe en activité outdoor sur la Côte d'Azur</title>
+  <desc id="desc">Illustration d'un petit groupe en activité outdoor dans un canyon de la Côte d'Azur.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#DDF8F2"/><stop offset="1" stop-color="#FFF1CC"/></linearGradient>
+    <linearGradient id="path" x1="0" x2="1"><stop stop-color="#26B7BF"/><stop offset="1" stop-color="#8BE4C8"/></linearGradient>
+  </defs>
+  <rect width="900" height="540" fill="url(#bg)"/>
+  <path d="M0 315c140-100 245-117 370-59 101 47 202 40 306-19 87-49 161-51 224-7v310H0Z" fill="#74665A" opacity=".42"/>
+  <path d="M0 415c140-36 270-35 390 4 136 44 264 35 383-25 46-23 88-32 127-27v173H0Z" fill="url(#path)"/>
+  <g transform="translate(210 215)">
+    <circle cx="0" cy="0" r="30" fill="#183A42"/><path d="M0 36c-32 28-47 61-44 99h88C47 95 32 64 0 36Z" fill="#FFB84D"/><path d="M-40 66l-54 48" stroke="#183A42" stroke-width="15" stroke-linecap="round"/><path d="M40 66l52 48" stroke="#183A42" stroke-width="15" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(450 190)">
+    <circle cx="0" cy="0" r="30" fill="#183A42"/><path d="M0 36c-32 28-47 61-44 99h88C47 95 32 64 0 36Z" fill="#83D36B"/><path d="M-40 66l-54 48" stroke="#183A42" stroke-width="15" stroke-linecap="round"/><path d="M40 66l52 48" stroke="#183A42" stroke-width="15" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(670 230)">
+    <circle cx="0" cy="0" r="30" fill="#183A42"/><path d="M0 36c-32 28-47 61-44 99h88C47 95 32 64 0 36Z" fill="#7DA9FF"/><path d="M-40 66l-54 48" stroke="#183A42" stroke-width="15" stroke-linecap="round"/><path d="M40 66l52 48" stroke="#183A42" stroke-width="15" stroke-linecap="round"/>
+  </g>
+  <path d="M115 465c130 22 272 19 426-11 98-19 183-20 255-3" fill="none" stroke="#F0FFFB" stroke-width="11" stroke-linecap="round" opacity=".8"/>
+</svg>

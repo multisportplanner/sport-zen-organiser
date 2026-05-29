@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
+  <title id="title">Toboggan naturel en canyoning</title>
+  <desc id="desc">Illustration d'un toboggan naturel dans un canyon.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F5E7C8"/><stop offset="1" stop-color="#D8F5EF"/></linearGradient>
+    <linearGradient id="slide" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#9D8A72"/><stop offset="1" stop-color="#5E5147"/></linearGradient>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#60E0D0"/><stop offset="1" stop-color="#169EAE"/></linearGradient>
+  </defs>
+  <rect width="900" height="540" fill="url(#bg)"/>
+  <path d="M0 110c120 85 225 98 340 43 128-62 301-62 560 76v311H0Z" fill="#A78C6E" opacity=".35"/>
+  <path d="M210 35c95 110 130 206 106 288-17 60 47 94 165 100 107 5 209 33 306 84H219C80 433 31 332 72 205 93 139 139 83 210 35Z" fill="url(#slide)"/>
+  <path d="M273 70c58 100 71 180 38 240-33 61 30 91 189 99 90 5 166 23 228 53" fill="none" stroke="url(#water)" stroke-width="58" stroke-linecap="round"/>
+  <path d="M301 147c39 59 34 102-15 129" fill="none" stroke="#E8FFFB" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+  <circle cx="350" cy="286" r="28" fill="#1B3740"/>
+  <path d="M333 317c-31 39-27 68 12 88l59-39c-6-32-23-48-71-49Z" fill="#FFB84D"/>
+  <path d="M374 328l58 42" stroke="#1B3740" stroke-width="15" stroke-linecap="round"/>
+</svg>
