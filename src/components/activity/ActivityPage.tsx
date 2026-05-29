@@ -1,4 +1,4 @@
-import { useEffect, ComponentType } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -14,14 +14,6 @@ import {
   Settings,
   MessageSquare,
   Smile,
-  Dumbbell,
-  Heart,
-  Sparkles,
-  Mountain,
-  Waves,
-  TreePine,
-  Compass,
-  Cable,
   type LucideIcon,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -38,6 +30,12 @@ export interface IconLabel {
   icon: LucideIcon;
   label: string;
   description?: string;
+}
+
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  title: string;
 }
 
 export interface PlaceCard {
@@ -61,11 +59,12 @@ export interface ActivityPageProps {
   slug: string;
   seo: { title: string; description: string };
   hero: { h1: string; subtitle: string; intro: string };
-  whatIsIt: { title: string; items: IconLabel[] };
-  whyTry: { title: string; cards: IconLabel[] };
-  whyAppealing: { title: string; intro?: string; pillars: IconLabel[] };
-  places: { title: string; cards: PlaceCard[] };
-  audience: { title: string; profiles: IconLabel[] };
+  gallery?: { images: GalleryImage[] };
+  whatIsIt: { title: string; intro?: string[]; items: IconLabel[]; outro?: string[] };
+  whyTry: { title: string; intro?: string; cards: IconLabel[]; outro?: string[] };
+  whyAppealing: { title: string; intro?: string; outro?: string; pillars: IconLabel[] };
+  places: { title: string; intro?: string; cards: PlaceCard[] };
+  audience: { title: string; intro?: string; profiles: IconLabel[] };
   reassurance: { title: string; items: FAQItem[] };
   localSeo: { title: string; paragraphs: string[] };
   faq: { title?: string; items: FAQItem[] };
@@ -95,6 +94,7 @@ export const ActivityPage = ({
   slug,
   seo,
   hero,
+  gallery,
   whatIsIt,
   whyTry,
   whyAppealing,
@@ -182,13 +182,43 @@ export const ActivityPage = ({
           </div>
         </section>
 
+        {/* GALLERY */}
+        {gallery && (
+          <section className="py-16">
+            <div className="container">
+              <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-4">
+                {gallery.images.map((image, i) => (
+                  <motion.figure
+                    key={image.src}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06 }}
+                    className="bg-card rounded-2xl overflow-hidden shadow-card"
+                  >
+                    <img src={image.src} alt={image.alt} className="w-full h-48 object-cover" loading="lazy" />
+                    <figcaption className="p-4 text-sm font-semibold">{image.title}</figcaption>
+                  </motion.figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* WHAT IS IT */}
         <section className="py-24 bg-muted/30">
           <div className="container">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
               {whatIsIt.title.split(",")[0]},{" "}
               <span className="text-gradient">{whatIsIt.title.split(",").slice(1).join(",").trim() || "c'est quoi ?"}</span>
             </h2>
+            {whatIsIt.intro && (
+              <div className="max-w-2xl mx-auto space-y-4 text-center text-muted-foreground text-base leading-relaxed mb-12">
+                {whatIsIt.intro.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            )}
             <div className="max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               {whatIsIt.items.map((item, i) => (
                 <motion.div
@@ -206,16 +236,28 @@ export const ActivityPage = ({
                 </motion.div>
               ))}
             </div>
+            {whatIsIt.outro && (
+              <div className="max-w-2xl mx-auto space-y-4 text-center text-muted-foreground text-base leading-relaxed mt-12">
+                {whatIsIt.outro.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
         {/* WHY TRY (4 cards) */}
         <section className="py-24">
           <div className="container">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
               {whyTry.title.split("?")[0]}
               <span className="text-gradient">?</span>
             </h2>
+            {whyTry.intro && (
+              <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+                {whyTry.intro}
+              </p>
+            )}
             <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {whyTry.cards.map((c, i) => (
                 <motion.div
@@ -236,6 +278,13 @@ export const ActivityPage = ({
                 </motion.div>
               ))}
             </div>
+            {whyTry.outro && (
+              <div className="max-w-2xl mx-auto space-y-4 text-center text-muted-foreground text-base leading-relaxed mt-12">
+                {whyTry.outro.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -264,18 +313,31 @@ export const ActivityPage = ({
                     <p.icon className="w-5 h-5 text-primary" />
                   </div>
                   <p className="font-semibold text-sm">{p.label}</p>
+                  {p.description && (
+                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{p.description}</p>
+                  )}
                 </motion.div>
               ))}
             </div>
+            {whyAppealing.outro && (
+              <p className="text-center text-muted-foreground max-w-2xl mx-auto mt-12 leading-relaxed">
+                {whyAppealing.outro}
+              </p>
+            )}
           </div>
         </section>
 
         {/* PLACES */}
         <section className="py-24">
           <div className="container">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
               {places.title}
             </h2>
+            {places.intro && (
+              <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+                {places.intro}
+              </p>
+            )}
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
               {places.cards.map((p, i) => (
                 <motion.div
@@ -301,9 +363,14 @@ export const ActivityPage = ({
         {/* AUDIENCE */}
         <section className="py-24 bg-muted/30">
           <div className="container">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
               {audience.title}
             </h2>
+            {audience.intro && (
+              <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+                {audience.intro}
+              </p>
+            )}
             <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
               {audience.profiles.map((p, i) => (
                 <motion.div
@@ -318,6 +385,9 @@ export const ActivityPage = ({
                     <p.icon className="w-5 h-5 text-primary" />
                   </div>
                   <p className="font-semibold text-sm">{p.label}</p>
+                  {p.description && (
+                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{p.description}</p>
+                  )}
                 </motion.div>
               ))}
             </div>

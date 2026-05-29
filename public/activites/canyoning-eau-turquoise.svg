@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
+  <title id="title">Sortie canyoning dans les Alpes-Maritimes</title>
+  <desc id="desc">Illustration de canyoning dans une eau turquoise entre des rochers.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#DFF7F4"/><stop offset="1" stop-color="#F7F0D8"/></linearGradient>
+    <linearGradient id="water" x1="0" x2="1"><stop stop-color="#23BFC2"/><stop offset="1" stop-color="#7AE4D4"/></linearGradient>
+  </defs>
+  <rect width="900" height="540" fill="url(#sky)"/>
+  <path d="M0 310c110-95 165-110 270-65 75 32 140 31 205-8 88-53 193-54 425 36v267H0Z" fill="#8D7A65" opacity=".55"/>
+  <path d="M0 380c135-65 237-71 337-32 102 40 197 29 285-14 85-41 172-33 278 23v183H0Z" fill="#5F5348" opacity=".55"/>
+  <path d="M0 420c115-32 218-31 310 0 119 40 214 28 321-21 94-43 174-35 269 13v128H0Z" fill="url(#water)"/>
+  <path d="M90 458c120 25 243 19 366-18 130-40 235-35 354 11" fill="none" stroke="#E6FFFA" stroke-width="12" stroke-linecap="round" opacity=".75"/>
+  <circle cx="438" cy="312" r="34" fill="#193A42"/>
+  <path d="M438 347c-31 32-46 57-38 90h78c7-35-8-58-40-90Z" fill="#FFB84D"/>
+  <path d="M381 378c-42 12-70 36-86 72" stroke="#193A42" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <path d="M496 378c42 12 70 36 86 72" stroke="#193A42" stroke-width="18" stroke-linecap="round" fill="none"/>
+</svg>
