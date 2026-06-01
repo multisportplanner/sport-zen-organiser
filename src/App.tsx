@@ -8,6 +8,7 @@ import Coach from "./pages/Coach";
 import Activites from "./pages/Activites";
 import Canyoning from "./pages/activites/Canyoning";
 import Rafting from "./pages/activites/Rafting";
+import Kayak from "./pages/activites/Kayak";
 import Partenaire from "./pages/Partenaire";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/activites" element={<Activites />} />
           <Route path="/activites/canyoning" element={<Canyoning />} />
           <Route path="/activites/rafting" element={<Rafting />} />
+          <Route path="/activites/kayak" element={<Kayak />} />
           <Route path="/partenaire" element={<Partenaire />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
