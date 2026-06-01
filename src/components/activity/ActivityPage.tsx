@@ -36,6 +36,7 @@ export interface GalleryImage {
   src: string;
   alt: string;
   title: string;
+  credit?: string;
 }
 
 export interface PlaceCard {
@@ -55,20 +56,47 @@ export interface RelatedActivity {
   href?: string;
 }
 
+export interface LocalSeoBlock {
+  title: string;
+  description: string;
+}
+
+export interface ReadAlsoCard {
+  title: string;
+  description: string;
+}
+
 export interface ActivityPageProps {
   slug: string;
   seo: { title: string; description: string };
   hero: { h1: string; subtitle: string; intro: string };
   gallery?: { images: GalleryImage[] };
-  whatIsIt: { title: string; intro?: string[]; items: IconLabel[]; outro?: string[] };
-  whyTry: { title: string; intro?: string; cards: IconLabel[]; outro?: string[] };
-  whyAppealing: { title: string; intro?: string; outro?: string; pillars: IconLabel[] };
+  whatIsIt: {
+    title: string;
+    intro?: string[];
+    items: IconLabel[];
+    outro?: string[];
+  };
+  whyTry: {
+    title: string;
+    intro?: string;
+    cards: IconLabel[];
+    outro?: string[];
+  };
+  whyAppealing: {
+    title: string;
+    intro?: string;
+    outro?: string;
+    pillars: IconLabel[];
+  };
+  intermediateCta?: { title: string; text: string };
   places: { title: string; intro?: string; cards: PlaceCard[] };
   audience: { title: string; intro?: string; profiles: IconLabel[] };
   reassurance: { title: string; items: FAQItem[] };
-  localSeo: { title: string; paragraphs: string[] };
+  localSeo: { title: string; paragraphs: string[]; blocks?: LocalSeoBlock[] };
   faq: { title?: string; items: FAQItem[] };
   related: { title: string; items: RelatedActivity[] };
+  readAlso?: { title: string; cards: ReadAlsoCard[] };
   finalCta: { title: string };
 }
 
@@ -85,9 +113,18 @@ const stepIcons = [CalendarDays, Settings, MessageSquare, Smile];
 
 const steps = [
   { title: "Tu nous contactes", desc: "Un message rapide sur WhatsApp." },
-  { title: "Tu nous expliques", desc: "Ce que tu recherches, tes envies, ton niveau." },
-  { title: "On trouve la sortie", desc: "Un partenaire de confiance, un lieu, un créneau." },
-  { title: "Tu profites", desc: "Plus rien à organiser, juste à vivre l'expérience." },
+  {
+    title: "Tu nous expliques",
+    desc: "Ce que tu recherches, tes envies, ton niveau.",
+  },
+  {
+    title: "On trouve la sortie",
+    desc: "Un partenaire de confiance, un lieu, un créneau.",
+  },
+  {
+    title: "Tu profites",
+    desc: "Plus rien à organiser, juste à vivre l'expérience.",
+  },
 ];
 
 export const ActivityPage = ({
@@ -98,18 +135,22 @@ export const ActivityPage = ({
   whatIsIt,
   whyTry,
   whyAppealing,
+  intermediateCta,
   places,
   audience,
   reassurance,
   localSeo,
   faq,
   related,
+  readAlso,
   finalCta,
 }: ActivityPageProps) => {
   useEffect(() => {
     document.title = seo.title;
     const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+      let el = document.querySelector(
+        `meta[name="${name}"]`,
+      ) as HTMLMetaElement | null;
       if (!el) {
         el = document.createElement("meta");
         el.name = name;
@@ -120,7 +161,9 @@ export const ActivityPage = ({
     setMeta("description", seo.description);
 
     const canonicalHref = `/activites/${slug}`;
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    let canonical = document.querySelector(
+      'link[rel="canonical"]',
+    ) as HTMLLinkElement | null;
     const previous = canonical?.href;
     if (!canonical) {
       canonical = document.createElement("link");
@@ -171,13 +214,27 @@ export const ActivityPage = ({
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-2xl mx-auto">
                 {hero.intro}
               </p>
-              <Button asChild variant="cta" size="lg" className="h-14 px-10 text-lg" onClick={() => ctaClick("hero")}>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <Button
+                asChild
+                variant="cta"
+                size="lg"
+                className="h-14 px-10 text-lg"
+                onClick={() => ctaClick("hero")}
+              >
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {OCCASIONAL_CTA_LABEL}
                 </a>
               </Button>
-              <p className="text-xs text-muted-foreground/70 mt-3">{CTA_SUBTEXT}</p>
-              <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>
+              <p className="text-xs text-muted-foreground/70 mt-3">
+                {CTA_SUBTEXT}
+              </p>
+              <p className="text-xs text-muted-foreground/70 mt-1">
+                {CTA_MICRO_REASSURANCE}
+              </p>
             </motion.div>
           </div>
         </section>
@@ -186,7 +243,7 @@ export const ActivityPage = ({
         {gallery && (
           <section className="py-16">
             <div className="container">
-              <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-4">
+              <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {gallery.images.map((image, i) => (
                   <motion.figure
                     key={image.src}
@@ -196,8 +253,22 @@ export const ActivityPage = ({
                     transition={{ delay: i * 0.06 }}
                     className="bg-card rounded-2xl overflow-hidden shadow-card"
                   >
-                    <img src={image.src} alt={image.alt} className="w-full h-48 object-cover" loading="lazy" />
-                    <figcaption className="p-4 text-sm font-semibold">{image.title}</figcaption>
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-48 object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                    />
+                    <figcaption className="p-4">
+                      <p className="text-sm font-semibold">{image.title}</p>
+                      {image.credit && (
+                        <p className="text-xs text-muted-foreground/70 mt-1">
+                          {image.credit}
+                        </p>
+                      )}
+                    </figcaption>
                   </motion.figure>
                 ))}
               </div>
@@ -210,7 +281,10 @@ export const ActivityPage = ({
           <div className="container">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
               {whatIsIt.title.split(",")[0]},{" "}
-              <span className="text-gradient">{whatIsIt.title.split(",").slice(1).join(",").trim() || "c'est quoi ?"}</span>
+              <span className="text-gradient">
+                {whatIsIt.title.split(",").slice(1).join(",").trim() ||
+                  "c'est quoi ?"}
+              </span>
             </h2>
             {whatIsIt.intro && (
               <div className="max-w-2xl mx-auto space-y-4 text-center text-muted-foreground text-base leading-relaxed mb-12">
@@ -273,7 +347,9 @@ export const ActivityPage = ({
                   </div>
                   <h3 className="text-base font-bold mb-2">{c.label}</h3>
                   {c.description && (
-                    <p className="text-sm text-muted-foreground">{c.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {c.description}
+                    </p>
                   )}
                 </motion.div>
               ))}
@@ -314,7 +390,9 @@ export const ActivityPage = ({
                   </div>
                   <p className="font-semibold text-sm">{p.label}</p>
                   {p.description && (
-                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{p.description}</p>
+                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                      {p.description}
+                    </p>
                   )}
                 </motion.div>
               ))}
@@ -326,6 +404,48 @@ export const ActivityPage = ({
             )}
           </div>
         </section>
+
+        {/* INTERMEDIATE CTA */}
+        {intermediateCta && (
+          <section className="py-20">
+            <div className="container">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="max-w-3xl mx-auto bg-card rounded-3xl p-8 md:p-10 shadow-card text-center"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  {intermediateCta.title}
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
+                  {intermediateCta.text}
+                </p>
+                <Button
+                  asChild
+                  variant="cta"
+                  size="lg"
+                  className="h-14 px-10 text-lg"
+                  onClick={() => ctaClick("mid_article")}
+                >
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {OCCASIONAL_CTA_LABEL}
+                  </a>
+                </Button>
+                <p className="text-xs text-muted-foreground/70 mt-3">
+                  {CTA_SUBTEXT}
+                </p>
+                <p className="text-xs text-muted-foreground/70 mt-1">
+                  {CTA_MICRO_REASSURANCE}
+                </p>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* PLACES */}
         <section className="py-24">
@@ -353,7 +473,9 @@ export const ActivityPage = ({
                     <MapPin className="w-3.5 h-3.5" />
                     <span>{p.location}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{p.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {p.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -386,7 +508,9 @@ export const ActivityPage = ({
                   </div>
                   <p className="font-semibold text-sm">{p.label}</p>
                   {p.description && (
-                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{p.description}</p>
+                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                      {p.description}
+                    </p>
                   )}
                 </motion.div>
               ))}
@@ -433,6 +557,26 @@ export const ActivityPage = ({
                   <p key={i}>{p}</p>
                 ))}
               </div>
+              {localSeo.blocks && (
+                <div className="mt-12">
+                  <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+                    Où faire du canyoning dans les Alpes-Maritimes ?
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {localSeo.blocks.map((block) => (
+                      <div
+                        key={block.title}
+                        className="bg-card rounded-2xl p-5 shadow-card"
+                      >
+                        <h4 className="font-bold mb-2">{block.title}</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {block.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -458,7 +602,9 @@ export const ActivityPage = ({
                     <div className="w-16 h-16 rounded-2xl bg-gradient-hero mx-auto mb-5 flex items-center justify-center shadow-glow">
                       <Icon className="w-7 h-7 text-primary-foreground" />
                     </div>
-                    <div className="text-3xl font-bold text-primary mb-3">{i + 1}</div>
+                    <div className="text-3xl font-bold text-primary mb-3">
+                      {i + 1}
+                    </div>
                     <h3 className="text-lg font-bold mb-1">{s.title}</h3>
                     <p className="text-sm text-muted-foreground">{s.desc}</p>
                   </motion.div>
@@ -527,6 +673,34 @@ export const ActivityPage = ({
           </div>
         </section>
 
+        {/* READ ALSO */}
+        {readAlso && (
+          <section className="py-24 bg-muted/30">
+            <div className="container">
+              <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+                {readAlso.title}
+              </h2>
+              <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {readAlso.cards.map((card) => (
+                  <article
+                    key={card.title}
+                    className="bg-card rounded-2xl p-6 shadow-card opacity-90"
+                    aria-disabled="true"
+                  >
+                    <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-3">
+                      Bientôt disponible
+                    </p>
+                    <h3 className="text-lg font-bold mb-3">{card.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {card.description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* FINAL CTA */}
         <section className="py-32 bg-muted/30">
           <div className="container">
@@ -547,12 +721,20 @@ export const ActivityPage = ({
                 className="h-14 px-10 text-lg"
                 onClick={() => ctaClick("final_block")}
               >
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {OCCASIONAL_CTA_LABEL}
                 </a>
               </Button>
-              <p className="text-xs text-muted-foreground/70 mt-3">{CTA_SUBTEXT}</p>
-              <p className="text-xs text-muted-foreground/70 mt-1">{CTA_MICRO_REASSURANCE}</p>
+              <p className="text-xs text-muted-foreground/70 mt-3">
+                {CTA_SUBTEXT}
+              </p>
+              <p className="text-xs text-muted-foreground/70 mt-1">
+                {CTA_MICRO_REASSURANCE}
+              </p>
             </motion.div>
           </div>
         </section>

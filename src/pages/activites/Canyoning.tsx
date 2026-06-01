@@ -38,19 +38,28 @@ const Canyoning = () => (
     gallery={{
       images: [
         {
-          src: "/activites/canyoning-eau-turquoise.svg",
-          alt: "Sortie canyoning dans les Alpes-Maritimes",
-          title: "Eaux turquoise et fraîcheur de montagne",
+          src: "https://images.unsplash.com/photo-1721338752673-91b7603f2ae0?auto=format&fit=crop&w=900&q=75",
+          alt: "Groupe en activité canyoning sur la Côte d'Azur",
+          title: "Une immersion nature dès les premiers pas",
+          credit: "Photo : Josh Fotheringham / Unsplash",
         },
         {
-          src: "/activites/canyoning-toboggan-naturel.svg",
+          src: "https://images.unsplash.com/photo-1690291900903-1bf8f6f54c50?auto=format&fit=crop&w=900&q=75",
+          alt: "Descente en rappel pendant une sortie canyoning",
+          title: "Des passages guidés, toujours encadrés",
+          credit: "Photo : Han-Hsing Tu / Unsplash",
+        },
+        {
+          src: "https://images.pexels.com/photos/29655764/pexels-photo-29655764.jpeg?auto=compress&cs=tinysrgb&w=900",
+          alt: "Cascade et eau vive en canyoning",
+          title: "La fraîcheur des cascades et des vasques",
+          credit: "Photo : Haim Charbit / Pexels",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1689917216699-f4593d22446c?auto=format&fit=crop&w=900&q=75",
           alt: "Toboggan naturel en canyoning",
-          title: "Toboggans naturels, selon le parcours",
-        },
-        {
-          src: "/activites/canyoning-groupe-cote-azur.svg",
-          alt: "Groupe en activité outdoor sur la Côte d'Azur",
-          title: "Une sortie outdoor simple à partager",
+          title: "Des moments ludiques à vivre ensemble",
+          credit: "Photo : Han-Hsing Tu / Unsplash",
         },
       ],
     }}
@@ -122,6 +131,10 @@ const Canyoning = () => (
         { icon: HandHeart, label: "Convivialité" },
       ],
     }}
+    intermediateCta={{
+      title: "Envie de tester le canyoning ?",
+      text: "Pas besoin de chercher un groupe, de comparer les prestataires ou de gérer l'organisation. MSP t'aide à trouver une sortie adaptée à ton niveau, à tes envies et à ta zone.",
+    }}
     places={{
       title: "Les plus beaux canyons des Alpes-Maritimes",
       intro:
@@ -154,34 +167,39 @@ const Canyoning = () => (
       ],
     }}
     audience={{
-      title: "Pour qui est fait le canyoning ?",
+      title: "Le canyoning est fait pour toi si…",
       intro:
         "Le canyoning est fait pour les personnes qui veulent vivre une activité outdoor originale, bouger sans pression, découvrir la nature autrement et partager un moment simple avec d'autres. Pas besoin d'un profil sportif parfait : il faut surtout avoir envie d'essayer, être à l'aise dans l'eau et choisir une sortie cohérente.",
       profiles: [
         {
           icon: Map,
           label: "Tu veux découvrir une activité outdoor",
-          description: "Une première sortie pour changer d'air et explorer l'arrière-pays autrement.",
+          description:
+            "Une première sortie pour changer d'air et explorer l'arrière-pays autrement.",
         },
         {
           icon: PartyPopper,
           label: "Tu cherches une sortie originale entre amis",
-          description: "Un moment commun, simple à vivre, qui change du restaurant ou de la plage.",
+          description:
+            "Un moment commun, simple à vivre, qui change du restaurant ou de la plage.",
         },
         {
           icon: Smile,
           label: "Tu veux bouger sans pression",
-          description: "On avance au rythme du groupe, sans objectif de performance.",
+          description:
+            "On avance au rythme du groupe, sans objectif de performance.",
         },
         {
           icon: Trees,
           label: "Tu aimes la nature",
-          description: "Rivières, roches, fraîcheur et paysages de montagne au programme.",
+          description:
+            "Rivières, roches, fraîcheur et paysages de montagne au programme.",
         },
         {
           icon: RefreshCcw,
           label: "Tu veux sortir de ta routine",
-          description: "Une parenthèse dépaysante pour un week-end, une demi-journée ou une journée.",
+          description:
+            "Une parenthèse dépaysante pour un week-end, une demi-journée ou une journée.",
         },
       ],
     }}
@@ -209,6 +227,28 @@ const Canyoning = () => (
         "C'est une activité qui fonctionne bien pour un week-end, une demi-journée ou une journée complète. Elle convient aux amis, aux couples, aux petits groupes et aussi aux formats team building quand le niveau, le timing et l'encadrement sont adaptés.",
         "Avec MSP, l'idée reste simple : le sport sans l'organiser. Tu n'as pas besoin de comparer toutes les options ni de deviner quel canyon correspond à ton groupe. On échange avec toi, on regarde ce qui est réaliste selon la saison, la météo, ton départ et tes envies, puis on t'oriente vers une sortie cohérente.",
         "Que tu partes de Nice, d'Antibes, de Cannes ou de Sophia Antipolis, le canyoning dans les Alpes-Maritimes montre une Côte d'Azur plus fraîche, plus sauvage et plus calme. Une façon simple de profiter de la nature sans transformer l'organisation en casse-tête.",
+      ],
+      blocks: [
+        {
+          title: "Depuis Nice et l'arrière-pays niçois",
+          description:
+            "Depuis Nice, on rejoint facilement des vallées plus fraîches pour une demi-journée ou une journée. L'arrière-pays niçois permet de passer rapidement du bord de mer à une ambiance montagne.",
+        },
+        {
+          title: "Depuis Antibes, Cannes et Sophia Antipolis",
+          description:
+            "Pour Antibes, Cannes ou Sophia Antipolis, le choix dépend surtout du temps de route, de la saison et du niveau du groupe. MSP t'aide à viser une sortie réaliste plutôt qu'un canyon choisi au hasard.",
+        },
+        {
+          title: "Autour de Grasse",
+          description:
+            "Grasse est un point de départ pratique pour explorer des secteurs proches de l'ouest des Alpes-Maritimes, avec des parcours souvent appréciés pour une première expérience encadrée.",
+        },
+        {
+          title: "Vallée de la Roya et Vésubie",
+          description:
+            "La Vallée de la Roya et la Vésubie offrent des décors plus sauvages, à choisir selon les conditions d'eau, la météo et l'expérience du groupe. L'idée est toujours de garder une sortie sûre et adaptée.",
+        },
       ],
     }}
     faq={{
@@ -247,6 +287,31 @@ const Canyoning = () => (
         { icon: Cable, label: "Via Ferrata" },
         { icon: TreePine, label: "Escalade" },
         { icon: Waves, label: "Paddle" },
+      ],
+    }}
+    readAlso={{
+      title: "À lire aussi",
+      cards: [
+        {
+          title: "Quel canyon choisir pour débuter ?",
+          description:
+            "Un guide pratique pour comprendre les critères importants avant une première sortie.",
+        },
+        {
+          title: "Les plus beaux canyons des Alpes-Maritimes",
+          description:
+            "Une sélection claire pour repérer les ambiances, les niveaux et les secteurs à privilégier.",
+        },
+        {
+          title: "Que faut-il prévoir pour une sortie canyoning ?",
+          description:
+            "Matériel, tenue, niveau dans l'eau et conseils simples pour arriver serein le jour J.",
+        },
+        {
+          title: "Canyoning ou rafting : quelle activité choisir ?",
+          description:
+            "Les différences entre deux expériences outdoor très complémentaires sur la Côte d'Azur.",
+        },
       ],
     }}
     finalCta={{ title: "Envie d'essayer le canyoning ?" }}
