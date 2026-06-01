@@ -32,25 +32,25 @@ const ViaFerrata = () => (
     gallery={{
       images: [
         {
-          src: "https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=900&q=75",
-          alt: "Via Ferrata dans les Alpes-Maritimes",
-          title: "Prendre de la hauteur en montagne",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1483691278019-cb7253bee49f?auto=format&fit=crop&w=900&q=75",
-          alt: "Passage aérien en Via Ferrata",
-          title: "Des passages aériens et sécurisés",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1527489377706-5bf97e608852?auto=format&fit=crop&w=900&q=75",
-          alt: "Activité montagne près de Nice",
-          title: "Une activité outdoor entre ciel et roche",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=75",
-          alt: "Groupe en Via Ferrata sur la Côte d’Azur",
-          title: "Une sortie montagne à partager",
-        },
+      src: "/activites/via-ferrata-pont-suspendu.webp",
+      alt: "Via ferrata avec pont suspendu",
+      title: "Prendre de la hauteur en montagne",
+    },
+    {
+      src: "/activites/via-ferrata-paroi-rocheuse.webp",
+      alt: "Progression sur une paroi rocheuse équipée",
+      title: "Des passages aériens et sécurisés",
+    },
+    {
+      src: "/activites/via-ferrata-vue-panoramique.webp",
+      alt: "Via ferrata avec vue panoramique sur les montagnes",
+      title: "Une activité outdoor entre ciel et roche",
+    },
+    {
+      src: "/activites/via-ferrata-groupe-montagne.webp",
+      alt: "Groupe pratiquant une via ferrata en montagne",
+      title: "Une sortie montagne à partager",
+    },
       ],
     }}
     whatIsIt={{
