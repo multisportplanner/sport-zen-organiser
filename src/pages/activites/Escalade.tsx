@@ -39,25 +39,21 @@ const Escalade = () => (
           src: "https://images.pexels.com/photos/6689593/pexels-photo-6689593.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Escalade en salle pour débutants",
           title: "Prendre de la hauteur sans pression",
-          credit: "Photo : cottonbro studio / Pexels",
         },
         {
           src: "https://images.pexels.com/photos/13321025/pexels-photo-13321025.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Escalade en falaise encadrée",
           title: "Découvrir la falaise avec un cadre adapté",
-          credit: "Photo : ARNAUD VIGNE / Pexels",
         },
         {
           src: "https://images.unsplash.com/photo-1727999988358-81cc6461bd03?auto=format&fit=crop&w=900&q=80",
           alt: "Groupe pratiquant l'escalade",
           title: "Une expérience ludique à partager",
-          credit: "Photo : Stacie Ong / Unsplash",
         },
         {
           src: "https://images.pexels.com/photos/7591358/pexels-photo-7591358.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Progression en escalade",
           title: "Progresser à son rythme, étape par étape",
-          credit: "Photo : Pavel Danilyuk / Pexels",
         },
       ],
     }}
