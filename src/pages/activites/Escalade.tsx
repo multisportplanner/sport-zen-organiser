@@ -36,28 +36,28 @@ const Escalade = () => (
     gallery={{
       images: [
         {
-          src: "https://images.pexels.com/photos/4615934/pexels-photo-4615934.jpeg?auto=compress&cs=tinysrgb&w=900",
-          alt: "Sortie escalade dans les Alpes-Maritimes",
+          src: "https://images.pexels.com/photos/6689593/pexels-photo-6689593.jpeg?auto=compress&cs=tinysrgb&w=900",
+          alt: "Escalade en salle pour débutants",
           title: "Prendre de la hauteur sans pression",
-          credit: "Photo : Allan Mas / Pexels",
+          credit: "Photo : cottonbro studio / Pexels",
         },
         {
-          src: "https://images.pexels.com/photos/1415810/pexels-photo-1415810.jpeg?auto=compress&cs=tinysrgb&w=900",
-          alt: "Escalade en falaise sur la Côte d’Azur",
+          src: "https://images.pexels.com/photos/13321025/pexels-photo-13321025.jpeg?auto=compress&cs=tinysrgb&w=900",
+          alt: "Escalade en falaise encadrée",
           title: "Découvrir la falaise avec un cadre adapté",
-          credit: "Photo : Mikhail Nilov / Pexels",
+          credit: "Photo : ARNAUD VIGNE / Pexels",
         },
         {
-          src: "https://images.pexels.com/photos/3030404/pexels-photo-3030404.jpeg?auto=compress&cs=tinysrgb&w=900",
-          alt: "Groupe en activité escalade",
+          src: "https://images.unsplash.com/photo-1727999988358-81cc6461bd03?auto=format&fit=crop&w=900&q=80",
+          alt: "Groupe pratiquant l'escalade",
           title: "Une expérience ludique à partager",
-          credit: "Photo : Min An / Pexels",
+          credit: "Photo : Stacie Ong / Unsplash",
         },
         {
-          src: "https://images.pexels.com/photos/1001845/pexels-photo-1001845.jpeg?auto=compress&cs=tinysrgb&w=900",
-          alt: "Escalade débutant près de Nice",
+          src: "https://images.pexels.com/photos/7591358/pexels-photo-7591358.jpeg?auto=compress&cs=tinysrgb&w=900",
+          alt: "Progression en escalade",
           title: "Progresser à son rythme, étape par étape",
-          credit: "Photo : Pixabay / Pexels",
+          credit: "Photo : Pavel Danilyuk / Pexels",
         },
       ],
     }}
