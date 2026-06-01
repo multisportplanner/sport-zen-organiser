@@ -141,25 +141,25 @@ const Rafting = () => (
           name: "Verdon",
           location: "Alpes-de-Haute-Provence",
           description:
-            "Un secteur emblématique pour les activités d’eau vive, apprécié pour ses paysages spectaculaires et ses parcours adaptés à différents niveaux selon les conditions.",
+            "Un secteur emblématique pour les activités d’eau vive, apprécié pour ses paysages spectaculaires et ses parcours adaptés à différents niveaux selon les conditions et les sorties disponibles.",
         },
         {
           name: "Vallée de l’Ubaye",
           location: "Alpes-de-Haute-Provence",
           description:
-            "Une destination réputée pour le rafting, avec des parcours plus sportifs selon la période et le niveau du groupe.",
+            "Une destination réputée pour le rafting, avec des parcours plus sportifs selon la période, les conditions et le niveau du groupe.",
         },
         {
           name: "Roya",
           location: "Alpes-Maritimes",
           description:
-            "Un secteur de montagne proche de la Côte d’Azur, intéressant pour les activités d’eau vive selon les conditions et les prestataires disponibles.",
+            "Un secteur de montagne proche de la Côte d’Azur, intéressant pour les activités d’eau vive selon les conditions, selon les sorties disponibles et avec des professionnels locaux.",
         },
         {
           name: "Var",
           location: "Arrière-pays niçois",
           description:
-            "Une rivière accessible depuis les Alpes-Maritimes, avec des possibilités d’activités encadrées selon la saison et le débit.",
+            "Une rivière accessible depuis les Alpes-Maritimes, avec des possibilités d’activités encadrées selon la saison, le débit et les professionnels locaux disponibles.",
         },
       ],
     }}
@@ -212,6 +212,10 @@ const Rafting = () => (
         {
           q: "Est-ce que ça fait peur ?",
           a: "Les rapides peuvent impressionner, mais l’activité reste encadrée. Le guide explique les consignes, accompagne le groupe et adapte la sortie au niveau prévu.",
+        },
+        {
+          q: "Faut-il savoir nager ?",
+          a: "Oui, il vaut mieux savoir nager et être à l’aise dans l’eau. Le casque, le gilet et l’encadrement professionnel sont là pour sécuriser la pratique, expliquer les bons gestes et rassurer le groupe.",
         },
         {
           q: "Faut-il déjà avoir fait du rafting ?",
