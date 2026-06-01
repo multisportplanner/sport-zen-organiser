@@ -21,7 +21,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   CTA_MICRO_REASSURANCE,
   CTA_SUBTEXT,
@@ -281,24 +281,30 @@ const Activites = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.06, duration: 0.4 }}
-                  className="bg-card rounded-2xl overflow-hidden shadow-card flex flex-col"
+                  className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow flex flex-col"
                 >
-                  <Link to={activity.href} className="block bg-gradient-hero-soft p-8" aria-label={`Découvrir ${activity.title}`}>
-                    <img
-                      src={activity.image}
-                      alt={`${activity.title} sur la Côte d’Azur`}
-                      className="h-24 w-24 mx-auto object-contain"
-                      loading={index < 3 ? "eager" : "lazy"}
-                      decoding="async"
-                    />
+                  <Link
+                    to={activity.href}
+                    className="flex flex-col flex-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
+                    aria-label={`Découvrir la page ${activity.title}`}
+                  >
+                    <div className="block bg-gradient-hero-soft p-8">
+                      <img
+                        src={activity.image}
+                        alt={`${activity.title} sur la Côte d’Azur`}
+                        className="h-24 w-24 mx-auto object-contain"
+                        loading={index < 3 ? "eager" : "lazy"}
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <h3 className="text-lg font-bold mb-2">{activity.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-5 flex-1">{activity.description}</p>
+                      <span className={buttonVariants({ variant: "cta", size: "sm", className: "w-full" })}>
+                        {ACTIVITY_CTA_LABEL}
+                      </span>
+                    </div>
                   </Link>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-lg font-bold mb-2">{activity.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-5 flex-1">{activity.description}</p>
-                    <Button asChild variant="cta" size="sm" className="w-full">
-                      <Link to={activity.href}>{ACTIVITY_CTA_LABEL}</Link>
-                    </Button>
-                  </div>
                 </motion.article>
               ))}
             </div>
