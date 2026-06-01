@@ -33,26 +33,29 @@ const Paddle = () => (
     }}
     gallery={{
       images: [
-        {
-          src: "https://images.pexels.com/photos/1655039/pexels-photo-1655039.jpeg?auto=compress&cs=tinysrgb&w=900",
-          alt: "Paddle sur la Côte d’Azur",
-          title: "Une sortie nautique accessible et lumineuse",
+    {
+          src: "/activites/paddle-littoral.webp",
+          alt: "Balade en paddle sur le littoral",
+          title: "Découvrir le littoral autrement",
         },
+        
         {
-          src: "https://images.pexels.com/photos/452738/pexels-photo-452738.jpeg?auto=compress&cs=tinysrgb&w=900",
-          alt: "Sortie paddle près d’Antibes",
-          title: "Explorer le littoral autrement",
+          src: "/activites/paddle-groupe.webp",
+          alt: "Sortie paddle en groupe",
+          title: "Partager un moment convivial sur l'eau",
         },
+        
         {
-          src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=75",
-          alt: "Groupe en stand up paddle",
-          title: "Un moment convivial à partager",
+          src: "/activites/paddle-eau-turquoise.webp",
+          alt: "Paddle sur une eau turquoise",
+          title: "Profiter des plus beaux spots de la Côte d'Azur",
         },
+        
         {
-          src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=75",
-          alt: "Activité nautique près de Nice",
-          title: "La mer, le soleil et la sensation d’évasion",
-        },
+          src: "/activites/paddle-coucher-soleil.webp",
+          alt: "Paddle au coucher du soleil",
+          title: "Une expérience unique en fin de journée",
+    },
       ],
     }}
     whatIsIt={{
