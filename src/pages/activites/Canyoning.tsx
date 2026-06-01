@@ -41,25 +41,21 @@ const Canyoning = () => (
           src: "https://images.unsplash.com/photo-1721338752673-91b7603f2ae0?auto=format&fit=crop&w=900&q=75",
           alt: "Groupe en activité canyoning sur la Côte d'Azur",
           title: "Une immersion nature dès les premiers pas",
-          credit: "Photo : Josh Fotheringham / Unsplash",
         },
         {
           src: "https://images.unsplash.com/photo-1690291900903-1bf8f6f54c50?auto=format&fit=crop&w=900&q=75",
           alt: "Descente en rappel pendant une sortie canyoning",
           title: "Des passages guidés, toujours encadrés",
-          credit: "Photo : Han-Hsing Tu / Unsplash",
         },
         {
           src: "https://images.pexels.com/photos/29655764/pexels-photo-29655764.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Cascade et eau vive en canyoning",
           title: "La fraîcheur des cascades et des vasques",
-          credit: "Photo : Haim Charbit / Pexels",
         },
         {
           src: "https://images.unsplash.com/photo-1689917216699-f4593d22446c?auto=format&fit=crop&w=900&q=75",
           alt: "Toboggan naturel en canyoning",
           title: "Des moments ludiques à vivre ensemble",
-          credit: "Photo : Han-Hsing Tu / Unsplash",
         },
       ],
     }}
