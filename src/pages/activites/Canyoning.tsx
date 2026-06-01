@@ -282,11 +282,11 @@ const Canyoning = () => (
     related={{
       title: "Découvrir d'autres activités outdoor",
       items: [
-        { icon: Waves, label: "Rafting" },
-        { icon: Compass, label: "Kayak" },
-        { icon: Cable, label: "Via Ferrata" },
-        { icon: TreePine, label: "Escalade" },
-        { icon: Waves, label: "Paddle" },
+        { icon: Waves, label: "Rafting", href: "/activites/rafting" },
+        { icon: Compass, label: "Kayak", href: "/activites/kayak" },
+        { icon: Cable, label: "Via Ferrata", href: "/activites/via-ferrata" },
+        { icon: TreePine, label: "Escalade", href: "/activites/escalade" },
+        { icon: Waves, label: "Paddle", href: "/activites/paddle" },
       ],
     }}
     readAlso={{

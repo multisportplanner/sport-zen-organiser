@@ -668,9 +668,14 @@ export const ActivityPage = ({
                   </>
                 );
                 const className =
-                  "bg-card rounded-2xl p-5 shadow-card text-center block hover:shadow-card-hover transition-shadow";
+                  "bg-card rounded-2xl p-5 shadow-card text-center block hover:shadow-card-hover active:shadow-card transition-shadow cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2";
                 return r.href ? (
-                  <Link key={i} to={r.href} className={className}>
+                  <Link
+                    key={i}
+                    to={r.href}
+                    className={className}
+                    aria-label={`Découvrir la page ${r.label}`}
+                  >
                     {Inner}
                   </Link>
                 ) : (
