@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Dumbbell, Heart, Activity, Flame, Sparkles, Footprints, Mountain, Waves, TreePine, Compass, Cable } from "lucide-react";
 import mspOrganiseImg from "@/assets/msp-organise.png";
 
@@ -13,12 +14,22 @@ const regulieres = [
 
 const ponctuelles = [
   { icon: Footprints, label: "Randonnée" },
-  { icon: Mountain, label: "Canyoning" },
-  { icon: Cable, label: "Via ferrata" },
-  { icon: Waves, label: "Rafting / Kayak" },
-  { icon: TreePine, label: "Escalade" },
-  { icon: Compass, label: "Paddle" },
+  { icon: Mountain, label: "Canyoning", href: "/activites/canyoning", ariaLabel: "Découvrir la page Canyoning" },
+  { icon: Cable, label: "Via ferrata", href: "/activites/via-ferrata", ariaLabel: "Découvrir la page Via Ferrata" },
+  { icon: Waves, label: "Rafting", href: "/activites/rafting", ariaLabel: "Découvrir la page Rafting" },
+  { icon: Waves, label: "Kayak", href: "/activites/kayak", ariaLabel: "Découvrir la page Kayak" },
+  { icon: TreePine, label: "Escalade", href: "/activites/escalade", ariaLabel: "Découvrir la page Escalade" },
+  { icon: Compass, label: "Paddle", href: "/activites/paddle", ariaLabel: "Découvrir la page Paddle" },
 ];
+
+const CardContent = ({ icon: Icon, label }: { icon: typeof Footprints; label: string }) => (
+  <>
+    <div className="w-10 h-10 rounded-xl bg-gradient-hero-soft flex items-center justify-center mx-auto mb-2">
+      <Icon className="w-5 h-5 text-primary" />
+    </div>
+    <p className="font-semibold text-sm">{label}</p>
+  </>
+);
 
 const SportsSection = () => (
   <section id="activites" className="py-32 bg-muted/30">
@@ -94,17 +105,25 @@ const SportsSection = () => (
             <h3 className="text-lg font-bold text-center">Activités ponctuelles</h3>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {ponctuelles.map((s, i) => (
-              <div
-                key={i}
-                className="bg-card rounded-2xl p-5 shadow-card text-center"
-              >
-                <div className="w-10 h-10 rounded-xl bg-gradient-hero-soft flex items-center justify-center mx-auto mb-2">
-                  <s.icon className="w-5 h-5 text-primary" />
+            {ponctuelles.map((s, i) =>
+              s.href ? (
+                <Link
+                  key={i}
+                  to={s.href}
+                  aria-label={s.ariaLabel}
+                  className="bg-card rounded-2xl p-5 shadow-card text-center cursor-pointer transition-shadow hover:shadow-lg"
+                >
+                  <CardContent icon={s.icon} label={s.label} />
+                </Link>
+              ) : (
+                <div
+                  key={i}
+                  className="bg-card rounded-2xl p-5 shadow-card text-center"
+                >
+                  <CardContent icon={s.icon} label={s.label} />
                 </div>
-                <p className="font-semibold text-sm">{s.label}</p>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </motion.div>
       </div>
