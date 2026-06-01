@@ -5,6 +5,7 @@ import {
   Smile,
   Users,
   Compass,
+  TreePine,
   Cable,
   Trees,
   Leaf,
