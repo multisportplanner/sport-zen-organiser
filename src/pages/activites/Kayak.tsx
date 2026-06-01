@@ -37,25 +37,21 @@ const Kayak = () => (
           src: "https://images.pexels.com/photos/5531583/pexels-photo-5531583.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Sortie kayak sur la Côte d’Azur",
           title: "Une balade nautique au rythme de l’eau",
-          credit: "Photo : Rachel Claire / Pexels",
         },
         {
           src: "https://images.pexels.com/photos/7276646/pexels-photo-7276646.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Kayak de mer près d’Antibes",
           title: "Explorer le littoral depuis la mer",
-          credit: "Photo : Rachel Claire / Pexels",
         },
         {
           src: "/activites/kayak-riviere-groupe.webp",
           alt: "Kayak en groupe sur une rivière",
           title: "Une sortie conviviale en kayak",
-          credit: "Photo MSP",
         },
         {
           src: "/activites/kayak-riviere-nature.webp",
           alt: "Kayak en rivière au cœur de la nature",
           title: "Explorer les rivières et espaces naturels",
-          credit: "Photo MSP",
         },
       ],
     }}
