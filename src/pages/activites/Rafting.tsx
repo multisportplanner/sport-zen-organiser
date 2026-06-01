@@ -38,25 +38,21 @@ const Rafting = () => (
           src: "https://images.pexels.com/photos/26098594/pexels-photo-26098594.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Sortie rafting en eau vive",
           title: "Une descente ludique en eau vive",
-          credit: "Photo : Наргиз Баратова / Pexels",
         },
         {
           src: "https://images.pexels.com/photos/33454990/pexels-photo-33454990.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Groupe en rafting sur une rivière",
           title: "L’esprit d’équipe au fil de la rivière",
-          credit: "Photo : SMARTtravel Petr Smitka / Pexels",
         },
         {
           src: "https://images.pexels.com/photos/16304344/pexels-photo-16304344.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Activité rafting près de la Côte d’Azur",
           title: "Des rapides, des éclaboussures et du fun",
-          credit: "Photo : Dewa satu / Pexels",
         },
         {
           src: "https://images.pexels.com/photos/31798407/pexels-photo-31798407.jpeg?auto=compress&cs=tinysrgb&w=900",
           alt: "Rafting dans les Alpes-Maritimes",
           title: "Une aventure outdoor à partager",
-          credit: "Photo : Oye Yogi / Pexels",
         },
       ],
     }}
