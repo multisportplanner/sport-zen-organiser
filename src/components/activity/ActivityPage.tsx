@@ -97,7 +97,8 @@ export interface ActivityPageProps {
   faq: { title?: string; items: FAQItem[] };
   related: { title: string; items: RelatedActivity[] };
   readAlso?: { title: string; cards: ReadAlsoCard[] };
-  finalCta: { title: string };
+  howItWorks?: { steps: { title: string; desc: string }[] };
+  finalCta: { title: string; text?: string };
 }
 
 const ctaClick = (location: "hero" | "final_block" | "mid_article") => {
@@ -111,7 +112,7 @@ const ctaClick = (location: "hero" | "final_block" | "mid_article") => {
 
 const stepIcons = [CalendarDays, Settings, MessageSquare, Smile];
 
-const steps = [
+const defaultSteps = [
   { title: "Tu nous contactes", desc: "Un message rapide sur WhatsApp." },
   {
     title: "Tu nous expliques",
@@ -140,6 +141,7 @@ export const ActivityPage = ({
   audience,
   reassurance,
   localSeo,
+  howItWorks,
   faq,
   related,
   readAlso,
@@ -176,6 +178,8 @@ export const ActivityPage = ({
       if (canonical && previous) canonical.setAttribute("href", previous);
     };
   }, [seo.title, seo.description, slug]);
+
+  const pageSteps = howItWorks?.steps ?? defaultSteps;
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -588,7 +592,7 @@ export const ActivityPage = ({
               Comment fonctionne <span className="text-gradient">MSP ?</span>
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-              {steps.map((s, i) => {
+              {pageSteps.map((s, i) => {
                 const Icon = stepIcons[i];
                 return (
                   <motion.div
@@ -714,6 +718,11 @@ export const ActivityPage = ({
                 {finalCta.title.split("?")[0]}
                 <span className="text-gradient">?</span>
               </h2>
+              {finalCta.text && (
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto">
+                  {finalCta.text}
+                </p>
+              )}
               <Button
                 asChild
                 variant="cta"
