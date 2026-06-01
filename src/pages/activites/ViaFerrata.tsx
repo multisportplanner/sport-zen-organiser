@@ -35,25 +35,21 @@ const ViaFerrata = () => (
           src: "https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=900&q=75",
           alt: "Via Ferrata dans les Alpes-Maritimes",
           title: "Prendre de la hauteur en montagne",
-          credit: "Photo : Patrick Hendry / Unsplash",
         },
         {
           src: "https://images.unsplash.com/photo-1483691278019-cb7253bee49f?auto=format&fit=crop&w=900&q=75",
           alt: "Passage aérien en Via Ferrata",
           title: "Des passages aériens et sécurisés",
-          credit: "Photo : Diogo Tavares / Unsplash",
         },
         {
           src: "https://images.unsplash.com/photo-1527489377706-5bf97e608852?auto=format&fit=crop&w=900&q=75",
           alt: "Activité montagne près de Nice",
           title: "Une activité outdoor entre ciel et roche",
-          credit: "Photo : Samuel Ferrara / Unsplash",
         },
         {
           src: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=75",
           alt: "Groupe en Via Ferrata sur la Côte d’Azur",
           title: "Une sortie montagne à partager",
-          credit: "Photo : Toomas Tartes / Unsplash",
         },
       ],
     }}
