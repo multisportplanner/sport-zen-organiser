@@ -1,5 +1,6 @@
 import {
   Mountain,
+  Waves,
   Dumbbell,
   Sparkles,
   Heart,
