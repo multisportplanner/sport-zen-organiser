@@ -93,7 +93,12 @@ export interface ActivityPageProps {
   places: { title: string; intro?: string; cards: PlaceCard[] };
   audience: { title: string; intro?: string; profiles: IconLabel[] };
   reassurance: { title: string; items: FAQItem[] };
-  localSeo: { title: string; paragraphs: string[]; blocks?: LocalSeoBlock[] };
+  localSeo: {
+    title: string;
+    paragraphs: string[];
+    blocksTitle?: string;
+    blocks?: LocalSeoBlock[];
+  };
   faq: { title?: string; items: FAQItem[] };
   related: { title: string; items: RelatedActivity[] };
   readAlso?: { title: string; cards: ReadAlsoCard[] };
@@ -564,7 +569,8 @@ export const ActivityPage = ({
               {localSeo.blocks && (
                 <div className="mt-12">
                   <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
-                    Où faire du canyoning dans les Alpes-Maritimes ?
+                    {localSeo.blocksTitle ??
+                      "Où faire du canyoning dans les Alpes-Maritimes ?"}
                   </h3>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {localSeo.blocks.map((block) => (
