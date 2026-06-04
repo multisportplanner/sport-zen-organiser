@@ -297,6 +297,7 @@ const Canyoning = () => (
           title: "Les plus beaux canyons des Alpes-Maritimes",
           description:
             "Une sélection claire pour repérer les ambiances, les niveaux et les secteurs à privilégier.",
+          href: "/blog/plus-beaux-canyons-alpes-maritimes",
         },
         {
           title: "Que faut-il prévoir pour une sortie canyoning ?",

@@ -64,6 +64,7 @@ export interface LocalSeoBlock {
 export interface ReadAlsoCard {
   title: string;
   description: string;
+  href?: string;
 }
 
 export interface ActivityPageProps {
@@ -696,21 +697,37 @@ export const ActivityPage = ({
                 {readAlso.title}
               </h2>
               <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {readAlso.cards.map((card) => (
-                  <article
-                    key={card.title}
-                    className="bg-card rounded-2xl p-6 shadow-card opacity-90"
-                    aria-disabled="true"
-                  >
-                    <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-3">
-                      Bientôt disponible
-                    </p>
-                    <h3 className="text-lg font-bold mb-3">{card.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {card.description}
-                    </p>
-                  </article>
-                ))}
+                {readAlso.cards.map((card) => {
+                  const content = (
+                    <>
+                      <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-3">
+                        {card.href ? "Lire l'article" : "Bientôt disponible"}
+                      </p>
+                      <h3 className="text-lg font-bold mb-3">{card.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {card.description}
+                      </p>
+                    </>
+                  );
+
+                  return card.href ? (
+                    <Link
+                      key={card.title}
+                      to={card.href}
+                      className="bg-card rounded-2xl p-6 shadow-card opacity-90 block hover:shadow-card-hover active:shadow-card transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
+                    >
+                      {content}
+                    </Link>
+                  ) : (
+                    <article
+                      key={card.title}
+                      className="bg-card rounded-2xl p-6 shadow-card opacity-90"
+                      aria-disabled="true"
+                    >
+                      {content}
+                    </article>
+                  );
+                })}
               </div>
             </div>
           </section>
