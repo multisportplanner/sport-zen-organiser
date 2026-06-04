@@ -14,6 +14,9 @@ import {
 import NotFound from "@/pages/NotFound";
 import { getArticleBySlug, type ArticleSection } from "@/data/blogArticles";
 
+const linkClassName =
+  "font-semibold text-primary underline-offset-4 hover:underline";
+
 const renderSection = (section: ArticleSection, idx: number) => {
   switch (section.type) {
     case "intro":
@@ -42,6 +45,20 @@ const renderSection = (section: ArticleSection, idx: number) => {
       return (
         <p key={idx} className="text-base md:text-lg text-foreground/80 leading-relaxed mb-4">
           {section.text}
+        </p>
+      );
+    case "paragraphWithLinks":
+      return (
+        <p key={idx} className="text-base md:text-lg text-foreground/80 leading-relaxed mb-4">
+          {section.parts.map((part, partIdx) =>
+            typeof part === "string" ? (
+              part
+            ) : (
+              <Link key={`${part.href}-${partIdx}`} to={part.href} className={linkClassName}>
+                {part.text}
+              </Link>
+            ),
+          )}
         </p>
       );
     case "list":
@@ -92,6 +109,19 @@ const BlogArticle = () => {
   }, [article]);
 
   if (!article) return <NotFound />;
+
+  const faqJsonLd =
+    article.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: article.faq.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -205,6 +235,12 @@ const BlogArticle = () => {
 
         <Footer />
       </main>
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
     </div>
   );
 };

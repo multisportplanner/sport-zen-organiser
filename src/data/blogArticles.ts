@@ -5,7 +5,8 @@ import sportPresImg from "@/assets/blog/sport-pres-de-chez-vous.jpg";
 export type BlogCategory =
   | "Reprendre le sport"
   | "Faire du sport simplement"
-  | "Faire du sport près de chez vous";
+  | "Faire du sport près de chez vous"
+  | "Activités outdoor";
 
 export interface FAQItem {
   q: string;
@@ -28,15 +29,212 @@ export interface BlogArticle {
   faq: FAQItem[];
 }
 
+export interface ArticleTextLink {
+  text: string;
+  href: string;
+}
+
+export type ArticleInlinePart = string | ArticleTextLink;
+
 export type ArticleSection =
   | { type: "intro"; text: string }
   | { type: "quickAnswer"; question: string; answer: string }
   | { type: "h2"; text: string }
   | { type: "paragraph"; text: string }
+  | { type: "paragraphWithLinks"; parts: ArticleInlinePart[] }
   | { type: "list"; items: string[] }
   | { type: "highlight"; text: string };
 
 export const blogArticles: BlogArticle[] = [
+  {
+    slug: "plus-beaux-canyons-alpes-maritimes",
+    title: "Les plus beaux canyons des Alpes-Maritimes : notre sélection pour une aventure inoubliable",
+    metaTitle: "Les plus beaux canyons des Alpes-Maritimes | Guide Canyoning",
+    metaDescription:
+      "Découvrez les plus beaux canyons des Alpes-Maritimes : Maglia, Riolan, Audin, Cramassouri... Conseils, niveaux et guide complet pour choisir votre prochaine sortie canyoning.",
+    date: "2026-06-04",
+    excerpt:
+      "Maglia, Audin, Riolan, Bollène, Cramassouri : un guide local pour choisir un canyon des Alpes-Maritimes selon vos envies, votre niveau et l'expérience recherchée.",
+    category: "Activités outdoor",
+    location: "Alpes-Maritimes",
+    image: "/activites/canyoning-eau-turquoise.svg",
+    featuredImageAlt:
+      "Eau turquoise et rochers dans un canyon des Alpes-Maritimes",
+    content: [
+      {
+        type: "intro",
+        text: "Envie d'eau fraîche, de vasques limpides, de toboggans naturels et d'une vraie parenthèse aventure sans partir à l'autre bout du monde ? Les Alpes-Maritimes sont un terrain de jeu exceptionnel pour découvrir le canyoning. À quelques kilomètres du littoral, on quitte la chaleur de la Côte d'Azur pour entrer dans des clues, des gorges et des rivières de montagne où chaque passage apporte sa petite dose de plaisir, de sensations et de découverte.",
+      },
+      {
+        type: "paragraphWithLinks",
+        parts: [
+          "Dans cet article, on vous aide à repérer les plus beaux canyons des Alpes-Maritimes, avec des indications de niveau à considérer comme générales et toujours à confirmer avec l'encadrant. Si vous souhaitez d'abord comprendre les bases, vous pouvez ",
+          { text: "découvrir l'activité canyoning", href: "/activites/canyoning" },
+          ". Et si vous hésitez encore entre plusieurs expériences nature, vous pouvez aussi ",
+          { text: "voir toutes les activités outdoor", href: "/activites" },
+          " proposées dans l'univers MSP.",
+        ],
+      },
+      {
+        type: "quickAnswer",
+        question: "Quel canyon choisir dans les Alpes-Maritimes ?",
+        answer:
+          "Pour une première sortie, Cramassouri ou Audin sont généralement des options plus accessibles. Pour une aventure plus sportive et spectaculaire, la Maglia, le Riolan ou la Bollène sont souvent cités par les guides, sous réserve des conditions, du niveau du groupe et de la saison.",
+      },
+      { type: "h2", text: "Le canyon de la Maglia" },
+      {
+        type: "paragraph",
+        text: "Le canyon de la Maglia fait partie des grands noms du canyoning dans les Alpes-Maritimes. Situé dans la vallée de la Roya, il est souvent décrit comme l'un des parcours les plus complets du département. On y retrouve ce qui fait rêver quand on imagine une sortie canyon : eau claire, couloirs rocheux, passages encaissés, cascades, vasques profondes et ambiance d'aventure progressive.",
+      },
+      {
+        type: "paragraph",
+        text: "La Maglia plaît parce qu'elle donne le sentiment d'entrer dans un décor vraiment sauvage. Selon les guides et les conditions, la sortie peut être assez longue et physique. Elle est donc généralement conseillée à des personnes déjà à l'aise dans l'eau, capables de marcher, nager et suivre un rythme soutenu pendant plusieurs heures. Les sauts et certains passages impressionnants sont à confirmer avec l'encadrant, qui indiquera les alternatives possibles.",
+      },
+      {
+        type: "paragraph",
+        text: "C'est un canyon idéal pour un groupe d'amis qui veut vivre une aventure marquante, avec des moments joueurs mais aussi une vraie immersion nature. On y vient moins pour cocher une case que pour profiter d'une expérience complète, fraîche et mémorable.",
+      },
+      { type: "h2", text: "Le canyon de l'Audin" },
+      {
+        type: "paragraph",
+        text: "Le canyon de l'Audin, proche de la frontière italienne, est souvent présenté comme une belle porte d'entrée vers le canyoning. Son atmosphère est plus douce que celle des parcours très engagés, tout en gardant le plaisir essentiel : marcher dans l'eau, glisser, traverser des vasques, rire avec le groupe et découvrir une rivière autrement.",
+      },
+      {
+        type: "paragraph",
+        text: "Selon les professionnels, l'Audin est généralement adapté aux débutants, aux familles avec enfants assez grands et aux groupes qui veulent tester l'activité sans pression. La durée, le niveau d'eau et les passages possibles restent à vérifier avant la sortie, mais l'esprit du parcours est souvent ludique et rassurant.",
+      },
+      {
+        type: "paragraph",
+        text: "C'est typiquement le genre de canyon qui permet de se dire : “finalement, je peux le faire”. On découvre les sensations sans se sentir dépassé, avec un encadrement qui aide à prendre confiance étape après étape.",
+      },
+      { type: "h2", text: "Le canyon du Riolan" },
+      {
+        type: "paragraph",
+        text: "Le Riolan est un canyon emblématique de l'arrière-pays des Alpes-Maritimes. Il est réputé pour ses longues gorges sculptées, son ambiance minérale et ses passages aquatiques qui donnent une vraie impression de voyage. Ici, le canyoning prend une dimension plus contemplative : on avance entre les parois, dans une eau fraîche, avec cette sensation agréable d'être coupé du bruit du quotidien.",
+      },
+      {
+        type: "paragraph",
+        text: "Généralement, le Riolan s'adresse plutôt à des pratiquants déjà motivés ou à des groupes accompagnés par un guide qui valide le niveau de chacun. La sortie peut demander de l'endurance et une bonne aisance dans l'eau. Les conditions peuvent aussi influencer fortement l'expérience : météo, débit, température et accès sont à confirmer avec l'encadrant.",
+      },
+      {
+        type: "paragraph",
+        text: "Pour celles et ceux qui veulent une aventure plus immersive, le Riolan coche beaucoup de cases : beauté du décor, sensation d'exploration, passages variés et vrai souvenir collectif à la sortie.",
+      },
+      { type: "h2", text: "Le canyon de la Bollène" },
+      {
+        type: "paragraph",
+        text: "Le canyon de la Bollène, dans le secteur de la Vésubie, est souvent apprécié pour son côté spectaculaire. Cascades, rappels, mouvements d'eau et passages encaissés peuvent composer une sortie intense, à la fois technique et très esthétique. C'est un canyon qui donne vite le sentiment d'être dans une aventure de montagne.",
+      },
+      {
+        type: "paragraph",
+        text: "La Bollène est généralement considérée comme un parcours plus sportif. Elle peut convenir à des adultes actifs, à des groupes déjà à l'aise avec les activités outdoor ou à des personnes qui cherchent davantage de sensations. Comme toujours en canyoning, le niveau réel dépend du débit, de la météo, de la saison et des décisions du guide sur place.",
+      },
+      {
+        type: "paragraphWithLinks",
+        parts: [
+          "Si votre groupe aime les activités verticales ou aériennes, la Bollène peut évoquer certaines sensations proches de la ",
+          { text: "via ferrata", href: "/activites/via-ferrata" },
+          " ou de l'",
+          { text: "escalade", href: "/activites/escalade" },
+          ", avec en plus la fraîcheur de l'eau et le côté très joueur des vasques.",
+        ],
+      },
+      { type: "h2", text: "Le canyon de Cramassouri" },
+      {
+        type: "paragraph",
+        text: "Cramassouri est l'un des canyons souvent recommandés pour une première expérience dans les Alpes-Maritimes. Accessible depuis le secteur de la Tinée, il offre une ambiance ensoleillée, des vasques claires, des petits toboggans naturels et des passages ludiques sans forcément basculer dans une sortie trop engagée.",
+      },
+      {
+        type: "paragraph",
+        text: "Généralement, Cramassouri convient bien aux débutants, aux groupes mixtes et aux familles, sous réserve de l'âge minimum demandé par le professionnel et des conditions du moment. C'est un parcours intéressant pour découvrir le canyoning comme une activité plaisir : on bouge, on se rafraîchit, on partage, on ose un peu, mais l'objectif reste de passer un bon moment.",
+      },
+      {
+        type: "paragraph",
+        text: "Pour un EVG, une sortie entre amis, une activité de vacances ou une première aventure outdoor, Cramassouri peut être une option très pertinente à discuter avec l'encadrant.",
+      },
+      { type: "h2", text: "Quel canyon choisir selon son niveau ?" },
+      {
+        type: "paragraph",
+        text: "Le bon canyon n'est pas forcément le plus connu : c'est celui qui correspond à votre groupe, à votre énergie du jour, à la météo et au niveau d'eau. Pour une première sortie, mieux vaut privilégier une expérience fluide, progressive et rassurante plutôt qu'un parcours trop ambitieux.",
+      },
+      {
+        type: "list",
+        items: [
+          "Pour débuter généralement : Audin ou Cramassouri, selon l'âge, la saison et les disponibilités.",
+          "Pour une sortie plus aventure : Maglia ou Riolan, à confirmer avec un guide selon le niveau du groupe.",
+          "Pour des sensations plus sportives : Bollène, si les conditions et l'encadrement valident le choix.",
+          "Pour une famille : choisir un canyon court, ludique, avec des échappatoires ou alternatives possibles selon l'encadrant.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Dans tous les cas, il faut éviter de décider uniquement à partir d'une photo ou d'une vidéo. Un canyon peut changer d'ambiance selon le débit, la température, la fréquentation, l'expérience des participants et les consignes du guide. Le plaisir vient souvent d'un choix bien calibré.",
+      },
+      { type: "h2", text: "Pourquoi faire du canyoning dans les Alpes-Maritimes ?" },
+      {
+        type: "paragraph",
+        text: "Les Alpes-Maritimes ont un avantage rare : elles permettent de passer rapidement de la mer à la montagne. Depuis Nice, Antibes, Cannes, Grasse ou Sophia Antipolis, on peut rejoindre des vallées fraîches et découvrir une autre facette de la Côte d'Azur. Le canyoning devient alors une activité parfaite pour casser la routine, respirer, se rafraîchir et vivre une aventure accessible en une demi-journée ou une journée selon les parcours.",
+      },
+      {
+        type: "paragraphWithLinks",
+        parts: [
+          "C'est aussi une excellente alternative aux activités d'eau vive comme le ",
+          { text: "rafting", href: "/activites/rafting" },
+          " ou le ",
+          { text: "kayak", href: "/activites/kayak" },
+          ". Le canyoning est plus immersif et plus varié dans les gestes : on marche, on nage, on glisse, on descend parfois en rappel, on observe et on avance ensemble.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Ce mélange de fraîcheur, de jeu et de nature explique pourquoi l'activité plaît autant aux adultes actifs, aux groupes d'amis et aux familles. Elle crée des souvenirs simples : une cascade franchie, un toboggan naturel, une hésitation transformée en fou rire, une vasque turquoise qu'on n'aurait jamais trouvée seul.",
+      },
+      {
+        type: "h2",
+        text: "Organiser une sortie canyoning sans se compliquer la vie avec MSP",
+      },
+      {
+        type: "paragraph",
+        text: "Choisir un canyon, vérifier la saison, comprendre le niveau, coordonner un groupe, comparer les prestataires et savoir quoi apporter peut vite devenir chronophage. C'est précisément là que MultiSport Planner intervient : MSP vous aide à trouver et organiser l'activité adaptée, sans vous laisser seul face à toutes les options.",
+      },
+      {
+        type: "paragraph",
+        text: "MSP ne promet pas d'encadrer directement chaque sortie. L'objectif est de vous orienter vers une expérience cohérente avec votre groupe, vos envies, votre niveau et les disponibilités de professionnels locaux. Vous gardez le plaisir de l'aventure, sans porter toute la charge de l'organisation.",
+      },
+      {
+        type: "highlight",
+        text: "Le bon canyon, c'est celui où votre groupe se sent assez rassuré pour profiter, et assez surpris pour s'en souvenir.",
+      },
+      { type: "h2", text: "FAQ" },
+      {
+        type: "paragraph",
+        text: "Voici les réponses aux questions les plus fréquentes avant de réserver une sortie canyoning dans les Alpes-Maritimes. Les informations restent générales : l'encadrant confirme toujours les conditions précises avant le départ.",
+      },
+    ],
+    faq: [
+      {
+        q: "Quel est le plus beau canyon des Alpes-Maritimes ?",
+        a: "La Maglia est souvent citée parmi les plus beaux canyons des Alpes-Maritimes pour son côté complet et spectaculaire. Le Riolan est également très apprécié pour ses gorges sculptées et son ambiance immersive. Le plus beau choix dépend surtout de votre niveau, de la saison et du type d'expérience recherché.",
+      },
+      {
+        q: "Faut-il savoir nager pour faire du canyoning ?",
+        a: "Oui, il faut généralement savoir nager et être à l'aise dans l'eau. Le canyoning peut inclure des vasques à traverser, des passages de nage et des mouvements d'eau. Il n'est pas nécessaire d'être un nageur expert, mais il faut pouvoir suivre les consignes sans paniquer.",
+      },
+      {
+        q: "À partir de quel âge peut-on faire du canyoning ?",
+        a: "L'âge minimum varie selon le canyon, le prestataire, la durée et les conditions. Certaines sorties découverte sont parfois accessibles aux enfants, généralement à partir de 8 à 10 ans, mais c'est toujours à confirmer avec l'encadrant avant de réserver.",
+      },
+      {
+        q: "Quand pratiquer le canyoning dans les Alpes-Maritimes ?",
+        a: "La période se situe généralement du printemps au début de l'automne, avec un pic d'intérêt quand les températures donnent envie de se rafraîchir. Les conditions peuvent varier selon la météo, la fonte, les orages et le niveau d'eau. La faisabilité est donc toujours à confirmer avec un professionnel.",
+      },
+      {
+        q: "Le canyoning est-il dangereux ?",
+        a: "Comme toute activité outdoor en milieu naturel, le canyoning comporte des risques. Ils sont réduits par le choix d'un parcours adapté, un encadrement professionnel, le port du matériel nécessaire et le respect des consignes. Il ne faut pas partir seul ni improviser une descente sans connaissance du terrain.",
+      },
+    ],
+  },
+
   {
     slug: "reprendre-le-sport-facilement",
     title: "Comment reprendre le sport facilement",
