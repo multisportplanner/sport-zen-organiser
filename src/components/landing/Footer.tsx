@@ -14,6 +14,12 @@ const Footer = () => (
         >
           claire@multisportplanner.com
         </a>
+        <a
+          href="tel:+33678193783"
+          className="block text-sm text-primary font-medium hover:text-primary/80 transition-colors"
+        >
+          06 78 19 37 83
+        </a>
         <p className="text-xs text-muted-foreground">Je te réponds rapidement</p>
       </div>
 
